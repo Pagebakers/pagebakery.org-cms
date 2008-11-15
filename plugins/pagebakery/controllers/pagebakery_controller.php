@@ -3,7 +3,7 @@ class PagebakeryController extends PagebakeryAppController {
     
     var $uses = array();
     
-    public function dashboard() {
+    public function pb_dashboard() {
         echo 'PB Dashboard';
     }
     
