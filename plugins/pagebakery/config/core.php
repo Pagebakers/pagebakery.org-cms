@@ -1,6 +1,6 @@
 <?php
 /**
- * Prefix used to access the Pagebakery plugin admin methods
+ * Route used to access pagebakery, default 'pagebakery'
  */
-Configure::write('Pagebakery.prefix', 'pagebakery');
+Configure::write('Routes.pagebakery', 'pagebakery');
 ?>

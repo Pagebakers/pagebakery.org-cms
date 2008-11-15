@@ -1,0 +1,15 @@
+body {
+    padding : 0;
+    margin : 0;
+    font:normal 12px tahoma,arial,helvetica,sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    margin : 0;
+}
+
+#header {
+    height : 76px;
+    border-bottom : 1px solid #525252;
+    background : #969696 url(../img/pagebakery/panel-header.gif) repeat-x;
+}
