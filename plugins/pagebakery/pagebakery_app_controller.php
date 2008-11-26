@@ -3,7 +3,7 @@ class PagebakeryAppController extends AppController {
 
     var $components = array('Auth', 'RequestHandler', 'Cookie');
     
-    var $helpers = array('Form', 'Html', 'Javascript');
+    var $helpers = array('Form', 'Html', 'Javascript', 'Pagebakery.Navigation');
     
     function beforeFilter() {
         //if there is a core error, just show it
