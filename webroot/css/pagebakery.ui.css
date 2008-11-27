@@ -75,3 +75,33 @@ body#pb_login {
 #login-form-panel fieldset {
 
 }
+
+/* tabs */
+.panel-tabs {
+    list-style : none;
+    margin : 0;
+    padding : 0;
+    height : 50px;
+    color : #000;
+    font-size : 11px;
+    padding : 25px 0 0 6px;
+}
+.panel-tabs li {
+    float : left;
+}
+.panel-tabs li a {
+    display : block;
+    padding : 30px 6px 6px 6px;
+    color : #000;
+    font-size : 11px;
+    text-decoration : none;
+}
+.panel-tabs li.active {
+    padding-left : 3px;
+    background : url(../img/pagebakery/panel-tab-active.gif) no-repeat top left;
+}
+.panel-tabs li.active a {
+    padding-left: 3px;
+    background : url(../img/pagebakery/panel-tab-active.gif) no-repeat top right;
+}
+    
