@@ -11,7 +11,7 @@ class UsersController extends PagebakeryAppController {
                 $this->redirect(array('controller' => 'dashboard', 'action' => 'index', 'pb' => true));
             }
         }
-        $this->layout = 'login';
+        $this->layout = 'admin_login';
     }
     
     public function pb_logout() {
