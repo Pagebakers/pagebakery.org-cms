@@ -2,7 +2,7 @@
 /**
  * NavigationHelper
  *
- * This helper helps you build your menu's
+ * This helper helps you build your menu's and adds some extra functionality to links
  *
  * PHP versions 4 and 5
  *
@@ -15,8 +15,7 @@
  * @version         0.1
  * @license			http://www.gnu.org/licenses/lgpl.html GNU LESSER GENERAL PUBLIC LICENSE
  */
-class NavigationHelper extends AppHelper {
-    var $helpers = array('Html');
+class NavigationHelper extends HtmlHelper {
     
     /**
      * Returns a formatted <ul> with links
@@ -24,7 +23,7 @@ class NavigationHelper extends AppHelper {
      * @param array $options The html attributes for the list
      * @return string The formatted <ul> list
      */
-    function menu($items, $options = array()) {
+    function menu($items, $attributes = array()) {
         if(!is_array($items) || empty($items)) {
             return;
         }
@@ -33,15 +32,15 @@ class NavigationHelper extends AppHelper {
         
         foreach($items as $item) {
             if(count($item) == 2) {
-                list($text, $url) = $item;
+                list($text, $url) = $items;
                 $itemOptions = array();
             } else {
                 list($text, $url, $itemOptions) = $item;
             }
-            $links[] = $this->link($text, $url, $itemOptions);
+            $links[] = sprintf($this->tags['li'], ($this->isActive($url) ? ' class="active"' : ''), parent::link($text, $url, $itemOptions));
         }
         
-        return $this->Html->nestedList($links, $options);
+        return sprintf($this->tags['ul'], $this->_parseAttributes($attributes, null, ' ', ''), implode("\n", $links));
     }
     
     /**
@@ -52,17 +51,34 @@ class NavigationHelper extends AppHelper {
      * @return string an <a/> element
      */
     function link($title, $url, $options = array()) {
-        $currentRoute = Router::currentRoute();
-        
-        $url = Router::url($url);
-        
-        if(Router::url($currentRoute[3]) == $url) {
-            $options = array('class' => 'active');
+        if($this->isActive($url)) {
+            if(isset($options['class'])) {
+                $options['class'] .= ' active';
+            } else {
+                $options['class'] = 'active';
+            }
         }     
         
-        $out = $this->Html->link($title, $url, $options);
+        $out = parent::link($title, $url, $options);
         
         return $out;
+    }
+    
+    /**
+     * Checks if a given url is currently active
+     * @param mixed $url The url to check, can be and valid router string or array
+     * @return boolean Returns true if the passed url is active
+     */
+    function isActive($url) {
+        $currentRoute = Router::currentRoute();
+
+        $url = Router::url($url);
+
+        if($currentRoute[0] == $url) {
+            return true;
+        }
+        
+        return false;
     }
 }
 ?>
