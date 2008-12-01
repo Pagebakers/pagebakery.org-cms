@@ -1,0 +1,107 @@
+html, body {
+    height : 100%;
+}
+body {
+    padding : 0;
+    margin : 0;
+    font : normal 12px tahoma,arial,helvetica,sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+    margin : 0;
+}
+
+#header {
+    height : 76px;
+}
+
+.panel-header {
+    border-bottom : 1px solid #525252;
+    background : #969696 url(../img/pagebakery/panel-header.gif) repeat-x;
+}
+
+.panel-body {
+    padding : 10px;
+    border-left : 1px solid #525252;
+    border-right : 1px solid #525252;
+    border-bottom : 1px solid #525252;
+    background-color : #e8e8e8;
+}
+
+#container {
+    height : 100%;
+}
+
+/* forms */
+div.input {
+    margin-bottom: 5px;
+}
+div.input:after {
+    content : ".";
+    display : block;
+    height : 0;
+    clear : both;
+    visibility : hidden;
+}
+
+div.input label {
+    display : block;
+    width : 30%;
+    float : left;
+}
+div.input input {
+    float : left;
+    width : 69%;
+}
+
+fieldset {
+    border : 0;
+    margin-bottom: 5px;
+    padding : 5px 5px 0 5px;
+}
+
+/* login */
+body#pb_login {
+    background-color : #686868;
+}
+#login-form-panel {
+    width : 350px;
+    height : 200px;
+    position : absolute;
+    left : 50%;
+    top : 50%;
+    margin : -100px 0 0 -175px;
+}
+#login-form-panel fieldset {
+
+}
+
+/* tabs */
+.panel-tabs {
+    list-style : none;
+    margin : 0;
+    padding : 0;
+    height : 50px;
+    color : #000;
+    font-size : 11px;
+    padding : 25px 0 0 6px;
+}
+.panel-tabs li {
+    float : left;
+}
+.panel-tabs li a {
+    display : block;
+    padding : 30px 6px 6px 6px;
+    color : #000;
+    font-size : 11px;
+    text-decoration : none;
+}
+.panel-tabs li.active {
+    padding-left : 3px;
+    background : url(../img/pagebakery/panel-tab-active.gif) no-repeat top left;
+}
+.panel-tabs li.active a {
+    padding-left: 3px;
+    background : url(../img/pagebakery/panel-tab-active.gif) no-repeat top right;
+}
+    
