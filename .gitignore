@@ -3,3 +3,6 @@ tmp/*
 config/database.php
 config/core.php
 webroot/index.php
+.cache
+.settings
+.project
