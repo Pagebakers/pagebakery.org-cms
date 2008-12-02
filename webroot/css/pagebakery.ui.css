@@ -32,7 +32,13 @@ h1, h2, h3, h4, h5 {
     height : 100%;
 }
 
+#content {
+    padding : 10px;
+}
 /* forms */
+form {
+
+}
 div.input {
     margin-bottom: 5px;
 }
