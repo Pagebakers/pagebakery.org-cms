@@ -1,0 +1,265 @@
+#homepageBos h2 , #homepageBos p {
+	display:none;
+}
+
+#homepageBos a {
+	display:block;
+	background:url(/img/homepageBos.png) no-repeat;
+	width:700px;
+	height:300px;
+	text-indent:-9999px;
+	margin-bottom:20px;
+}
+
+#quicklinks {
+	width:700px;
+	*width:702px;
+	height:190px;
+	*height:193px;
+	background:url(/img/quicklinks.gif) no-repeat;
+	padding-top:3px;
+	padding-left:2px;
+}
+
+#quicklinks li {
+	float:left;
+	list-style-type:none;
+}
+
+#quicklinks a {
+	display:block;
+	width:138px;
+	height:72px;
+	*height:187px;
+	font-size:12px;
+	color:#666;
+	text-decoration:none;
+	text-align:center;
+	padding-top:115px;
+	margin-right:1px;
+}
+
+#quicklinks #qVergelijken {
+	background:url(/img/quicklinksVergelijken.gif) no-repeat top center;
+	*background-position:23px 0;
+}
+#quicklinks #qBedrijvengids {
+	background:url(/img/quicklinksBedrijvengids.gif) no-repeat top center;
+}
+#quicklinks #qInformatie {
+	background:url(/img/quicklinksInformatie.gif) no-repeat top center;
+}
+#quicklinks #qNieuws {
+	background:url(/img/quicklinksNieuws.gif) no-repeat top center;
+}
+#quicklinks #qForum {
+	background:url(/img/quicklinksForum.gif) no-repeat top center;
+	*background-position:38px 0;
+}
+
+#quicklinks #qVergelijken:hover {
+	background:url(/img/quicklinksVergelijkenHover.gif) no-repeat top center;
+	color:#069;
+}
+#quicklinks #qBedrijvengids:hover {
+	background:url(/img/quicklinksBedrijvengidsHover.gif) no-repeat top center;
+	color:#069;
+}
+#quicklinks #qInformatie:hover {
+	background:url(/img/quicklinksInformatieHover.gif) no-repeat top center;
+	color:#069;
+}
+#quicklinks #qNieuws:hover {
+	background:url(/img/quicklinksNieuwsHover.gif) no-repeat top center;
+	color:#069;
+}
+#quicklinks #qForum:hover {
+	background:url(/img/quicklinksForumHover.gif) no-repeat top center;
+	color:#069;
+}
+
+#actueelNieuws {
+	background:#ececec;
+	width:700px;
+	margin-top:20px;
+	color:#666;
+	padding-bottom:20px;
+}
+
+#actueelNieuws h2 {
+	background:url(/img/actueelNieuwsH2.gif) no-repeat;
+	width:700px;
+	height:45px;
+	text-indent:-9999px;
+}
+
+#actueelNieuws #alleBerichten {
+	display:block;
+	margin:18px 20px 0 20px;
+	font-size:12px;
+	color:#3399cc;
+}
+
+#actueelNieuws ul {
+	margin:0 20px;
+}
+
+#actueelNieuws li {
+	list-style-type:none;
+}
+
+#actueelNieuws .selected h3 {
+	font-size:16px;
+	font-weight:bold;
+	margin:13px 0 18px 0;	
+}
+
+#actueelNieuws .selected p {
+	font-size:12px;
+	margin:0 0 18px 0;	
+}
+
+#actueelNieuws .notSelected a {
+	display:block;
+	padding-left:30px;
+	width:630px;
+	*width:660px;
+	height:30px;
+	margin-bottom:2px;
+	color:#666;
+	text-decoration:none;
+	background:url(/img/actueelNieuwsItem.gif) no-repeat;
+}
+
+#actueelNieuws .notSelected a:hover {
+	color:#104f6e;
+	background:url(/img/actueelNieuwsItemHover.gif) no-repeat;
+}
+
+#actueelNieuws .notSelected span {
+	line-height:30px;
+	font-size:11px;
+}
+
+#actueelNieuws .notSelected h3 {
+	line-height:30px;
+	font-size:12px;
+	font-weight:normal;
+	display:inline;
+	padding-left:10px;
+}
+	
+
+#actueelNieuws p a {
+	color:#3399cc;
+}
+
+#mijnAccount {
+	width:220px;
+	height:300px;
+	background:#1e72b6 url(/img/mijnaccountBg.gif) no-repeat left bottom;
+	color:#bcd8ee;
+	font-size:12px;
+}
+
+#mijnAccount h2 {
+	background:url(/img/mijnaccounth2.gif) no-repeat;
+	text-indent:-9999px;
+	height:44px;
+}
+
+#mijnAccount p {
+	margin:8px 20px 18px 20px;
+}
+
+#mijnAccount a {
+	color:#FFF;
+}
+
+#mijnAccount form {
+	padding-left:20px;
+}
+
+#mijnAccount input {
+	display:block;
+	background:url(/img/loginInput.gif) no-repeat;
+	padding:6px 8px;
+	width:179px;
+	height:27px;
+	color:#d6edff;
+	border:none;
+	margin-bottom:7px;
+}
+
+#mijnAccount form div {
+	background:url(/img/loginOnthouden.gif) no-repeat;
+	float:left;
+	width:105px;
+	font-size:11px;
+	height:27px;
+}
+
+#mijnAccount #checkbox {
+	width:auto;
+	height:auto;
+	margin:7px 6px 0 8px;
+	*margin:2px;
+	background:#075799;
+	float:left;
+	line-height:27px;
+}
+
+#mijnAccount span {
+	line-height:25px;
+}
+
+#mijnAccount #submit {
+	float:left;
+	width:74px;
+	height:27px;
+	background:url(/img/loginSubmit.gif) no-repeat;
+	text-indent:-9999px;
+}
+
+#mijnAccount #gegevensverloren {
+	font-size:11px;
+	margin:18px 20px;
+	text-align:center;
+}
+
+#vergelijkZeAllemaal {
+	background:url(/img/boxBorder.gif);
+	margin-top:20px;
+}
+
+#vergelijkZeAllemaalInner {
+	background:url(/img/boxEnd.gif) bottom left no-repeat;
+	padding-bottom:18px;
+}
+
+#vergelijkZeAllemaal h2 {
+	background:url(/img/vergelijkZeAllemaalH2.gif) no-repeat;
+	width:220px;
+	height:43px;
+	text-indent:-9999px;
+	margin-bottom:13px;
+}
+
+#vergelijkZeAllemaal li {
+	display:inline;
+	padding-left:15px;
+}
+
+#vergelijkZeAllemaal img {
+	border:none;
+}
+
+#vergelijkZeAllemaal p {
+	text-align:center;
+	margin-top:18px;
+}
+
+#vergelijkZeAllemaal a {
+	color:#3399cc;
+	font-size:12px;
+}
