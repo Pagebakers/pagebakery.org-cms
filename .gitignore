@@ -1,4 +1,5 @@
 .DS_Store
 tmp/*
-config/*
+config/database.php
+config/core.php
 webroot/index.php
