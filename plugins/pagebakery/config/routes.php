@@ -10,11 +10,6 @@ Router::connect('/' . Configure::read('Routes.pagebakery') . '/login', array('co
 Router::connect('/' . Configure::read('Routes.pagebakery') . '/logout', array('controller' => 'users', 'action' => 'logout', 'prefix' => 'pb', 'plugin' => 'pagebakery'));
 
 // Admin routes
-$controllers = Configure::listObjects('controller', PAGEBAKERY . 'controllers');
-foreach($controllers as &$controller) {
-    $controller = low($controller);
-    Router::connect('/' . Configure::read('Routes.pagebakery') . '/' . $controller, array('controller' => $controller, 'action' => 'index', 'prefix' => 'pb', 'pb' => true, 'plugin' => 'pagebakery')); 
-    Router::connect('/' . Configure::read('Routes.pagebakery') . '/' . $controller . '/:action/*', array('controller' => $controller, 'prefix' => 'pb', 'pb' => true, 'plugin' => 'pagebakery'));    
-}
-unset($controllers);
+Router::connect('/' . Configure::read('Routes.pagebakery') . '/:controller/*', array('action' => 'index', 'prefix' => 'pb', 'pb' => true, 'plugin' => 'pagebakery'));
+Router::connect('/' . Configure::read('Routes.pagebakery') . '/:controller/:action/*', array('prefix' => 'pb', 'pb' => true, 'plugin' => 'pagebakery'));
 ?>
