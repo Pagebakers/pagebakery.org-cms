@@ -1,0 +1,259 @@
+* {
+	margin:0;
+	padding:0;
+	font-family:Arial, sans-serif;
+	outline:none;
+	line-height:18px;
+}
+
+body {
+	background:#ececec url(/img/body.gif) repeat-x;
+	text-align:center;
+}
+
+h1 {
+	display:none;
+}
+
+.clear {
+	clear:both;
+}
+
+#top {
+	width:1000px;
+	*width:1002px;
+	background:url(/img/header.png) no-repeat;
+	margin:0 auto;
+	height:158px;
+	padding-top:1px;
+}
+
+#menu {
+	width:986px;
+	margin-top:88px;
+	*margin-top:89px;
+	margin-left:7px;
+	*margin-left:-1px;
+	height:33px;
+}
+
+#menu li {
+	float:left;
+	list-style-type:none;
+	background:url(/img/menuItemLeft2.gif) no-repeat;
+}
+
+#menu a {
+	float:left;
+	display:block;
+	background:url(/img/menuItemRight2.gif) no-repeat top right;
+	height:21px;
+	*height:33px;
+	text-decoration:none;
+	color:#666;
+	font-weight:bold;
+	font-size:12px;
+	padding:12px 17px 0 17px;
+}
+
+#menu a:hover {
+	color:#444;
+}
+
+#menu .first a {
+	background:url(/img/menuItemRight1.gif) no-repeat top right;
+}
+
+#menu .last a {
+	background:url(/img/menuItemRight3.gif) no-repeat top right;
+}
+
+#menu .first {
+	background:url(/img/menuItemLeft1.gif) no-repeat;
+}
+
+#menu .last {
+	background:url(/img/menuItemLeft3.gif) no-repeat;
+}
+
+#menu .selectedFirst a {
+	background:url(/img/menuItemRightSelected1.gif) no-repeat top right;
+	color:#FFF;
+	padding-top:9px;
+	height:24px;
+	*height:33px;
+}
+
+#menu .selectedFirst {
+	background:url(/img/menuItemLeftSelected1.gif) no-repeat;
+}
+
+#menu .selected a {
+	background:url(/img/menuItemRightSelected2.gif) no-repeat top right;
+	color:#FFF;
+	padding-top:9px;
+	height:24px;
+	*height:33px;
+}
+
+#menu .selected {
+	background:url(/img/menuItemLeftSelected2.gif) no-repeat;	
+	margin:0 1px;
+}
+
+#menu .selectedLast a {
+	background:url(/img/menuItemRightSelected3.gif) no-repeat top right;
+	color:#FFF;
+	padding-top:9px;
+	height:24px;
+	*height:33px;
+}
+
+#menu .selectedLast {
+	background:url(/img/menuItemLeftSelected2.gif) no-repeat;	
+	margin:0 1px;
+}
+
+#menu #menuMijnAccount {
+	float:right;
+	background:url(/img/menuItemLeft4.gif) no-repeat;
+}
+
+#menu #menuMijnAccount a {
+	background:url(/img/menuItemRight4.gif) no-repeat top right;
+}
+
+#menu #menuMijnAccountSelected {
+	float:right;
+	background:#F00 url(/img/menuItemLeftSelected4.gif) no-repeat;
+	*margin-right:-1px;
+}
+
+#menu #menuMijnAccountSelected a {
+	background:url(/img/menuItemRightSelected4.gif) no-repeat top right;
+	color:#FFF;
+	padding-top:9px;
+	height:24px;
+	*height:33px;
+}
+
+#submenu {
+	background:url(/img/submenu.gif);
+	width:980px;
+	height:36px;
+	margin-left:10px;
+	*margin-left:0;
+	text-align:left;
+}
+
+#submenu li {
+	float:left;
+	list-style-type:none;
+}
+
+#submenu a {
+	color:#FFF;
+	display:block;
+	float:left;s
+	height:18px;
+	margin-top:9px;
+	text-decoration:none;
+	font-size:12px;
+	padding:0 12px 0 10px;
+	background:url(/img/submenuSeparator.gif) center right no-repeat;
+}
+
+#submenu a:hover {
+	color:#bbdbeb;
+}
+
+#container {
+	width:940px;
+	*width:1000px;
+	background:url(/img/container.gif);
+	margin:0 auto;
+	padding:20px 30px 20px 30px;
+	text-align:left;
+}
+
+#containerLeft {
+	float:left;
+	width:700px;
+	margin-right:20px;
+}
+
+#containerRight {
+	float:left;
+	width:220px;
+}
+
+#containerBottom {
+	width:980px;
+	height:9px;
+	background:url(/img/containerBottom.gif);
+	border:none;
+	margin:0 auto 9px auto;
+}
+
+#containerBottom hr {
+	display:none;
+}
+
+#sitemap {
+	width:940px;
+	*width:960px;
+	padding:0 10px 30px 10px;
+	background:url(/img/footerSeparator.gif) bottom left no-repeat;
+	margin:0 auto;
+	font-size:12px;
+	color:#666;
+	text-align:left;
+}
+
+#sitemap ul {
+	width:156px;
+	float:left;
+}
+
+#sitemap li {
+	list-style-type:none;
+}
+
+#sitemap a {
+	color:#666;
+	text-decoration:none;
+}
+
+#sitemap a:hover, #informatieLinks a:hover {
+	color:#3399cc;
+	text-decoration:underline;
+}
+
+#informatieLinks {
+	width:940px;
+	*width:960px;
+	padding:5px 10px 30px 10px;
+	background:url(/img/footerSeparator.gif) bottom left no-repeat;
+	margin:0 auto;
+	font-size:9px;
+	text-align:left;
+}
+
+#informatieLinks li {
+	width:104px;
+	list-style-type:none;
+	display:block;
+	float:left;
+}
+
+#informatieLinks a {
+	color:#999;
+	text-decoration:none;
+}
+
+#footer {
+	color:#999;
+	font-size:11px;
+	text-align:center;
+	margin:10px 0 18px 0;
+}
