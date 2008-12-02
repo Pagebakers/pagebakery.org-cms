@@ -37,7 +37,7 @@ class NavigationHelper extends HtmlHelper {
             } else {
                 list($text, $url, $itemOptions) = $item;
             }
-            $links[] = sprintf($this->tags['li'], ($this->isActive($url) ? ' class="active"' : ''), parent::link($text, $url, $itemOptions));
+            $links[] = sprintf($this->tags['li'], ($this->isActiveController($url) ? ' class="active"' : ''), parent::link($text, $url, $itemOptions));
         }
         
         return sprintf($this->tags['ul'], $this->_parseAttributes($attributes, null, ' ', ''), implode("\n", $links));
@@ -75,6 +75,23 @@ class NavigationHelper extends HtmlHelper {
         $url = Router::url($url);
 
         if($currentRoute[0] == $url) {
+            return true;
+        }
+        
+        return false;
+    }
+
+    /**
+     * Checks if a given url is currently active controller
+     * @param mixed $url The url to check, can be and valid router string or array
+     * @return boolean Returns true if the passed url is active
+     */ 
+    function isActiveController($url) {
+        if(!is_array($url)) {
+            $url = Router::parse($url);
+        }
+        
+        if($url['controller'] == $this->params['controller']) {
             return true;
         }
         
