@@ -27,6 +27,9 @@
 		<div id="header" class="panel-header">
             <?php echo $this->renderElement('pb_menu'); ?>
 		</div>
+		
+        <?php echo $this->renderElement('pb_toolbar'); ?>
+		
 		<div id="content">
 
 			<?php $session->flash(); ?>

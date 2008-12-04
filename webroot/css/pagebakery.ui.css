@@ -11,8 +11,16 @@ h1, h2, h3, h4, h5 {
     margin : 0;
 }
 
+a {
+    color : #0088CC;
+    text-decoration : none;
+}
+a:hover {
+    text-decoration : underline;
+}
+
 #header {
-    height : 76px;
+    height : 50px;
 }
 
 .panel-header {
@@ -94,31 +102,64 @@ body#pb_login {
     height : 50px;
     color : #000;
     font-size : 11px;
-    padding : 25px 0 0 6px;
+    padding : 0 0 0 6px;
 }
 .panel-tabs li {
     float : left;
 }
 .panel-tabs li a {
     display : block;
-    padding : 30px 6px 6px 6px;
+    padding : 28px 10px 6px 10px;
     color : #000;
-    font-size : 11px;
+    font-size : 12px;
     text-decoration : none;
 }
 .panel-tabs li.active {
-    padding-left : 3px;
+    padding-left : 5px;
     background : url(../img/pagebakery/panel-tab-active.gif) no-repeat top left;
 }
 .panel-tabs li.active a {
-    padding-left: 3px;
+    padding-left: 5px;
+    color : #FFF;
     background : url(../img/pagebakery/panel-tab-active.gif) no-repeat top right;
 }
 
 .panel-tabs-hide {
 	display: none !important;
 }
-    
+
+/* toolbar */
+.toolbar {
+    background : #e7e7e7 url(../img/pagebakery/toolbar.gif) repeat-x;
+    height : 29px;
+    border-bottom : 1px solid #BBBBBB;
+    font-size : 11px;
+}
+.toolbar ul {
+    margin : 0;
+    padding : 0;
+    list-style : none;
+    height : 29px;
+}
+.toolbar ul li {
+    float : left;
+    padding : 7px 10px;
+}
+.toolbar ul.breadcrumbs {
+    float : left;
+}
+.toolbar ul.utilities {
+    float : right;
+}
+.toolbar ul.utilities li {
+    border-left : 1px solid #CCCCCC;
+}
+.toolbar a {
+    color : #666;
+}
+.toolbar a:hover {
+    color : #0088CC;
+}
 /* tables */
 table {
     width : 100%;
@@ -145,7 +186,7 @@ table th a {
     border-left : 1px solid #FFF;
 }
 table th a:hover {
-    text-decoration : underline;
+    color : #0088CC;
 }
 table td {
     padding: 5px;
@@ -188,4 +229,20 @@ table tbody td {
     border-left : 1px solid #DDDDDD;
     border-right : 1px solid #DDDDDD;
     border-bottom : 1px solid #DDDDDD;
+}
+
+/* actions */
+ul.actions {
+    list-style : none;
+    padding : 0;
+    margin : 0;
+    height : 30px;
+}
+ul.actions li {
+    float : left;
+    padding-left : 5px;
+}
+ul.actions a {
+    display : block;
+    padding : 3px 10px 3px 5px;
 }
