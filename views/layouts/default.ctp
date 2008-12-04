@@ -35,13 +35,10 @@
 		echo $html->meta('icon');
 
 		echo $html->css(array('main', 'homepage'));
-		
-		if($javascript):
-			echo $javascript->link(array(
-	            'jquery.ui-1.6rc2/jquery-1.2.6',
-	            'jquery.ui-1.6rc2/jquery.ui.all'
-			));
-		endif;
+		echo $javascript->link(array(
+			'jquery.ui-1.6rc2/jquery-1.2.6',
+			'jquery.ui-1.6rc2/jquery.ui.all'
+		));
 	
 		echo $scripts_for_layout;
 	?>
@@ -76,48 +73,13 @@
 				<p>Home</p>
 				<?php echo $html->link('Uitvaartverzekeringen vergelijken? Klik hier!', ''); ?>
 			</div>
-
-			<ul id="quicklinks">
-				<li><?php echo $html->link('Vergelijk hier alle uitvaartverzekeraars!', '', array('id' => 'qVergelijken')); ?></li>
-				<li><?php echo $html->link('Vind bedrijven uit de uitvaartbranche dicht bij u in de buurt!', '', array('id' => 'qBedrijvengids')); ?></li>
-				<li><?php echo $html->link('Alle informatie over uitvaarten vindt u hier!', '', array('id' => 'qInformatie')); ?></li>
-				<li><?php echo $html->link('Al het laatste uitvaartnieuws', '', array('id' => 'qNieuws')); ?></li>
-				<li><?php echo $html->link('Geef uw mening op ons uitgebreide forum', '', array('id' => 'qForum')); ?></li>
-			</ul>
-
-			<div id="actueelNieuws">
-				<h2>Actueel Nieuws</h2>
-				<ul>					
-					<li class="selected">						
-						<h3>Nabestaanden financieel achteruit door onwetendheid</h3>
-						<p>
-							Bijna de helft van de nabestaanden gaat er financieel op achteruit nadat de partner is overleden. Mensen hebben lang niet allemaal maatregelen genomen om dit overlijdensrisico op te vangen. Onwetendheid is hiervan een belangrijke oorzaak: onderzoek van de Sociale Verzekeringsbank onder samenwonenden toont aan dat men... 
-							<?php echo $html->link('Meer lezen', ''); ?>
-						</p>
-					</li>
-					<li class="notSelected"><a href=""><span>[18 november 2008]</span><h3>Nabestaanden financieel achteruit door onwetendheid</h3></a></li>
-					<li class="notSelected"><a href=""><span>[18 november 2008]</span><h3>Nabestaanden financieel achteruit door onwetendheid</h3></a></li>
-					<li class="notSelected"><a href=""><span>[18 november 2008]</span><h3>Nabestaanden financieel achteruit door onwetendheid</h3></a></li>
-					<li class="notSelected"><a href=""><span>[18 november 2008]</span><h3>Nabestaanden financieel achteruit door onwetendheid</h3></a></li>
-					<li class="notSelected"><a href=""><span>[18 november 2008]</span><h3>Nabestaanden financieel achteruit door onwetendheid</h3></a></li>
-					<li class="notSelected"><a href=""><span>[18 november 2008]</span><h3>Nabestaanden financieel achteruit door onwetendheid</h3></a></li>
-					<li class="notSelected"><a href=""><span>[18 november 2008]</span><h3>Nabestaanden financieel achteruit door onwetendheid</h3></a></li>
-					<li class="notSelected"><a href=""><span>[18 november 2008]</span><h3>Nabestaanden financieel achteruit door onwetendheid</h3></a></li>
-					<li class="notSelected"><a href=""><span>[18 november 2008]</span><h3>Nabestaanden financieel achteruit door onwetendheid</h3></a></li>
-					<li class="notSelected"><a href=""><span>[18 november 2008]</span><h3>Nabestaanden financieel achteruit door onwetendheid</h3></a></li>
-				</ul>
-
-				<p><?php echo $html->link('Alle berichten bekijken', '', array('id' => 'alleBerichten')); ?></p>
-
-			</div>
-		
+			<?php echo $content_for_layout; ?>		
 		</div>
 		<div id="containerRight">
 
 			<div id="mijnAccount">
-
 				<h2>Mijn account</h2>
-				<p>Login op je account of <?php echo $html->link('<strong>maak gratis een nieuw account aan</strong>', ''); ?>.</p>
+				<p>Login op je account of <strong><?php echo $html->link('maak gratis een nieuw account aan', ''); ?></strong>.</p>
 
 				<form>
 					<input type="text" value="E-mail adres" />

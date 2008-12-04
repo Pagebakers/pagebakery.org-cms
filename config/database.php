@@ -6,8 +6,8 @@ class DATABASE_CONFIG {
 		'persistent' => false,
 		'host' => 'localhost',
 		'login' => 'root',
-		'password' => 'pwned',
-		'database' => 'pagebakery',
+		'password' => '',
+		'database' => 'uitvaart',
 		'encoding' => 'utf-8'
 	);
 }
