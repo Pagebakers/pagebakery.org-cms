@@ -5,8 +5,4 @@ config/core.php
 webroot/index.php
 .cache
 .settings
-<<<<<<< HEAD:.gitignore
 .project
-=======
-.project
->>>>>>> abb62d852a4c9f7855bd8528fa582eeaa0785ce0:.gitignore
