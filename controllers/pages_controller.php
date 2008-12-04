@@ -55,7 +55,8 @@ class PagesController extends AppController {
  * @var array
  * @access public
  */
-	var $uses = array();
+	var $uses = array('Page');
+	
 /**
  * Displays a view
  *
@@ -82,6 +83,16 @@ class PagesController extends AppController {
 		}
 		$this->set(compact('page', 'subpage', 'title'));
 		$this->render(join('/', $path));
+	}
+	
+	function view($slug = null){
+		$page = $this->Page->findBySlug($slug);
+		if($page) {
+			$this->pageTitle = Inflector::humanize($page['Page']['title']);
+			$this->set('page', $page);
+		}else{
+			$this->redirect('/');
+		}
 	}
 }
 

@@ -104,4 +104,7 @@ body#pb_login {
     padding-left: 3px;
     background : url(../img/pagebakery/panel-tab-active.gif) no-repeat top right;
 }
+.panel-tabs-hide {
+	display: none !important;
+}
     
