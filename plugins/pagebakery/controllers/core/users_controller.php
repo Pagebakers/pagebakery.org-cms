@@ -1,8 +1,16 @@
 <?php
 class UsersController extends PagebakeryAppController {
     
-    public function pb_index() {
+    var $helpers = array('Time');
     
+    public function pb_index() {
+        $this->paginate = array(
+            'limit' => 25,
+            'order' => 'User.id ASC'
+        );
+        $users = $this->paginate('User');
+        
+        $this->set(compact('users'));
     }
     
     public function pb_login() {
