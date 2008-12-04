@@ -78,6 +78,10 @@ fieldset {
     padding : 5px 5px 0 5px;
 }
 
+.paging {
+    margin-top: 5px;
+}
+
 /* login */
 body#pb_login {
     background-color : #686868;

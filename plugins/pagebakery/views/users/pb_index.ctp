@@ -34,3 +34,5 @@ echo $this->renderElement('pb_actions', array('actions' => array(
         </table>
     </div>
 </div>
+
+<?php echo $this->renderElement('pb_pagination'); ?>

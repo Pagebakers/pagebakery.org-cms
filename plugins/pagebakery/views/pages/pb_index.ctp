@@ -1,3 +1,4 @@
+<?php $paginator->url(array('pb' => true)); ?>
 <div class="block">
     <h2><span><?php __d('pb', 'View pages'); ?></span></h2>
     <div class="inner-block">
@@ -8,10 +9,4 @@
     </div>
 </div>
 
-<table class="navigation">
-	<tr>
-		<td><?php echo $paginator->prev('<< '.__d('pb', 'Previous', true), array(), null, array('class'=>'disabled'));?></td>
-		<td>| <?php echo $paginator->numbers();?></td>
-		<td><?php echo $paginator->next(__d('pb', 'Next', true).' >>', array('controller' => 'users'), null, array('class'=>'disabled'));?></td>
-	</tr>
-</table>
+<?php echo $this->renderElement('pb_pagination'); ?>
