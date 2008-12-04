@@ -7,7 +7,7 @@ class DATABASE_CONFIG {
 		'host' => 'localhost',
 		'login' => 'root',
 		'password' => '',
-		'database' => 'uitvaart',
+		'database' => 'pagebakery',
 		'encoding' => 'utf-8'
 	);
 }
