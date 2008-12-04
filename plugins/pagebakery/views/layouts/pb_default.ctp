@@ -25,7 +25,7 @@
 <body>
 	<div id="container">
 		<div id="header" class="panel-header">
-            <?php echo $this->renderElement('admin_menu'); ?>
+            <?php echo $this->renderElement('pb_menu'); ?>
 		</div>
 		<div id="content">
 

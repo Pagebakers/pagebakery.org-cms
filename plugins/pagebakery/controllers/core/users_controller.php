@@ -19,7 +19,7 @@ class UsersController extends PagebakeryAppController {
                 $this->redirect(array('controller' => 'dashboard', 'action' => 'index', 'pb' => true));
             }
         }
-        $this->layout = 'admin_login';
+        $this->layout = 'pb_login';
     }
     
     public function pb_logout() {
@@ -27,10 +27,20 @@ class UsersController extends PagebakeryAppController {
         $this->Auth->logout();
     }
     
+    public function pb_add() {
+        if(!empty($this->data)) {
+            $this->User->set($this->data);
+            if($this->User->save()) {
+                $this->Session->setFlash(__d('pb', 'User successfully added', true));
+                $this->redirect(array('action' => 'index', 'pb' => true));
+            }
+        }
+    }    
+
     public function pb_edit($id = null) {
         if(!$id) {
             $this->Session->setFlash(__d('pb', 'Invalid user id', true));
-            $this->redirect(array('controller' => 'index', 'pb' => true));
+            $this->redirect(array('action' => 'index', 'pb' => true));
         }
         
         if( empty($this->data) ) {
@@ -47,10 +57,10 @@ class UsersController extends PagebakeryAppController {
         $this->autoRender = false;
         if(!$id) {
             $this->Session->setFlash(__d('pb', 'Invalid user id', true));
-            $this->redirect(array('controller' => 'index', 'pb' => true));
+            $this->redirect(array('action' => 'index', 'pb' => true));
         } elseif($id == 1) {
             $this->Session->setFlash(__d('pb', 'This user can\'t be deleted', true));
-            $this->redirect(array('controller' => 'index', 'pb' => true)); 
+            $this->redirect(array('action' => 'index', 'pb' => true)); 
             
             if($this->User->delete($id)) {
                 $this->Session->setFlash(__d('pb', 'User deleted', true));
@@ -58,7 +68,7 @@ class UsersController extends PagebakeryAppController {
                 $this->Session->setFlash(__d('pb', 'Deleting failed', true));
             }
             
-            $this->redirect(array('controller' => 'index', 'pb' => true)); 
+            $this->redirect(array('action' => 'index', 'pb' => true)); 
         }
     }
     

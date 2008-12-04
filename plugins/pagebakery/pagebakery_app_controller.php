@@ -25,7 +25,7 @@ class PagebakeryAppController extends AppController {
         }
         
         if( ( isset($this->params['admin']) && $this->params['admin'] === 1 ) || (isset($this->params['prefix']) && $this->params['prefix'] == 'pb') ) {
-            $this->layout = 'admin_default';
+            $this->layout = 'pb_default';
         }
         
     } 
