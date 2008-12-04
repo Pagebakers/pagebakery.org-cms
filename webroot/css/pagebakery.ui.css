@@ -28,6 +28,10 @@ h1, h2, h3, h4, h5 {
     background-color : #e8e8e8;
 }
 
+.no-border {
+    border-width : 0 !important;
+}
+
 #container {
     height : 100%;
 }
@@ -122,22 +126,23 @@ table {
     border : 0;
 }
 table thead tr {
-    border-left: 1px solid #cccccc;
     border-right : 1px solid #cccccc;
 }
 table th {
     background : #e7e7e7 url(../img/pagebakery/table-th.gif) repeat-x;
-    height : 29px;
     border-top : 1px solid #cdcdcd;
     border-bottom : 1px solid #bbbbbb;
     text-align : left;
+    border-left : 1px solid #CCCCCC;
+    padding : 0;
 }
 table th a {
     display : block;
-    padding : 5px;
+    padding : 7px 5px 7px 5px;
     color : #666666;
     font-weight : normal;
     text-decoration : none;
+    border-left : 1px solid #FFF;
 }
 table th a:hover {
     text-decoration : underline;
@@ -156,11 +161,11 @@ table td a:hover {
     text-decoration : underline;
 }
 table tbody tr {
-    border-left : 1px solid #CCCCCC;
+    border-left : 1px solid #DDDDDD;
 }
 table tbody td {
-    border-bottom : 1px solid #CCCCCC;
-    border-right : 1px solid #CCCCCC;
+    border-bottom : 1px solid #DDDDDD;
+    border-right : 1px solid #DDDDDD;
 }
 
 /* contentblock */
@@ -178,4 +183,9 @@ table tbody td {
     display : block;
     padding : 4px 10px 4px 0; 
     background : url(../img/pagebakery/table-header.gif) no-repeat top right;
+}
+.block .inner-block {
+    border-left : 1px solid #DDDDDD;
+    border-right : 1px solid #DDDDDD;
+    border-bottom : 1px solid #DDDDDD;
 }

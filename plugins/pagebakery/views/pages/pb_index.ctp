@@ -1,8 +1,13 @@
-<h1><?php __d('pb', 'Pages');?></h1>
-<?php echo $html->link(__d('pb', 'New page', true), array('action' => 'add', 'pb' => true));?><br /><br />
-<?php
-echo $tree->generate($pages, array('model' => 'Page', 'element' => 'pb_pages_tree', 'class' => 'list'));
-?>
+<div class="block">
+    <h2><span><?php __d('pb', 'View pages'); ?></span></h2>
+    <div class="inner-block">
+    <?php echo $html->link(__d('pb', 'New page', true), array('action' => 'add', 'pb' => true));?>
+    <?php
+    echo $tree->generate($pages, array('model' => 'Page', 'element' => 'pb_pages_tree', 'class' => 'list'));
+    ?>
+    </div>
+</div>
+
 <table class="navigation">
 	<tr>
 		<td><?php echo $paginator->prev('<< '.__d('pb', 'Previous', true), array(), null, array('class'=>'disabled'));?></td>
@@ -10,5 +15,3 @@ echo $tree->generate($pages, array('model' => 'Page', 'element' => 'pb_pages_tre
 		<td><?php echo $paginator->next(__d('pb', 'Next', true).' >>', array('controller' => 'users'), null, array('class'=>'disabled'));?></td>
 	</tr>
 </table>
-
-<?php echo $html->link(__d('pb', 'New page', true), array('action' => 'add', 'pb' => true));?>

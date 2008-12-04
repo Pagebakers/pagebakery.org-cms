@@ -1,6 +1,6 @@
 <div class="block">
     <h2><span><?php __d('pb', 'View users'); ?></span></h2>
-    <div class="inner-block">
+    <div class="inner-block no-border">
         <table>
             <thead>
                 <tr>
