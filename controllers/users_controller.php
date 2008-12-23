@@ -16,7 +16,7 @@ class UsersController extends AppController {
     public function admin_login() {
         if( !empty($this->data) ) {
             if( $this->Auth->login($this->data) ) {
-                $this->redirect(array('controller' => 'dashboard', 'action' => 'index', 'pb' => true));
+                $this->redirect(array('controller' => 'dashboard', 'action' => 'index'));
             }
         }
         $this->layout = 'admin_login';
@@ -32,7 +32,7 @@ class UsersController extends AppController {
             $this->User->set($this->data);
             if($this->User->save()) {
                 $this->Session->setFlash(__('User successfully added', true));
-                $this->redirect(array('action' => 'index', 'pb' => true));
+                $this->redirect(array('action' => 'index'));
             }
         }
     }
@@ -40,7 +40,7 @@ class UsersController extends AppController {
     public function admin_edit($id = null) {
         if(!$id) {
             $this->Session->setFlash(__('Invalid user id', true));
-            $this->redirect(array('action' => 'index', 'pb' => true));
+            $this->redirect(array('action' => 'index'));
         }
 
         if( empty($this->data) ) {
@@ -57,10 +57,10 @@ class UsersController extends AppController {
         $this->autoRender = false;
         if(!$id) {
             $this->Session->setFlash(__('Invalid user id', true));
-            $this->redirect(array('action' => 'index', 'pb' => true));
+            $this->redirect(array('action' => 'index'));
         } elseif($id == 1) {
             $this->Session->setFlash(__('This user can\'t be deleted', true));
-            $this->redirect(array('action' => 'index', 'pb' => true));
+            $this->redirect(array('action' => 'index'));
 
             if($this->User->delete($id)) {
                 $this->Session->setFlash(__('User deleted', true));
@@ -68,7 +68,7 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('Deleting failed', true));
             }
 
-            $this->redirect(array('action' => 'index', 'pb' => true));
+            $this->redirect(array('action' => 'index'));
         }
     }
 
