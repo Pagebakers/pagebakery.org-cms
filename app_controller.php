@@ -19,8 +19,8 @@ class AppController extends Controller {
         $this->RequestHandler->setContent('json', 'text/x-json');
 
         if( isset($this->Auth) ) {
-            $this->Auth->loginAction = Configure::read('Routes.admin') . '/login';
-            $this->Auth->logoutAction = Configure::read('Routes.admin') . '/logout';
+            $this->Auth->loginAction = array('controller' => 'users', 'action' => 'login', 'admin' => true);
+            $this->Auth->logoutAction = array('controller' => 'users', 'action' => 'logout', 'admin' => true);
             $this->Auth->autoRedirect = false;
         }
 
