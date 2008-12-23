@@ -1,99 +1,55 @@
 <?php
-/* SVN FILE: $Id: pages_controller.php 7118 2008-06-04 20:49:29Z gwoo $ */
-/**
- * Static content controller.
- *
- * This file will render views from views/pages/
- *
- * PHP versions 4 and 5
- *
- * CakePHP(tm) :  Rapid Development Framework <http://www.cakephp.org/>
- * Copyright 2005-2008, Cake Software Foundation, Inc.
- *								1785 E. Sahara Avenue, Suite 490-204
- *								Las Vegas, Nevada 89104
- *
- * Licensed under The MIT License
- * Redistributions of files must retain the above copyright notice.
- *
- * @filesource
- * @copyright		Copyright 2005-2008, Cake Software Foundation, Inc.
- * @link				http://www.cakefoundation.org/projects/info/cakephp CakePHP(tm) Project
- * @package			cake
- * @subpackage		cake.cake.libs.controller
- * @since			CakePHP(tm) v 0.2.9
- * @version			$Revision: 7118 $
- * @modifiedby		$LastChangedBy: gwoo $
- * @lastmodified	$Date: 2008-06-04 16:49:29 -0400 (Wed, 04 Jun 2008) $
- * @license			http://www.opensource.org/licenses/mit-license.php The MIT License
- */
-/**
- * Static content controller
- *
- * Override this controller by placing a copy in controllers directory of an application
- *
- * @package		cake
- * @subpackage	cake.cake.libs.controller
- */
-class PagesController extends AppController {
-/**
- * Controller name
- *
- * @var string
- * @access public
- */
-	var $name = 'Pages';
-/**
- * Default helper
- *
- * @var array
- * @access public
- */
-	var $helpers = array('Html');
-/**
- * This controller does not use a model
- *
- * @var array
- * @access public
- */
-	var $uses = array('Page');
+class PagesController extends PagebakeryAppController {
 	
-/**
- * Displays a view
- *
- * @param mixed What page to display
- * @access public
- */
-	function display() {
-		$path = func_get_args();
-
-		if (!count($path)) {
-			$this->redirect('/');
-		}
-		$count = count($path);
-		$page = $subpage = $title = null;
-
-		if (!empty($path[0])) {
-			$page = $path[0];
-		}
-		if (!empty($path[1])) {
-			$subpage = $path[1];
-		}
-		if (!empty($path[$count - 1])) {
-			$title = Inflector::humanize($path[$count - 1]);
-		}
-		$this->set(compact('page', 'subpage', 'title'));
-		$this->render(join('/', $path));
+	var $uses = array('Pagebakery.Page');
+	var $helpers = array('Pagebakery.Tree');
+	
+	var $paginate = array(
+		'limit' => 40,
+		'order' => array('Page.lft' => 'asc')
+	);
+	
+	function pb_index() {
+		$this->set('pages', $this -> paginate());
 	}
 	
-	function view($slug = null){
-		$page = $this->Page->findBySlug($slug);
-		if($page) {
-			$this->pageTitle = Inflector::humanize($page['Page']['title']);
-			$this->set('page', $page);
+	function pb_edit($id = null) {
+		$this->savePage();
+		
+		if($id) {
+			$page = $this->Page->findById($id);
+			$this->data = $page;
+			
+			// Get pagetitles for parent_id
+			$this->getPageTitles();
 		}else{
-			$this->redirect('/');
+			$this->redirect(array('action' => 'index', 'pb' => true));
+		}
+	}
+	
+	function pb_add($parent_id = null) {
+		$this->set('parent_id', $parent_id);
+		
+		// Get pagetitles for parent_id
+		$this->getPageTitles();
+	
+		$this->savePage();	
+	}
+	
+	function getPageTitles() {
+		$pages = $this->Page->generatetreelist(null, null, null, '--');
+		$this->set('pages', $pages);
+	}
+	
+	function savePage() {
+		if($this->data) {
+			if($this->Page->save($this->data)){
+				$this->Session->setFlash(__d('pb', 'Page saved', true));
+				$this->redirect(array('action' => 'edit', 'pb' => true, $this -> Page -> id));
+			}else{
+				$this->Session->setFlash(__d('pb', 'Page not saved', true));
+			}
 		}
 	}
 }
-
 ?>
