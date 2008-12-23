@@ -67,14 +67,14 @@ a:hover {
 	text-decoration : none;
 	font-size : 11px !important;
 	padding : 3px 10px;
-	display : block;
+	
 	cursor : pointer;
     border : 1px solid #cccccc;
     background : #ffffff url(../img/pagebakery/button.gif);
-	-moz-border-radius : 11px;
-	-khtml-border-radius : 11px;
-	-webkit-border-radius : 11px;
-	border-radius : 11px;
+	-moz-border-radius : 10px;
+	-khtml-border-radius : 10px;
+	-webkit-border-radius: 10px;
+	border-radius : 10px;
 	color : #444444;
 }
 .button:hover, button:hover {
@@ -198,7 +198,9 @@ body#pb_login {
 }
 .toolbar ul li {
     float : left;
-    padding : 7px 10px;
+    height : 29px;
+    line-height : 28px;
+    padding : 0 10px;
 }
 .toolbar ul.breadcrumbs {
     float : left;
@@ -253,8 +255,8 @@ table td {
     padding: 5px;
     background-color : #ffffff;
 }
-table td.alt {
-    background-color : #efefef;
+table tr.alt td {
+    background-color : #f4f4f4;
 }
 table td a {
     color : #0088cc;
@@ -302,5 +304,12 @@ ul.actions li {
     padding-left : 5px;
 }
 ul.actions a {
-    display : block;
+
+}
+
+
+/* icons */
+.add {
+    background : #ffffff url(../img/icons/add.png) no-repeat 3px center;
+    padding-left : 22px;
 }
