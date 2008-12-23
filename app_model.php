@@ -1,5 +1,5 @@
 <?php
-class PagebakeryAppModel extends AppModel {
+class AppModel extends Model {
 
 }
 ?>

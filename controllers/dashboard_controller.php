@@ -1,11 +1,11 @@
 <?php
-class DashboardController extends PagebakeryAppController {
-    
+class DashboardController extends AppController {
+
     public $uses = array();
-    
-    public function pb_index() {
+
+    public function admin_index() {
         $this->pageTitle = __('Dashboard', true);
     }
-    
+
 }
 ?>
