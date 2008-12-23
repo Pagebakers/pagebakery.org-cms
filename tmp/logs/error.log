@@ -1,0 +1,5 @@
+2008-12-23 12:13:54 Warning: Warning (512): /home/georgious/www/cakeprojects/pb-new/tmp/cache/ is not writable in [CORE/cake/libs/cache/file.php, line 264]
+2008-12-23 12:13:54 Warning: Warning (2): mysql_connect() [<a href='http://php.net/function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: NO) in [CORE/cake/libs/model/datasources/dbo/dbo_mysql.php, line 117]
+2008-12-23 12:13:54 Warning: Warning (2): mysql_select_db(): supplied argument is not a valid MySQL-Link resource in [CORE/cake/libs/model/datasources/dbo/dbo_mysql.php, line 122]
+2008-12-23 12:13:54 Warning: Warning (2): mysql_query(): supplied argument is not a valid MySQL-Link resource in [CORE/cake/libs/model/datasources/dbo/dbo_mysql.php, line 152]
+2008-12-23 12:13:54 Warning: Warning (2): mysql_get_server_info(): supplied argument is not a valid MySQL-Link resource in [CORE/cake/libs/model/datasources/dbo/dbo_mysql.php, line 130]
