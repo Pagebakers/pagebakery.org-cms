@@ -9,11 +9,11 @@ class PagesController extends AppController {
 		'order' => array('Page.lft' => 'asc')
 	);
 
-	function pb_index() {
+	function admin_index() {
 		$this->set('pages', $this -> paginate());
 	}
 
-	function pb_edit($id = null) {
+	function admin_edit($id = null) {
 		$this->savePage();
 
 		if($id) {
@@ -23,11 +23,11 @@ class PagesController extends AppController {
 			// Get pagetitles for parent_id
 			$this->getPageTitles();
 		}else{
-			$this->redirect(array('action' => 'index', 'pb' => true));
+			$this->redirect(array('action' => 'index', 'admin' => true));
 		}
 	}
 
-	function pb_add($parent_id = null) {
+	function admin_add($parent_id = null) {
 		$this->set('parent_id', $parent_id);
 
 		// Get pagetitles for parent_id
@@ -44,10 +44,10 @@ class PagesController extends AppController {
 	function savePage() {
 		if($this->data) {
 			if($this->Page->save($this->data)){
-				$this->Session->setFlash(__d('pb', 'Page saved', true));
-				$this->redirect(array('action' => 'edit', 'pb' => true, $this -> Page -> id));
+				$this->Session->setFlash(__d('admin', 'Page saved', true));
+				$this->redirect(array('action' => 'edit', 'admin' => true, $this -> Page -> id));
 			}else{
-				$this->Session->setFlash(__d('pb', 'Page not saved', true));
+				$this->Session->setFlash(__d('admin', 'Page not saved', true));
 			}
 		}
 	}

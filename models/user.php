@@ -1,5 +1,5 @@
 <?php
-class User extends PagebakeryAppModel {
+class User extends AppModel {
 
     public $validate = array(
         'username' => array(
@@ -13,17 +13,17 @@ class User extends PagebakeryAppModel {
             'required' => false
         )
     );
-    
+
     public function beforeValidate() {
         // if left empty, remove from data array
         if((isset($this->data['User']['passwd']) && empty($this->data['User']['passwd'])) && (isset($this->data['User']['passwd2']) && empty($this->data['User']['passwd2']))) {
             unset($this->data['User']['passwd']);
             unset($this->data['User']['passwd2']);
         }
-        
+
         return true;
     }
-    
+
     public function beforeSave() {
         // Hash the password
         if(isset($this->data['User']['passwd'])) {
@@ -31,11 +31,11 @@ class User extends PagebakeryAppModel {
         }
         return true;
     }
-    
+
 
     public function comparePassword(&$data) {
         return $data['passwd2'] == $this->data['User']['passwd'];
     }
-    
+
 }
 ?>

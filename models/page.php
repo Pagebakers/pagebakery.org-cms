@@ -1,13 +1,13 @@
 <?php
-class Page extends PagebakeryAppModel {
+class Page extends AppModel {
 	var $name = 'Page';
 	var $actsAs = array(
-		'Pagebakery.Sluggable',
+		'Sluggable',
 		'Tree'
 	);
 
     public $validate = array(
-		'title' => array('rule' => array('minLength', 4), 'allowEmpty' => false, 'required' => true, 'message' => 'De naam is te kort of leeg.'),
+		'title' => array('rule' => array('minLength', 4), 'allowEmpty' => false, 'required' => true, 'message' => 'The title is too short.'),
 	);
 }
 ?>
