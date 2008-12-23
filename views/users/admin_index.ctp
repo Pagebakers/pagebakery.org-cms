@@ -7,7 +7,7 @@ echo $this->renderElement('admin_actions', array('actions' => array(
 ?>
 
 <div class="block">
-    <h2><span><?php __( 'View users'); ?></span></h2>
+    <h3><span><?php __( 'View users'); ?></span></h3>
     <div class="inner-block no-border">
         <table cellspacing="0">
             <thead>
