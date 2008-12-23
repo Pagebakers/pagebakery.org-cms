@@ -1,5 +1,5 @@
 <?php
-class User extends PagebakeryAppModel {
+class User extends AppModel {
 
     public $validate = array(
         'username' => array(

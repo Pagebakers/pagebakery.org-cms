@@ -1,8 +1,8 @@
 <?php
 class PagesController extends AppController {
 
-	var $uses = array('Pagebakery.Page');
-	var $helpers = array('Pagebakery.Tree');
+	var $uses = array('Page');
+	var $helpers = array('Tree');
 
 	var $paginate = array(
 		'limit' => 40,
@@ -44,10 +44,10 @@ class PagesController extends AppController {
 	function savePage() {
 		if($this->data) {
 			if($this->Page->save($this->data)){
-				$this->Session->setFlash(__d('admin', 'Page saved', true));
+				$this->Session->setFlash(__('Page saved', true));
 				$this->redirect(array('action' => 'edit', 'admin' => true, $this -> Page -> id));
 			}else{
-				$this->Session->setFlash(__d('admin', 'Page not saved', true));
+				$this->Session->setFlash(__('Page not saved', true));
 			}
 		}
 	}

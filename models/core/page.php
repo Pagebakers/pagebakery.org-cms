@@ -1,8 +1,8 @@
 <?php
-class Page extends PagebakeryAppModel {
+class Page extends AppModel {
 	var $name = 'Page';
 	var $actsAs = array(
-		'Pagebakery.Sluggable',
+		'Sluggable',
 		'Tree'
 	);
 

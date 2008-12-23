@@ -9,7 +9,7 @@ echo $this->renderElement('admin_actions', array('actions' => array(
 <div class="block">
     <h2><span><?php __( 'View users'); ?></span></h2>
     <div class="inner-block no-border">
-        <table>
+        <table cellspacing="0">
             <thead>
                 <tr>
                     <th><?php echo $paginator->sort(__( 'Username', true), 'username'); ?></th>

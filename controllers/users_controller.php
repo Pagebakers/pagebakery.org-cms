@@ -31,7 +31,7 @@ class UsersController extends AppController {
         if(!empty($this->data)) {
             $this->User->set($this->data);
             if($this->User->save()) {
-                $this->Session->setFlash(__( 'User successfully added', true));
+                $this->Session->setFlash(__('User successfully added', true));
                 $this->redirect(array('action' => 'index', 'pb' => true));
             }
         }
@@ -39,7 +39,7 @@ class UsersController extends AppController {
 
     public function admin_edit($id = null) {
         if(!$id) {
-            $this->Session->setFlash(__( 'Invalid user id', true));
+            $this->Session->setFlash(__('Invalid user id', true));
             $this->redirect(array('action' => 'index', 'pb' => true));
         }
 
@@ -48,7 +48,7 @@ class UsersController extends AppController {
         } else {
             $this->User->set($this->data);
             if( $this->User->save() ) {
-                $this->Session->setFlash(__( 'User successfully saved', true));
+                $this->Session->setFlash(__('User successfully saved', true));
             }
         }
     }
@@ -56,16 +56,16 @@ class UsersController extends AppController {
     public function admin_delete($id = null) {
         $this->autoRender = false;
         if(!$id) {
-            $this->Session->setFlash(__( 'Invalid user id', true));
+            $this->Session->setFlash(__('Invalid user id', true));
             $this->redirect(array('action' => 'index', 'pb' => true));
         } elseif($id == 1) {
-            $this->Session->setFlash(__( 'This user can\'t be deleted', true));
+            $this->Session->setFlash(__('This user can\'t be deleted', true));
             $this->redirect(array('action' => 'index', 'pb' => true));
 
             if($this->User->delete($id)) {
-                $this->Session->setFlash(__( 'User deleted', true));
+                $this->Session->setFlash(__('User deleted', true));
             } else {
-                $this->Session->setFlash(__( 'Deleting failed', true));
+                $this->Session->setFlash(__('Deleting failed', true));
             }
 
             $this->redirect(array('action' => 'index', 'pb' => true));

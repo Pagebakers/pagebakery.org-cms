@@ -3,7 +3,7 @@ class AppController extends Controller {
 
     var $components = array('Auth', 'RequestHandler', 'Cookie');
 
-    var $helpers = array('Form', 'Html', 'Javascript', 'Pagebakery.Navigation');
+    var $helpers = array('Form', 'Html', 'Javascript', 'Navigation');
 
     function beforeFilter() {
         //if there is a core error, just show it
@@ -18,22 +18,21 @@ class AppController extends Controller {
         // set json contenttype
         $this->RequestHandler->setContent('json', 'text/x-json');
 
-        if(isset($this->Auth)) {
-            $this->Auth->loginAction = Configure::read('Routes.pagebakery') . '/login';
-            $this->Auth->logoutAction = Configure::read('Routes.pagebakery') . '/logout';
+        if( isset($this->Auth) ) {
+            $this->Auth->loginAction = Configure::read('Routes.admin') . '/login';
+            $this->Auth->logoutAction = Configure::read('Routes.admin') . '/logout';
             $this->Auth->autoRedirect = false;
         }
 
-        if( ( isset($this->params['admin']) && $this->params['admin'] === 1 ) || (isset($this->params['prefix']) && $this->params['prefix'] == 'pb') ) {
-            $this->layout = 'pb_default';
+        if( isset($this->params['admin']) && $this->params['admin'] == 1 ) {
+            $this->layout = 'admin_default';
         }
-
     }
 
     function beforeRender() {
         // render the error layout if an error occurs
         if ($this->viewPath == 'errors') {
-            $this->layout = 'error';
+           // $this->layout = 'error';
         }
         // automatically use json view if the request expects json
         if($this->RequestHandler->responseType() == 'json') {
