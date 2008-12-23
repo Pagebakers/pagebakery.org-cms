@@ -3,6 +3,12 @@ class UsersController extends AppController {
 
     var $helpers = array('Time');
 
+    public function beforeFilter() {
+        parent::beforeFilter();
+        
+        $this->addBreadcrumb(array('Users', array('controller' => 'users', 'action' => 'index')));
+    }
+
     public function admin_index() {
         $this->paginate = array(
             'limit' => 25,
@@ -42,7 +48,7 @@ class UsersController extends AppController {
             $this->Session->setFlash(__('Invalid user id', true));
             $this->redirect(array('action' => 'index'));
         }
-
+        
         if( empty($this->data) ) {
             $this->data = $this->User->read(null, $id);
         } else {
@@ -51,6 +57,8 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('User successfully saved', true));
             }
         }
+        
+        $this->addBreadcrumb(array($this->data['User']['username'], array('controller' => 'users', 'action' => 'index', $this->data['User']['id'])));
     }
 
     public function admin_delete($id = null) {

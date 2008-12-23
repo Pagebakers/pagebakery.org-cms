@@ -32,12 +32,44 @@ class NavigationHelper extends HtmlHelper {
         
         foreach($items as $item) {
             if(count($item) == 2) {
-                list($text, $url) = $items;
+                list($text, $url) = $item;
                 $itemOptions = array();
             } else {
                 list($text, $url, $itemOptions) = $item;
             }
             $links[] = sprintf($this->tags['li'], ($this->isActiveController($url) ? ' class="active"' : ''), parent::link($text, $url, $itemOptions));
+        }
+        
+        return sprintf($this->tags['ul'], $this->_parseAttributes($attributes, null, ' ', ''), implode("\n", $links));
+    }
+
+    /**
+     * Returns a formatted <ul> with links
+     * @param array $items An array containing all children for the list
+     * @param array $options The html attributes for the list
+     * @return string The formatted <ul> list
+     */
+    function breadcrumbs($items, $attributes = array()) {
+        if(!is_array($items) || empty($items)) {
+            return;
+        }
+
+        $links = array();
+        $i = 1;
+        $count = count($items);
+        foreach($items as $item) {
+            if(count($item) == 2) {
+                list($text, $url) = $item;
+                $itemOptions = array();
+            } else {
+                list($text, $url, $itemOptions) = $item;
+            }
+            if($i < $count) {
+                $links[] = sprintf($this->tags['li'], '', parent::link($text, $url, $itemOptions));
+            } else {
+                $links[] = sprintf($this->tags['li'], ' class="last"', sprintf('<span%s>%s</span>', $this->_parseAttributes($itemOptions), $text));
+            }
+            $i++;
         }
         
         return sprintf($this->tags['ul'], $this->_parseAttributes($attributes, null, ' ', ''), implode("\n", $links));

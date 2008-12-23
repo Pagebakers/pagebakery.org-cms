@@ -109,12 +109,27 @@ div.input input {
 
 fieldset {
     border : 0;
-    margin-bottom: 5px;
+    margin-bottom : 5px;
     padding : 5px 5px 0 5px;
 }
 
-.paging {
-    margin-top: 5px;
+.pagination {
+    margin : 5px 0 0 0;
+    padding : 0;
+    list-style : none;
+}
+.pagination li {
+    float : left;
+    border-right : 1px solid #cccccc;
+    padding : 0 5px;
+    margin : 0;
+}
+.pagination li.last {
+    border : 0;
+}
+.pagination .disabled {
+    color : #666666;
+    border : 0;
 }
 
 /* login */
@@ -187,6 +202,13 @@ body#pb_login {
 }
 .toolbar ul.breadcrumbs {
     float : left;
+}
+.toolbar ul.breadcrumbs li {
+    background : url(../img/pagebakery/breadcrumb.gif) no-repeat bottom right;
+    padding-right : 20px;
+}
+.toolbar ul.breadcrumbs li.last {
+    background : none;
 }
 .toolbar ul.utilities {
     float : right;
