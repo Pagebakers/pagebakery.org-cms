@@ -5,6 +5,7 @@ body {
     padding : 0;
     margin : 0;
     font : normal 12px tahoma,arial,helvetica,sans-serif;
+    background : #fafafa;
 }
 
 h1, h2, h3, h4, h5 {
@@ -12,7 +13,7 @@ h1, h2, h3, h4, h5 {
 }
 
 a {
-    color : #0088CC;
+    color : #0088cc;
     text-decoration : none;
 }
 a:hover {
@@ -21,8 +22,22 @@ a:hover {
 
 #header {
     height : 50px;
+    background : #575757 url(../img/pagebakery/header.gif) repeat-x;
 }
-
+#header li a {
+    color : #ededed;
+    text-shadow: rgba(0, 0, 0, 0.6) 0 1px 0;
+}
+#header li a:hover {
+    color : #ffffff;
+}
+#header li.active {
+    background : url(../img/pagebakery/header-tab-active.gif);
+}
+#header li.active a {
+    background : none;
+    color : #ffffff;
+}
 .panel-header {
     border-bottom : 1px solid #525252;
     background : #969696 url(../img/pagebakery/panel-header.gif) repeat-x;
@@ -46,6 +61,26 @@ a:hover {
 
 #content {
     padding : 10px;
+}
+/* buttons */
+.button, button {
+	text-decoration : none;
+	font-size : 11px !important;
+	padding : 3px 10px;
+	display : block;
+	cursor : pointer;
+    border : 1px solid #cccccc;
+    background : #ffffff url(../img/pagebakery/button.gif);
+	-moz-border-radius : 11px;
+	-khtml-border-radius : 11px;
+	-webkit-border-radius : 11px;
+	border-radius : 11px;
+	color : #444444;
+}
+.button:hover, button:hover {
+    border-color : #777777;
+    color : #222222;
+    text-decoration : none;
 }
 /* forms */
 form {
@@ -104,17 +139,18 @@ body#pb_login {
     margin : 0;
     padding : 0;
     height : 50px;
-    color : #000;
+    color : #000000;
     font-size : 11px;
     padding : 0 0 0 6px;
 }
 .panel-tabs li {
     float : left;
+    height : 50px;
 }
 .panel-tabs li a {
     display : block;
     padding : 28px 10px 6px 10px;
-    color : #000;
+    color : #000000;
     font-size : 12px;
     text-decoration : none;
 }
@@ -124,7 +160,7 @@ body#pb_login {
 }
 .panel-tabs li.active a {
     padding-left: 5px;
-    color : #FFF;
+    color : #ffffff;
     background : url(../img/pagebakery/panel-tab-active.gif) no-repeat top right;
 }
 
@@ -136,7 +172,7 @@ body#pb_login {
 .toolbar {
     background : #e7e7e7 url(../img/pagebakery/toolbar.gif) repeat-x;
     height : 29px;
-    border-bottom : 1px solid #BBBBBB;
+    border-bottom : 1px solid #bbbbbb;
     font-size : 11px;
 }
 .toolbar ul {
@@ -156,29 +192,28 @@ body#pb_login {
     float : right;
 }
 .toolbar ul.utilities li {
-    border-left : 1px solid #CCCCCC;
+    border-left : 1px solid #cccccc;
 }
 .toolbar a {
     color : #666;
 }
 .toolbar a:hover {
-    color : #0088CC;
+    color : #0088cc;
 }
 /* tables */
 table {
     width : 100%;
-    border-collapse : collapse;
+    border-collapse : separate;
     border : 0;
+    border-right : 1px solid #ccc;
 }
-table thead tr {
-    border-right : 1px solid #cccccc;
-}
+
 table th {
     background : #e7e7e7 url(../img/pagebakery/table-th.gif) repeat-x;
     border-top : 1px solid #cdcdcd;
     border-bottom : 1px solid #bbbbbb;
     text-align : left;
-    border-left : 1px solid #CCCCCC;
+    border-left : 1px solid #cccccc;
     padding : 0;
 }
 table th a {
@@ -187,37 +222,35 @@ table th a {
     color : #666666;
     font-weight : normal;
     text-decoration : none;
-    border-left : 1px solid #FFF;
+    border-left : 1px solid #ffffff;
 }
 table th a:hover {
     color : #0088CC;
 }
 table td {
     padding: 5px;
+    background-color : #ffffff;
 }
 table td.alt {
-    background-color : #EFEFEF;
+    background-color : #efefef;
 }
 table td a {
-    color : #0088CC;
+    color : #0088cc;
     text-decoration : none;
 }
 table td a:hover {
     text-decoration : underline;
 }
-table tbody tr {
-    border-left : 1px solid #DDDDDD;
-}
 table tbody td {
-    border-bottom : 1px solid #DDDDDD;
-    border-right : 1px solid #DDDDDD;
+    border-bottom : 1px solid #dddddd;
+    border-left : 1px solid #dddddd;
 }
 
 /* contentblock */
 .block h2 {
     font-size : 11px;
     text-align : left;
-    color : #FFF;
+    color : #ffffff;
     font-weight : normal;
     padding-left : 10px;
     border-bottom: 1px solid #6c7b94;
@@ -230,9 +263,9 @@ table tbody td {
     background : url(../img/pagebakery/table-header.gif) no-repeat top right;
 }
 .block .inner-block {
-    border-left : 1px solid #DDDDDD;
-    border-right : 1px solid #DDDDDD;
-    border-bottom : 1px solid #DDDDDD;
+    border-left : 1px solid #dddddd;
+    border-right : 1px solid #dddddd;
+    border-bottom : 1px solid #dddddd;
 }
 
 /* actions */
@@ -248,5 +281,4 @@ ul.actions li {
 }
 ul.actions a {
     display : block;
-    padding : 3px 10px 3px 5px;
 }
