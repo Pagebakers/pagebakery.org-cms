@@ -1,0 +1,7 @@
+groups:
+    1:
+        name: Administrators
+        access: admin
+    2:
+        name: Users
+        access: user
