@@ -7,7 +7,7 @@ echo $this->renderElement('admin_actions', array('actions' => array(
 ?>
 
 <div class="block">
-    <h2><span><?php __( 'View users'); ?></span></h2>
+    <h3><span><?php __( 'View users'); ?></span></h3>
     <div class="inner-block no-border">
         <table cellspacing="0">
             <thead>
@@ -21,15 +21,15 @@ echo $this->renderElement('admin_actions', array('actions' => array(
             </thead>
 
             <tbody>
-                <?php foreach($users as $user) : ?>
-                <tr>
+                <?php $i = 0; foreach($users as $user) : ?>
+                <tr<?php echo is_int($i / 2) ? ' class="alt"' : ''; ?>>
                     <td><?php echo $html->link($user['User']['username'], array('action' => 'edit', 'admin' => true, $user['User']['id'])); ?></td>
                     <td><?php echo $user['User']['name']; ?></td>
                     <td><?php echo $user['User']['email']; ?></td>
                     <td><?php echo $time->niceShort($user['User']['created']); ?></td>
                     <td><?php if($user['User']['id'] != 1) { echo $html->link(__( 'Delete', true), array('action' => 'delete', 'admin' => true, $user['User']['id'])); } ?></td>
                 </tr>
-                <?php endforeach; ?>
+                <?php $i++; endforeach; ?>
             </tbody>
         </table>
     </div>

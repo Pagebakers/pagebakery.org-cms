@@ -1,11 +1,11 @@
 <?php
 class AppController extends Controller {
 
-    var $components = array('Auth', 'RequestHandler', 'Cookie');
+    public $components = array('Auth', 'RequestHandler', 'Cookie');
 
-    var $helpers = array('Form', 'Html', 'Javascript', 'Navigation');
+    public $helpers = array('Form', 'Html', 'Javascript', 'Navigation');
 
-    function beforeFilter() {
+    public function beforeFilter() {
         //if there is a core error, just show it
         if( $this->action == null ) {
             return false;
@@ -27,16 +27,24 @@ class AppController extends Controller {
         if( isset($this->params['admin']) && $this->params['admin'] == 1 ) {
             $this->layout = 'admin_default';
         }
+        
+        $this->addBreadcrumb(array('Home', array('controller' => 'dashboard', 'action' => 'index')));
     }
 
-    function beforeRender() {
+    public function beforeRender() {
         // render the error layout if an error occurs
-        if ($this->viewPath == 'errors') {
+        if ( $this->viewPath == 'errors' ) {
            // $this->layout = 'error';
         }
         // automatically use json view if the request expects json
-        if($this->RequestHandler->responseType() == 'json') {
+        if( $this->RequestHandler->responseType() == 'json' ) {
             $this->view = 'json';
+        }
+    }
+    
+    protected function addBreadcrumb($breadcrumb = array()) {
+        if( !empty($breadcrumb) ) {
+            $this->params['breadcrumbs'][] = $breadcrumb;
         }
     }
 

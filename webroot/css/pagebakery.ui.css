@@ -56,35 +56,43 @@ a:hover {
 }
 
 #container {
-    height : 100%;
+    padding-bottom: 40px;
 }
 
 #content {
     padding : 10px;
 }
+
+#footer {
+    height : 22px;
+    width : 100%;
+    border-top : 1px solid #d3d3d3;
+    background : url(../img/pagebakery/panel-footer.gif) repeat-x;
+    position : fixed;
+    bottom : 0;
+}
 /* buttons */
-.button, button {
+.button, button, .submit input {
 	text-decoration : none;
 	font-size : 11px !important;
 	padding : 3px 10px;
-	display : block;
 	cursor : pointer;
     border : 1px solid #cccccc;
     background : #ffffff url(../img/pagebakery/button.gif);
-	-moz-border-radius : 11px;
-	-khtml-border-radius : 11px;
-	-webkit-border-radius : 11px;
-	border-radius : 11px;
+	-moz-border-radius : 10px;
+	-khtml-border-radius : 10px;
+	-webkit-border-radius: 10px;
+	border-radius : 10px;
 	color : #444444;
 }
-.button:hover, button:hover {
+.button:hover, button:hover, .submit input:hover {
     border-color : #777777;
     color : #222222;
     text-decoration : none;
 }
 /* forms */
 form {
-
+    padding : 10px;
 }
 div.input {
     margin-bottom: 5px;
@@ -99,22 +107,56 @@ div.input:after {
 
 div.input label {
     display : block;
-    width : 30%;
+    width : 175px;
+    padding : 4px 0;
     float : left;
 }
 div.input input {
     float : left;
-    width : 69%;
+    width : 250px;
+    border : 1px solid #dfdfdf;
+    padding : 4px;
+}
+div.input input:focus {
+    border-color : #333;
+}
+div.input span {
+    padding : 4px 0 0 5px;
+    color : #777777;
+    font-size : 11px;
 }
 
 fieldset {
     border : 0;
-    margin-bottom: 5px;
-    padding : 5px 5px 0 5px;
+    margin-bottom : 5px;
+    padding : 10px 0 0 0;
+}
+fieldset legend {
+    font-weight : bold;
+}
+form h4 {
+    margin : 10px 0;
+    padding : 0;
+    font-size : 12px;
 }
 
-.paging {
-    margin-top: 5px;
+.pagination {
+    margin : 5px 0 0 0;
+    padding : 0;
+    list-style : none;
+}
+.pagination li {
+    float : left;
+    border-right : 1px solid #cccccc;
+    padding : 0 5px;
+    margin : 0;
+}
+.pagination li.last {
+    border : 0;
+}
+.pagination .disabled {
+    color : #666666;
+    border : 0;
 }
 
 /* login */
@@ -183,10 +225,19 @@ body#pb_login {
 }
 .toolbar ul li {
     float : left;
-    padding : 7px 10px;
+    height : 29px;
+    line-height : 28px;
+    padding : 0 10px;
 }
 .toolbar ul.breadcrumbs {
     float : left;
+}
+.toolbar ul.breadcrumbs li {
+    background : url(../img/pagebakery/breadcrumb.gif) no-repeat bottom right;
+    padding-right : 20px;
+}
+.toolbar ul.breadcrumbs li.last {
+    background : none;
 }
 .toolbar ul.utilities {
     float : right;
@@ -231,8 +282,8 @@ table td {
     padding: 5px;
     background-color : #ffffff;
 }
-table td.alt {
-    background-color : #efefef;
+table tr.alt td {
+    background-color : #f4f4f4;
 }
 table td a {
     color : #0088cc;
@@ -247,25 +298,27 @@ table tbody td {
 }
 
 /* contentblock */
-.block h2 {
-    font-size : 11px;
+.block h3 {
+    font-size : 12px;
     text-align : left;
     color : #ffffff;
     font-weight : normal;
     padding-left : 10px;
     border-bottom: 1px solid #6c7b94;
-    height : 24px;
+    height : 26px;
     background : #818ea4 url(../img/pagebakery/table-header.gif) no-repeat top left;
 }
-.block h2 span {
+.block h3 span {
     display : block;
-    padding : 4px 10px 4px 0; 
+    padding : 6px 10px 4px 0; 
     background : url(../img/pagebakery/table-header.gif) no-repeat top right;
+    text-shadow: rgba(0, 0, 0, 0.6) 0 1px 0;
 }
 .block .inner-block {
     border-left : 1px solid #dddddd;
     border-right : 1px solid #dddddd;
     border-bottom : 1px solid #dddddd;
+    background-color : #ffffff;
 }
 
 /* actions */
@@ -273,12 +326,19 @@ ul.actions {
     list-style : none;
     padding : 0;
     margin : 0;
-    height : 30px;
+    height : 27px;
 }
 ul.actions li {
     float : left;
     padding-left : 5px;
 }
 ul.actions a {
-    display : block;
+
+}
+
+
+/* icons */
+.add {
+    background : #ffffff url(../img/icons/add.png) no-repeat 3px center;
+    padding-left : 22px;
 }
