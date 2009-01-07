@@ -127,6 +127,7 @@ UP:
         type: string
         default: false
         length: 50
+        unique: true
         - not_null
       password: 
         type: string
@@ -142,4 +143,5 @@ UP:
         type: string
         default: false
         length: 30
+        unique: true
         - not_null
