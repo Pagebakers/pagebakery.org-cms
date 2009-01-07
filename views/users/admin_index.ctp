@@ -16,6 +16,7 @@ echo $this->renderElement('admin_actions', array('actions' => array(
                     <th><?php echo $paginator->sort(__( 'Display name', true), 'name'); ?></th>
                     <th><?php echo $paginator->sort(__( 'Email', true), 'email'); ?></th>
                     <th><?php echo $paginator->sort(__( 'Created on', true), 'created'); ?></th>
+		    <th><?php echo $paginator->sort(__( 'Modified on', true), 'modified'); ?></th>
                     <th></th>
                 </tr>
             </thead>
@@ -27,6 +28,7 @@ echo $this->renderElement('admin_actions', array('actions' => array(
                     <td><?php echo $user['User']['name']; ?></td>
                     <td><?php echo $user['User']['email']; ?></td>
                     <td><?php echo $time->niceShort($user['User']['created']); ?></td>
+		    <td><?php echo $time->niceShort($user['User']['modified']); ?></td>
                     <td><?php if($user['User']['id'] != 1) { echo $html->link(__( 'Delete', true), array('action' => 'delete', 'admin' => true, $user['User']['id'])); } ?></td>
                 </tr>
                 <?php $i++; endforeach; ?>
