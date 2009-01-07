@@ -88,6 +88,8 @@ class InstallerController extends Controller {
             $DBDrivers = array();
             if( function_exists( 'mysql_connect' ) )
                 $DBDrivers['mysql'] = 'MySQL';
+            if( function_exists( 'mysqli_connect' ) )
+                $DBDrivers['mysqli'] = 'MySQLi';
             if( function_exists( 'pg_connect' ) )
                 $DBDrivers['postgres'] = 'PostgreSQL';
             if( function_exists( 'sqlite_open' ) )
