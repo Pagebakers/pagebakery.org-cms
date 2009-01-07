@@ -200,8 +200,8 @@ class Migrations{
 
         //Flag no_dates - autogenerate dates fields ( created, modified ) unless it is explicitly stated this is not needed
         if( !in_array( 'no_dates', $aFields ) ){
-            $sSql .= $this->oDb->buildColumn( array( 'name' => 'created', 'type' => 'date' ) ).", \n\t";
-            $sSql .= $this->oDb->buildColumn( array( 'name' => 'modified', 'type' => 'date' ) ).", \n\t";
+            $sSql .= $this->oDb->buildColumn( array( 'name' => 'created', 'type' => 'datetime' ) ).", \n\t";
+            $sSql .= $this->oDb->buildColumn( array( 'name' => 'modified', 'type' => 'datetime' ) ).", \n\t";
         }
 
         //Append table keys - primary, index and unique to the sql
