@@ -8,6 +8,10 @@ body {
     background : #fafafa;
 }
 
+p {
+    margin-top : 0;
+}
+
 h1, h2, h3, h4, h5 {
     margin : 0;
 }
@@ -90,6 +94,15 @@ a:hover {
     color : #222222;
     text-decoration : none;
 }
+
+/* etc */
+.ok {
+    color : #5edd70;
+}
+.error {
+    color : #dd5e5e;
+}
+
 /* forms */
 form {
     padding : 10px;
@@ -173,6 +186,15 @@ body#pb_login {
 }
 #login-form-panel fieldset {
 
+}
+
+/* installer */ 
+#installer {
+    margin : 100px auto 0 auto;
+    width : 580px;
+}
+#installer .inner-block {
+    padding : 10px;
 }
 
 /* tabs */
