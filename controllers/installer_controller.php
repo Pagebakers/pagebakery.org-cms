@@ -2,11 +2,14 @@
 /* Installer extends Controller not AppController! Don't change that */
 class InstallerController extends Controller {
 
-        var $name = 'Installer';
         var $uses = null;
+        
+        var $layout = 'admin_clean';
 
         function beforeFilter() {
-            $this->Auth->allow();
+            if($this->Auth) {
+                $this->Auth->allow();
+            }
         }
 
         function index(){
@@ -55,7 +58,7 @@ class InstallerController extends Controller {
                         App::import('vendor', 'fixtures');
                         $oFixtures = new Fixtures();
                         if( $oFixtures->import( $install_files_path. 'fixtures.yml' ) === true ){
-                            $this->flash( 'Congratulations, you have successfully installed PageBakery!', '/' );
+                            $this->flash( 'Congratulations, you have successfully installed Pagebakery!', '/' );
                         }
                         else{
                              $this->Session->setFlash( __('Sorry, there was an error adding initial data', true ) );

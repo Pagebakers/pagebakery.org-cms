@@ -25,7 +25,7 @@ class UsersController extends AppController {
                 $this->redirect(array('controller' => 'dashboard', 'action' => 'index'));
             }
         }
-        $this->layout = 'admin_login';
+        $this->layout = 'admin_clean';
     }
 
     public function admin_logout() {

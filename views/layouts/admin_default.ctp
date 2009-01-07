@@ -1,25 +1,25 @@
 <?php echo $html->docType('html4-strict'); ?>
 <html>
 <head>
-	<?php e($html->charset()); ?>
+	<?php echo $html->charset(); ?>
 	<title>
 		<?php echo $title_for_layout; ?> -
 		<?php __('Pagebakery'); ?>
 	</title>
 	<?php
-		e($html->meta('icon'));
+		echo $html->meta('icon');
 
-        e($html->css(array(
+        echo $html->css(array(
             '/js/jquery.ui-1.6rc2/themes/default/ui.all',
             'pagebakery.ui'
-        )));
+        ));
 
-        e($javascript->link(array(
+        echo $javascript->link(array(
 			'jquery.ui-1.6rc2/jquery-1.2.6',
 			'jquery.ui-1.6rc2/ui/jquery.ui.all',
         	'tiny_mce/tiny_mce',
 			'pagebakery'
-		)));
+		));
 	?>
 </head>
 <body>
