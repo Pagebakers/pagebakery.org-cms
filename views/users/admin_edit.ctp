@@ -5,6 +5,7 @@
     
     <?php echo $form->input('User.id'); ?>
     <?php echo $form->input('User.username'); ?>
+    <?php echo $form->input('User.name', array( 'label' => 'Display name')); ?>
     <?php echo $form->input('User.email'); ?>
     
     <h4><?php __('Change password'); ?></h4>
