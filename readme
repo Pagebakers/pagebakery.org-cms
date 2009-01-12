@@ -1,1 +1,20 @@
-PagebakeryCMS - Piece of Cake!
+Pagebakery.org CMS
+
+Pagebakery Core
+ - User authentication and authorization using ACL
+ - User / Group management, easy to use ACL admin interface
+ - Error handling
+ - Default user interface (templates/css)
+ - Installer
+ - Database migrations
+
+Pagebakery CMS
+ - In page (live) editing using drag and drop
+    - Content types
+        - Text
+        - HTML
+        - Image
+        - Flash
+        - Webservices (Youtube, Flickr)
+        - Columns
+ - Theming support
