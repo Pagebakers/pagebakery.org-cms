@@ -22,7 +22,7 @@
 		));
 	?>
 </head>
-<body>
+<body id="<?php echo $this->params['controller'] . '-' . str_replace('admin_', '', $this->params['action']); ?>">
 	<div id="container">
 		<div id="header" class="panel-header">
             <?php echo $this->renderElement('admin_menu'); ?>

@@ -3,7 +3,7 @@
 class InstallerController extends Controller {
 
         var $uses = null;
-        
+
         var $layout = 'admin_clean';
 
         function beforeFilter() {
@@ -73,14 +73,14 @@ class InstallerController extends Controller {
         }
 
         function _checkTmpFolder(){
-           $oTMPFile = new File( TMP . 'empty', true );
+           $oTMPFile = new File( TMP . 'empty', true, 0777 );
            if( !$oTMPFile->writable() )
                return false;
            return true;
         }
 
         function _checkDatabaseFile(){
-            $oDBConfig = new File( CONFIGS . 'database.php', true );
+            $oDBConfig = new File( CONFIGS . 'database.php', true, 0777 );
             if( !$oDBConfig->writable() ){
                 return false;
             }

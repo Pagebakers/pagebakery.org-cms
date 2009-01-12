@@ -1,4 +1,4 @@
-<?php echo $form->create('Page', array('url' => $html->url(array('admin' => true)))); ?>
+<?php echo $form->create('Page', array('url' => array( 'admin' => true ) ) ); ?>
 <?php echo $form->input('Page.title', array('label' => __( 'Title', true))); ?>
 <?php echo $form->input('Page.parent_id', array('type' => 'select', 'value' => $parent_id, 'options' => $pages, 'empty' => '', 'label' => __( 'Under page', true))); ?>
 <?php echo $form->input('Page.content', array('label' => __( 'Content', true))); ?>

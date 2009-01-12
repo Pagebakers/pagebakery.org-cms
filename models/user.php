@@ -3,24 +3,35 @@ class User extends AppModel {
 
     public $validate = array(
         'username' => array(
-            'rule' => 'alphaNumeric'
+			'validUsername' => array(
+				'rule' => 'alphaNumeric'
+			),
+			'uniqueUsername' => array(
+				'rule' => 'isUnique'
+			)
+        ),
+		'email' => array(
+			'validEmail' => array(
+				'rule' => 'email'
+			),
+			'uniqueEmail' => array(
+				'rule' => 'isUnique'
+			)
         ),
         'passwd' => array(
             'rule' => array('minLength', 4)
         ),
         'passwd2' => array(
-            'rule' => array('comparePassword'),
-            'required' => false
+            'rule' => array('comparePassword')
         )
     );
 
     public function beforeValidate() {
-        // if left empty, remove from data array
+        // if password field left empty, remove from data array
         if((isset($this->data['User']['passwd']) && empty($this->data['User']['passwd'])) && (isset($this->data['User']['passwd2']) && empty($this->data['User']['passwd2']))) {
             unset($this->data['User']['passwd']);
             unset($this->data['User']['passwd2']);
         }
-
         return true;
     }
 
@@ -31,8 +42,7 @@ class User extends AppModel {
         }
         return true;
     }
-
-
+	
     public function comparePassword(&$data) {
         return $data['passwd2'] == $this->data['User']['passwd'];
     }

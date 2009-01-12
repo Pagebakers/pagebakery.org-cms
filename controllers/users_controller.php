@@ -29,8 +29,8 @@ class UsersController extends AppController {
     }
 
     public function admin_logout() {
-        $this->autoRender = false;
         $this->Auth->logout();
+        $this->redirect('/');
     }
 
     public function admin_add() {
