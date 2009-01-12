@@ -173,9 +173,6 @@ form h4 {
 }
 
 /* login */
-body#pb_login {
-    background-color : #686868;
-}
 #login-form-panel {
     width : 350px;
     height : 200px;

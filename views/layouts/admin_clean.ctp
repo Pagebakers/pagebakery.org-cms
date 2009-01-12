@@ -14,7 +14,7 @@
         ));
 	?>
 </head>
-<body>
+<body id="<?php echo $this->params['controller'] . '-' . str_replace('admin_', '', $this->params['action']); ?>">
 	<div id="container">
 		<?php $session->flash(); ?>
 
