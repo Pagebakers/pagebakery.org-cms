@@ -1,32 +1,35 @@
-<div>
-    <h4>
-    <?php __('Hello and Welcome to Pagebakery!', true );?>
-    <br />
-    <?php __('This is the installation module which will ask you a few questions in order to help you set up your brand new CMS.', true );?>
-    </h4>
-    <?php __('First, we need to check whether everything with your folder structure is OK');?>
-    <p>
-    <?php
-    if( $tmpFolderPermissions )
-        printf( __('Good %s is writable', true ), TMP );
-    else
-        printf( __('Your tmp folder is not writable - please give write permissions ( 0777 ) to %s. Othwerwise, installation will not be possible.', true), TMP );
-    ?>
-    </p>
-    <p>
-    <?php
-    if( $databaseFilePermissions )
-        printf( __('Good %s is writable', true ), CONFIGS . 'database.php' );
-    else
-        printf( __('Your database file is not writable - please give write permissions ( 0777 ) to %s. Othwerwise, installation will not be possible.', true), CONFIGS );
-    ?>
-    </p>
-    <p>
-    <?php
-    if( $databaseFilePermissions && $tmpFolderPermissions )
-        echo $html->link( __('Proceed', true ), array( 'controller' => 'installer', 'action' => 'setup' ) );
-    else
-        __('Please, fix those issues before proceeding');
-    ?>
-    </p>
+<div class="block step1" id="installer">
+    <h3><span><?php __('Hello and Welcome to Pagebakery!' );?></span></h3>
+    <div class="inner-block">
+        <p><?php __('This is the installation module which will ask you a few questions in order to help you set up your brand new CMS.' );?></p>
+        <p><?php __('First, we need to check whether everything with your folder structure is OK');?></p>
+        <hr>
+        <p>
+        <?php
+        if( $tmpFolderPermissions )
+            echo '<strong class="ok">' . sprintf( __('OK, "%s" is writable', true ), TMP ) . '</strong>';
+        else
+            echo '<strong class="error">' . sprintf( __('Your tmp folder is not writable - please give write permissions ( 0777 ) to "%s".', true), TMP ) . '</strong>';
+        ?>
+        </p>
+        <p>
+        <?php
+        if( $databaseFilePermissions )
+            echo '<strong class="ok">' . sprintf( __('OK, "%s" is writable', true ), CONFIGS . 'database.php' ) . '</strong>';
+        else
+            echo '<strong class="error">' . sprintf( __('Your database file is not writable - please give write permissions ( 0777 ) to "%s".', true), CONFIGS ) . '</strong>';
+        ?>
+        </p>
+        <hr>
+        <p>
+        <?php
+        if( $databaseFilePermissions && $tmpFolderPermissions ) {
+            echo __('Everything seems OK, you can now proceed to the final step.', true) . '<br><br>';
+            echo $html->link( __('Proceed', true ), array( 'controller' => 'installer', 'action' => 'setup' ) );
+        } else {
+            __('Please, fix the issues above before proceeding');
+        }
+        ?>
+        </p>
+    </div>
 </div>

@@ -1,12 +1,10 @@
-<?php echo $form->create('User', array('action' => 'login', 'id' => 'login-form-panel')); ?>
+<?php echo $form->create('User', array('action' => 'login', 'class' => 'block', 'id' => 'login-form-panel')); ?>
 
-<h1 class="panel-header"><?php __('Login'); ?></h1>
+<h3 class="panel-header"><span><?php __('Login'); ?></span></h3>
 
-<div class="panel-body">
-    <fieldset>
-        <?php echo $form->input('User.username'); ?>
-        <?php echo $form->input('User.password'); ?>
-    </fieldset>
+<div class="inner-block">
+    <?php echo $form->input('User.username'); ?>
+    <?php echo $form->input('User.password'); ?>
     
     <?php echo $form->submit(__('Login', true)); ?>
 </div>
