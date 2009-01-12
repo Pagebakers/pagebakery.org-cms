@@ -18,3 +18,31 @@ Pagebakery CMS
         - Webservices (Youtube, Flickr)
         - Columns
  - Theming support
+ 
+************************************************************
+ Pagebakery - my (turnred) point of view ;) 
+************************************************************
+
+Overview
+----------------------
+Pagebakery is a content management system build in cakephp using jquery.
+The main goal of pagebakery is to provide a simple cms for a wide range of users, using jquery and other ajax libraries to simplify the use of the cms.
+
+One Application, Two parts
+----------------------
+Pagebakery consists of 2 parts:
+1) The Pagebakery Core, which represents a framework build on top of Cakephp which handles mainly user authentication and access control.
+This Core also has it's own user interface, where all other backend parts of the applications can be build on.
+2) Pagebakery CMS, the real content management which is build on top of the Pagebakery Core.
+
+Content Editing
+----------------------
+Content editing can be done on the backend side of the webpage, after you're logged in. When enter the content editing part, your page is displayed and you can simply edit the parts of your webpage. 
+For example clicking on the text part you would like to edit and a text editor appears with the text you selected. You then can edit the text to your satisfaction and after you're finished, just click on the save button and the updated content is available on your website.
+
+Other features that are possible, when you are editing or creating content are:
+- adding special content types ( Text, HTML, Image, Flash, Webservices (Youtube, Flickr), Columns )
+- choose on which date the content is published, and on which day it expires
+- locking content
+- enter slugs ( seo friendly names )
+
