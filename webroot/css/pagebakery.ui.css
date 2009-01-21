@@ -2,7 +2,7 @@ body {
     padding-top : 90px;
 }
 body.pagebakery {
-    padding : 0;
+    padding : 90px 0 0 0;
     margin : 0;
     font : normal 12px tahoma,arial,helvetica,sans-serif;
     background : #fafafa;
@@ -53,7 +53,9 @@ body.pagebakery {
     border-bottom : 1px solid #525252;
     background-color : #e8e8e8;
 }
-
+#pb-content {
+    padding : 10px;
+}
 /* buttons */
 .button, button, .submit input {
 	text-decoration : none;
