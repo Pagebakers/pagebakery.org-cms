@@ -3,7 +3,12 @@ class PagesController extends AppController {
 
 	var $uses = array('Page');
 
+    var $view = 'Theme';
+    var $theme = 'default';
+
 	function admin_index() {
+	   $this->layout = 'default';
+	   $this->render('index');
 	}
 
 	function admin_edit($id = null) {

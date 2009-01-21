@@ -3,44 +3,26 @@
 <head>
 	<?php echo $html->charset(); ?>
 	<title>
-		<?php echo $title_for_layout; ?> -
-		<?php __('Pagebakery'); ?>
+		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
 		echo $html->meta('icon');
-
-        echo $html->css(array(
-            '/js/jquery.ui-1.6rc2/themes/default/ui.all',
-            'pagebakery.ui'
-        ));
-
-        echo $javascript->link(array(
-			'jquery.ui-1.6rc2/jquery-1.2.6',
-			'jquery.ui-1.6rc2/ui/jquery.ui.all',
-        	'tiny_mce/tiny_mce',
-			'pagebakery'
-		));
+		
+		echo $html->css('pagebakery.admin.ui');
 	?>
 </head>
-<body id="<?php echo $this->params['controller'] . '-' . str_replace('admin_', '', $this->params['action']); ?>">
-	<div id="container">
-		<div id="header" class="panel-header">
-            <?php echo $this->renderElement('admin_menu'); ?>
-		</div>
+<body id="<?php echo $this->params['controller'] . '-' . str_replace('admin_', '', $this->params['action']); ?>" class="pagebakery">
 
-        <?php echo $this->renderElement('admin_toolbar'); ?>
+    <?php echo $this->element('pagebakery'); ?>
 
-		<div id="content">
+	<div id="pb-content">
+	           
+		<?php $session->flash(); ?>
 
-			<?php $session->flash(); ?>
-
-			<?php echo $content_for_layout; ?>
-
-		</div>
+		<?php echo $content_for_layout; ?>
 
 	</div>
-	<div id="footer">
-	</div>
+    
 	<?php echo $scripts_for_layout; ?>
 	<?php echo $cakeDebug; ?>
 </body>
