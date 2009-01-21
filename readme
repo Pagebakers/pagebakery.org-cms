@@ -1,4 +1,7 @@
-Pagebakery.org CMS
+-------------------------
+ Pagebakery.org CMS
+-------------------------
+
 
 Pagebakery is a content management system build in cakephp using jquery.
 The main goal of pagebakery is to provide a simple cms for a wide range of users, using jquery and other ajax libraries to simplify the use of the cms.
