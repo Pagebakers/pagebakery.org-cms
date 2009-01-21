@@ -1,32 +1,5 @@
 Pagebakery.org CMS
 
-Pagebakery Core
- - User authentication and authorization using ACL
- - User / Group management, easy to use ACL admin interface
- - Error handling
- - Default user interface (templates/css)
- - Installer
- - Database migrations
- - Internationalization (i18n)
- - Localization (l10n)
-
-Pagebakery CMS
- - In page (live) editing using drag and drop
-    - Content types
-        - Text
-        - HTML
-        - Image
-        - Flash
-        - Webservices (Youtube, Flickr)
-        - Columns
- - Theming support
- 
-************************************************************
- Pagebakery - my (turnred) point of view ;) 
-************************************************************
-
-Overview
-----------------------
 Pagebakery is a content management system build in cakephp using jquery.
 The main goal of pagebakery is to provide a simple cms for a wide range of users, using jquery and other ajax libraries to simplify the use of the cms.
 
@@ -47,4 +20,21 @@ Other features that are possible, when you are editing or creating content are:
 - choose on which date the content is published, and on which day it expires
 - locking content
 - enter slugs ( seo friendly names )
+
+Pagebakery Core Features
+----------------------
+ - User authentication and authorization using ACL
+ - User / Group management, easy to use ACL admin interface
+ - Error handling
+ - Default user interface (templates/css)
+ - Database migrations
+ - Internationalization (i18n)
+ - Localization (l10n)
+
+Pagebakery CMS Features
+ - Intuitive User Interface
+ - Drag 'n Drop options to simply add or remove content on a page
+
+General Features
+ - Easy install procedure ( install within 30 seconds! )
 
