@@ -1,0 +1,228 @@
+---
+DOWN: 
+  drop_table: 
+    - categories
+    - contents
+    - contents_pages
+    - contenttypes
+    - cthtml
+    - cttext
+    - groups
+    - menus
+    - news
+    - pages
+    - schema_info
+    - users
+UP: 
+  create_table: 
+    categories: 
+      name: 
+        type: string
+        default: false
+        length: 50
+        - not_null
+      slug: 
+        type: string
+        default: false
+        length: 50
+        - not_null
+      sort: 
+        type: integer
+        default: false
+        length: 11
+        - not_null
+    contents: 
+      name: 
+        type: string
+        default: false
+        length: 64
+        - not_null
+      contenttype_id: 
+        type: integer
+        default: false
+        length: 11
+        - not_null
+      - no_dates
+    contents_pages: 
+      page_id: 
+        type: integer
+        default: false
+        length: 11
+        - not_null
+      content_id: 
+        type: integer
+        default: false
+        length: 11
+        - not_null
+      - no_dates
+    contenttypes: 
+      name: 
+        type: string
+        default: false
+        length: 64
+        - not_null
+      model: 
+        type: string
+        default: false
+        length: 64
+        - not_null
+      - no_dates
+    cthtml: 
+      content_id: 
+        type: integer
+        default: false
+        length: 11
+        - not_null
+      value: 
+        type: text
+        default: false
+        length: 
+        - not_null
+      - no_dates
+    cttext: 
+      content_id: 
+        type: integer
+        default: false
+        length: 11
+        - not_null
+      value: 
+        type: text
+        default: false
+        length: 
+        - not_null
+      - no_dates
+    groups: 
+      name: 
+        type: string
+        default: false
+        length: 50
+        - not_null
+      access: 
+        type: string
+        default: false
+        length: 20
+        - not_null
+      - no_dates
+    menus: 
+      title: 
+        type: string
+        default: false
+        length: 64
+        - not_null
+      mainmenu: 
+        type: boolean
+        default: false
+        length: 1
+        - not_null
+      - no_dates
+    news: 
+      title: 
+        type: string
+        default: false
+        length: 255
+        - not_null
+      content: 
+        type: text
+        default: false
+        length: 
+        - not_null
+      slug: 
+        type: string
+        default: false
+        length: 255
+        - not_null
+      draft: 
+        type: boolean
+        default: false
+        length: 1
+        - not_null
+    pages: 
+      title: 
+        type: string
+        default: false
+        length: 120
+        - not_null
+      content: 
+        type: text
+        default: false
+        length: 
+        - not_null
+      slug: 
+        type: string
+        default: false
+        length: 255
+        - not_null
+      meta_keywords: 
+        type: string
+        default: false
+        length: 255
+        - not_null
+      meta_description: 
+        type: string
+        default: false
+        length: 255
+        - not_null
+      tags: 
+        type: string
+        default: false
+        length: 255
+        - not_null
+      parent_id: 
+        type: integer
+        default: false
+        length: 10
+        - is_null
+      menu_id: 
+        type: integer
+        default: false
+        length: 11
+        - not_null
+      lft: 
+        type: integer
+        default: false
+        length: 10
+        - not_null
+      rght: 
+        type: integer
+        default: false
+        length: 10
+        - not_null
+      draft: 
+        type: boolean
+        default: false
+        length: 1
+        - not_null
+    schema_info: 
+      version: 
+        type: integer
+        default: false
+        length: 3
+        - is_null
+      - no_id
+      - no_dates
+    users: 
+      group_id: 
+        type: integer
+        default: false
+        length: 11
+        - not_null
+      username: 
+        type: string
+        default: false
+        length: 50
+        - not_null
+      password: 
+        type: string
+        default: false
+        length: 40
+        - not_null
+      name: 
+        type: string
+        default: false
+        length: 50
+        - not_null
+      email: 
+        type: string
+        default: false
+        length: 30
+        - not_null
