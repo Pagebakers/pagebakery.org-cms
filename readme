@@ -7,6 +7,8 @@ Pagebakery Core
  - Default user interface (templates/css)
  - Installer
  - Database migrations
+ - Internationalization (i18n)
+ - Localization (l10n)
 
 Pagebakery CMS
  - In page (live) editing using drag and drop
