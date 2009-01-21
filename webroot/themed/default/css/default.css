@@ -1,0 +1,120 @@
+/* 
+			Pagebakery default template 
+*/
+
+body {
+	margin: 0;
+	padding: 0;
+	font-size: 75%;
+	background-color: #423023;
+	font-family: Trebuchet MS, Verdana, Arial;
+}
+* {
+	padding: 0;
+	margin: 0;
+}
+
+#container {
+	width: 780px;
+    margin: 0 auto;
+	background-color: #FFFFFF;
+	margin-top: 30px;
+}
+
+#heading {
+	width: 780px;
+	height: 117px;
+	background-image: url("../img/heading.jpg");
+}
+
+#heading h1 {
+	text-indent: -999999px;
+}
+
+#menu {
+	height: 40px;
+	width: 780px;
+	background-image: url("../img/bg_menu.jpg");
+	list-style: none;
+}
+
+#menu li {
+	float: left;
+}
+
+#menu li a {
+	display: block;
+	height: 36px;
+	line-height: 36px;
+	padding: 0 16px 0 16px;
+	color: #423023;
+	text-decoration: none;
+	font-size: 1.1em;
+}
+
+#menu li a:hover {
+	background-color: #423023;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#menu li a.activeHome {
+	background-image: url("../img/bg_active_home.jpg") !important;
+	color: #ffffff;
+	text-decoration: none;
+}
+
+#menu li a.active {
+	background-image: url("../img/bg_active.jpg") !important;
+	color: #ffffff;
+	text-decoration: none;
+
+}
+
+#content {
+	width: 740px;
+    padding: 20px;
+	line-height: 1.8em;
+}
+
+#footer {
+	width: 740px;
+	height: 37px;
+	background-image: url("../img/bg_footer.jpg");
+	padding: 20px 20px 0 20px;
+	font-size: 1.1em;
+	color: #c8b8a7;
+	margin-bottom: 30px;
+}
+
+#footer a {
+	color: #e1d9d1;
+	text-decoration: none;
+}
+
+#footer a:hover {
+	color: #fbbd00;
+	text-decoration: underline;
+}
+
+h2 {
+	color: #fbbd00;
+	font-size: 1.8em;
+	margin-bottom: 14px;
+}
+
+p {
+	color: #423023;
+	font-size: 1.1em;
+	margin-bottom: 20px;
+}
+
+a {
+	color: #ff3300;
+	text-decoration: underline;
+}
+
+a:hover {
+	color: #fbbd00;
+	text-decoration: none;
+}
