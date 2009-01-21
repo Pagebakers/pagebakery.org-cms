@@ -9,5 +9,6 @@ class Page extends AppModel {
     public $validate = array(
 		'title' => array('rule' => array('minLength', 4), 'allowEmpty' => false, 'required' => true, 'message' => 'The title is too short.'),
 	);
+	
 }
 ?>
