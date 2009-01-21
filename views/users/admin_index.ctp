@@ -1,11 +1,5 @@
 <?php echo $paginator->options(array('url' => array('admin' => true))); ?>
 
-<?php
-echo $this->renderElement('admin_actions', array('actions' => array(
-    'Add user' => array('action' => 'add', 'admin' => true)
-)));
-?>
-
 <div class="block">
     <h3><span><?php __( 'View users'); ?></span></h3>
     <table cellspacing="0">

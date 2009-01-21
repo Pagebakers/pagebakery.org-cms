@@ -1,4 +1,4 @@
-<ul class="pagination">
+<ul class="pb-pagination">
     <li><?php echo $paginator->prev('<< '.__('previous', true), array(), null, array('class'=>'disabled', 'tag' => 'span'));?></li>
     <li><?php echo $paginator->first(__('first', true), array(), null, array('class'=>'disabled', 'tag' => 'span'));?></li>
     <li><?php echo $paginator->numbers(array('separator' => '</li><li>'));?></li>

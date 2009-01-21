@@ -1,79 +1,60 @@
-html, body {
-    height : 100%;
-}
 body {
-    padding : 0;
+    padding-top : 90px;
+}
+body.pagebakery {
+    padding : 90px 0 0 0;
     margin : 0;
     font : normal 12px tahoma,arial,helvetica,sans-serif;
     background : #fafafa;
 }
-
-p {
-    margin-top : 0;
-}
-
-h1, h2, h3, h4, h5 {
-    margin : 0;
-}
-
-a {
+.pagebakery a, .pagebakery a {
     color : #0088cc;
     text-decoration : none;
 }
-a:hover {
+.pagebakery a:hover, .pagebakery a:hover {
     text-decoration : underline;
 }
 
-#header {
+#pb-controls {
+    width : 100%;
+    height : 80px;
+    position : fixed;
+    top : 0;
+    font : normal 12px tahoma,arial,helvetica,sans-serif !important;
+}
+
+#pb-header {
     height : 50px;
     background : #575757 url(../img/pagebakery/header.gif) repeat-x;
 }
-#header li a {
+#pb-header li a {
     color : #ededed;
     text-shadow: rgba(0, 0, 0, 0.6) 0 1px 0;
 }
-#header li a:hover {
+#pb-header li a:hover {
     color : #ffffff;
 }
-#header li.active {
+#pb-header li.active {
     background : url(../img/pagebakery/header-tab-active.gif);
 }
-#header li.active a {
+#pb-header li.active a {
     background : none;
     color : #ffffff;
 }
-.panel-header {
+.pb-panel-header {
     border-bottom : 1px solid #525252;
     background : #969696 url(../img/pagebakery/panel-header.gif) repeat-x;
 }
 
-.panel-body {
+.pb-panel-body {
     padding : 10px;
     border-left : 1px solid #525252;
     border-right : 1px solid #525252;
     border-bottom : 1px solid #525252;
     background-color : #e8e8e8;
 }
-
-.no-border {
-    border-width : 0 !important;
-}
-
-#container {
-    padding-bottom: 40px;
-}
-
-#content {
+#pb-content {
     padding : 10px;
-}
-
-#footer {
-    height : 22px;
-    width : 100%;
-    border-top : 1px solid #d3d3d3;
-    background : url(../img/pagebakery/panel-footer.gif) repeat-x;
-    position : fixed;
-    bottom : 0;
 }
 /* buttons */
 .button, button, .submit input {
@@ -153,21 +134,21 @@ form h4 {
     font-size : 12px;
 }
 
-.pagination {
+.pb-pagination {
     margin : 5px 0 0 0;
     padding : 0;
     list-style : none;
 }
-.pagination li {
+.pb-pagination li {
     float : left;
     border-right : 1px solid #cccccc;
     padding : 0 5px;
     margin : 0;
 }
-.pagination li.last {
+.pb-pagination li.last {
     border : 0;
 }
-.pagination .disabled {
+.pb-pagination .disabled {
     color : #666666;
     border : 0;
 }
@@ -195,7 +176,7 @@ form h4 {
 }
 
 /* tabs */
-.panel-tabs {
+.pb-panel-tabs {
     list-style : none;
     margin : 0;
     padding : 0;
@@ -204,70 +185,73 @@ form h4 {
     font-size : 11px;
     padding : 0 0 0 6px;
 }
-.panel-tabs li {
+.pb-panel-tabs li {
     float : left;
     height : 50px;
 }
-.panel-tabs li a {
+.pb-panel-tabs li a {
     display : block;
     padding : 28px 10px 6px 10px;
     color : #000000;
     font-size : 12px;
     text-decoration : none;
 }
-.panel-tabs li.active {
+.pb-panel-tabs li.active {
     padding-left : 5px;
     background : url(../img/pagebakery/panel-tab-active.gif) no-repeat top left;
 }
-.panel-tabs li.active a {
+.pb-panel-tabs li.active a {
     padding-left: 5px;
     color : #ffffff;
     background : url(../img/pagebakery/panel-tab-active.gif) no-repeat top right;
 }
 
-.panel-tabs-hide {
+.pb-panel-tabs-hide {
 	display: none !important;
 }
 
 /* toolbar */
-.toolbar {
+.pb-toolbar {
     background : #e7e7e7 url(../img/pagebakery/toolbar.gif) repeat-x;
     height : 29px;
     border-bottom : 1px solid #bbbbbb;
     font-size : 11px;
 }
-.toolbar ul {
+.pb-toolbar ul {
     margin : 0;
     padding : 0;
     list-style : none;
     height : 29px;
 }
-.toolbar ul li {
+.pb-toolbar ul li {
     float : left;
     height : 29px;
     line-height : 28px;
     padding : 0 10px;
 }
-.toolbar ul.breadcrumbs {
+.pb-toolbar .pb-actions {
     float : left;
 }
-.toolbar ul.breadcrumbs li {
+.pb-toolbar ul.pb-breadcrumbs {
+    float : left;
+}
+.pb-toolbar ul.pb-breadcrumbs li {
     background : url(../img/pagebakery/breadcrumb.gif) no-repeat bottom right;
     padding-right : 20px;
 }
-.toolbar ul.breadcrumbs li.last {
+.pb-toolbar ul.pb-breadcrumbs li.last {
     background : none;
 }
-.toolbar ul.utilities {
+.pb-toolbar ul.pb-utilities {
     float : right;
 }
-.toolbar ul.utilities li {
+.pb-toolbar ul.pb-utilities li {
     border-left : 1px solid #cccccc;
 }
-.toolbar a {
+.pb-toolbar a {
     color : #666;
 }
-.toolbar a:hover {
+.pb-toolbar a:hover {
     color : #0088cc;
 }
 /* tables */
@@ -358,7 +342,7 @@ ul.actions a {
 
 
 /* icons */
-.add {
-    background : #ffffff url(../img/icons/add.png) no-repeat 3px center;
+.add, .add-page {
+    background : url(../img/icons/add.png) no-repeat 3px center;
     padding-left : 22px;
 }

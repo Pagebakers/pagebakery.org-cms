@@ -2,15 +2,13 @@
 class PagesController extends AppController {
 
 	var $uses = array('Page');
-	var $helpers = array('Tree');
 
-	var $paginate = array(
-		'limit' => 40,
-		'order' => array('Page.lft' => 'asc')
-	);
+    var $view = 'Theme';
+    var $theme = 'default';
 
 	function admin_index() {
-		$this->set('pages', $this -> paginate());
+	   $this->layout = 'default';
+	   $this->render('index');
 	}
 
 	function admin_edit($id = null) {
