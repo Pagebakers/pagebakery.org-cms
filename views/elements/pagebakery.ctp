@@ -1,5 +1,5 @@
 <?php if($session->check('Auth.User')) : ?>
-<div id="pb-controls">
+<div id="pb-controls" class="ui-layout-north">
 	<div id="pb-header">
         <?php
         echo $navigation->menu(array(
@@ -25,14 +25,13 @@
 </div>
 <?php
     echo $html->css(array(
-        '/js/jquery.ui-1.6rc2/themes/default/ui.all',
         'pagebakery.ui'
     ));
 
     echo $javascript->link(array(
-		'jquery.ui-1.6rc2/jquery-1.2.6',
-		'jquery.ui-1.6rc2/ui/jquery.ui.all',
-    	'tiny_mce/tiny_mce',
+		'jquery-1.3.1.min',
+		'jquery.ui/ui/jquery-ui-1.6rc5.packed',
+		'plugins/jquery.layout.min',
 		'pagebakery'
 	));
 ?>
