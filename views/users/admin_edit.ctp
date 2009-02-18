@@ -1,6 +1,6 @@
-<div class="block">
-    <h3><span><?php __('Edit user'); ?></span></h3>
-    <div class="inner-block">
+<div class="pb-inline-panel">
+    <h3 class="pb-panel-header"><span><?php __('Edit user'); ?></span></h3>
+    <div class="pb-panel-body">
     <?php echo $form->create('User', array('url' => $html->url(array('pb' => true, $this->data['User']['id'])))); ?>
     
     <?php echo $form->input('User.id'); ?>

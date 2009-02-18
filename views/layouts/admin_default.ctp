@@ -1,11 +1,12 @@
 <?php echo $html->docType('html4-strict'); ?>
 <html>
 <head>
-	<?php echo $html->charset(); ?>
 	<title>
 		<?php echo $title_for_layout; ?>
 	</title>
 	<?php
+        echo $html->charset();
+	
 		echo $html->meta('icon');
 		
 		echo $html->css('pagebakery.admin.ui');

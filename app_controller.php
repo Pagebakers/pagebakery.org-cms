@@ -8,6 +8,7 @@ class AppController extends Controller {
     public function beforeFilter() {
         //if there is a core error, just show it
         if( $this->action == null ) {
+            $this->layout = 'error';
             return false;
         }
 

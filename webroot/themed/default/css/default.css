@@ -72,12 +72,18 @@ body {
 }
 
 #content {
-	width: 740px;
+	width: 500px;
     padding: 20px;
 	line-height: 1.8em;
+	float : left;
 }
-
+#sidebar {
+    width : 220px;
+    padding : 20px 20px 20px 0;
+    float : left;
+}
 #footer {
+    clear : both;
 	width: 740px;
 	height: 37px;
 	background-image: url("../img/bg_footer.jpg");
