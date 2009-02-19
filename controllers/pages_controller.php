@@ -10,6 +10,13 @@ class PagesController extends AppController {
         $this->Auth->allow();
     }
 
+    function index() {}
+
+    function view( $slug ){
+        $this->layout = 'default';
+        $this->set('page', $this->Page->find( 'first', array( 'conditions' => array( 'slug' => $slug ) ) ) );
+    }
+
 	function admin_index() {
 	   $this->layout = 'default';
 	   $this->render('index');
