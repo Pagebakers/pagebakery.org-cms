@@ -6,6 +6,10 @@ class PagesController extends AppController {
     var $view = 'Theme';
     var $theme = 'default';
 
+    function beforeFilter() {
+        $this->Auth->allow();
+    }
+
 	function admin_index() {
 	   $this->layout = 'default';
 	   $this->render('index');
