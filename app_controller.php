@@ -25,7 +25,8 @@ class AppController extends Controller {
             $this->Auth->autoRedirect = false;
         }
 
-        if( isset($this->params['admin']) && $this->params['admin'] == 1 ) {
+        if( $this->isAdminAction() ) {
+            $this->view = 'View';
             $this->layout = 'admin_default';
         }
         
@@ -41,6 +42,10 @@ class AppController extends Controller {
         if( $this->RequestHandler->responseType() == 'json' ) {
             $this->view = 'json';
         }
+    }
+    
+    protected function isAdminAction() {
+        return ( isset($this->params['admin']) && $this->params['admin'] == 1 );
     }
     
     protected function addBreadcrumb($breadcrumb = array()) {

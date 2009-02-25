@@ -79,6 +79,12 @@ if(jQuery) (function($){
                     west.height($(this).height() - offset);
                 });
             }
+            
+            var center = $('.pb-layout-center');
+            center.height($(window).height() - offset);
+            $(window).resize(function(e) {
+                center.height($(this).height() - offset);
+            });
         }
     });
     

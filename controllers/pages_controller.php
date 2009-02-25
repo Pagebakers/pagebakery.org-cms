@@ -8,6 +8,8 @@ class PagesController extends AppController {
 
     function beforeFilter() {
         $this->Auth->allow();
+        
+        parent::beforeFilter();
     }
 
     function index() {}
@@ -18,8 +20,7 @@ class PagesController extends AppController {
     }
 
 	function admin_index() {
-	   $this->layout = 'default';
-	   $this->render('index');
+
 	}
 
 	function admin_edit($id = null) {
