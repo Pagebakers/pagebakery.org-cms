@@ -6,9 +6,21 @@ class PagesController extends AppController {
     var $view = 'Theme';
     var $theme = 'default';
 
+    function beforeFilter() {
+        $this->Auth->allow();
+        
+        parent::beforeFilter();
+    }
+
+    function index() {}
+
+    function view( $slug ){
+        $this->layout = 'default';
+        $this->set('page', $this->Page->find( 'first', array( 'conditions' => array( 'slug' => $slug ) ) ) );
+    }
+
 	function admin_index() {
-	   $this->layout = 'default';
-	   $this->render('index');
+
 	}
 
 	function admin_edit($id = null) {

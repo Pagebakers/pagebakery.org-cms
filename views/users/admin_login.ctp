@@ -1,8 +1,8 @@
-<?php echo $form->create('User', array('action' => 'login', 'class' => 'block', 'id' => 'login-form-panel')); ?>
+<?php echo $form->create('User', array('action' => 'login', 'class' => 'block', 'id' => 'login-form-panel', 'class' => 'pb-inline-panel')); ?>
 
-<h3 class="panel-header"><span><?php __('Login'); ?></span></h3>
+<h3 class="pb-panel-header"><span><?php __('Login'); ?></span></h3>
 
-<div class="inner-block">
+<div class="pb-panel-body">
     <?php echo $form->input('User.username'); ?>
     <?php echo $form->input('User.password'); ?>
     

@@ -1,26 +1,24 @@
-body {
-    padding-top : 90px;
+html {
+    height : 100%;
 }
 body.pagebakery {
-    padding : 90px 0 0 0;
     margin : 0;
     font : normal 12px tahoma,arial,helvetica,sans-serif;
     background : #fafafa;
 }
-.pagebakery a, .pagebakery a {
+.pb-panel-body a, .pb-panel-body a {
     color : #0088cc;
     text-decoration : none;
 }
-.pagebakery a:hover, .pagebakery a:hover {
+.pb-panel-body a:hover, .pb-panel-body a:hover {
     text-decoration : underline;
 }
 
 #pb-controls {
     width : 100%;
     height : 80px;
-    position : fixed;
-    top : 0;
     font : normal 12px tahoma,arial,helvetica,sans-serif !important;
+    box-shadow: 10px 10px 5px #888;
 }
 
 #pb-header {
@@ -41,21 +39,7 @@ body.pagebakery {
     background : none;
     color : #ffffff;
 }
-.pb-panel-header {
-    border-bottom : 1px solid #525252;
-    background : #969696 url(../img/pagebakery/panel-header.gif) repeat-x;
-}
 
-.pb-panel-body {
-    padding : 10px;
-    border-left : 1px solid #525252;
-    border-right : 1px solid #525252;
-    border-bottom : 1px solid #525252;
-    background-color : #e8e8e8;
-}
-#pb-content {
-    padding : 10px;
-}
 /* buttons */
 .button, button, .submit input {
 	text-decoration : none;
@@ -249,10 +233,12 @@ form h4 {
     border-left : 1px solid #cccccc;
 }
 .pb-toolbar a {
-    color : #666;
+    color : #666666;
+    text-decoration : underline;
 }
 .pb-toolbar a:hover {
     color : #0088cc;
+    text-decoration : underline !important;
 }
 /* tables */
 table {
@@ -300,31 +286,6 @@ table tbody td {
     border-left : 1px solid #dddddd;
 }
 
-/* contentblock */
-.block h3 {
-    font-size : 12px;
-    text-align : left;
-    color : #ffffff;
-    font-weight : normal;
-    padding-left : 10px;
-    border-bottom: 1px solid #6c7b94;
-    height : 26px;
-    background : #818ea4 url(../img/pagebakery/table-header.gif) no-repeat top left;
-}
-.block h3 span {
-    display : block;
-    padding : 6px 10px 4px 0; 
-    background : url(../img/pagebakery/table-header.gif) no-repeat top right;
-    text-shadow: rgba(0, 0, 0, 0.6) 0 1px 0;
-}
-.block .inner-block {
-    border-left : 1px solid #dddddd;
-    border-right : 1px solid #dddddd;
-    border-bottom : 1px solid #dddddd;
-    background-color : #ffffff;
-    padding : 10px;
-}
-
 /* actions */
 ul.actions {
     list-style : none;
@@ -345,4 +306,129 @@ ul.actions a {
 .add, .add-page {
     background : url(../img/icons/add.png) no-repeat 3px center;
     padding-left : 22px;
+}
+
+/* layout panels */
+.pb-panel-header {
+    margin : 0;
+    border-bottom : 1px solid #aaaaaa;
+    background : #969696 url(../img/pagebakery/panel-header.png) repeat-x;
+    padding : 5px;
+    font : normal 12px tahoma,arial,helvetica,sans-serif;
+}
+
+.pb-panel-body {
+    padding : 10px;
+    font : normal 12px tahoma,arial,helvetica,sans-serif;
+}
+.pb-layout-east {
+    background-color : #d1d7e2;
+    border-left : 1px solid #404040;
+}
+.pb-layout-east .pb-toolbar {
+    padding : 5px;
+    height : auto;
+}
+
+/* contentblock */
+.pb-inline-panel .pb-panel-header {
+    font-size : 12px;
+    text-align : left;
+    color : #ffffff;
+    font-weight : normal;
+    padding : 0 0 0 10px;
+    margin : 0;
+    border-bottom: 1px solid #6c7b94;
+    height : 26px;
+    background : #818ea4 url(../img/pagebakery/table-header.gif) no-repeat top left;
+}
+.pb-inline-panel .pb-panel-header span {
+    display : block;
+    padding : 6px 10px 4px 0; 
+    background : url(../img/pagebakery/table-header.gif) no-repeat top right;
+    text-shadow: rgba(0, 0, 0, 0.6) 0 1px 0;
+    font : normal 12px tahoma,arial,helvetica,sans-serif;
+}
+.pb-inline-panel .pb-panel-body {
+    border-left : 1px solid #dddddd;
+    border-right : 1px solid #dddddd;
+    border-bottom : 1px solid #dddddd;
+    background-color : #ffffff;
+    padding : 10px;
+    font : normal 12px tahoma,arial,helvetica,sans-serif;
+}
+
+/**
+ * Pages controller
+ */
+ 
+/* elements */
+#pb-elements-toolbar, #pb-elements-toolbar ul {
+    list-style : none;
+    margin : 0;
+    padding : 0;
+}
+#pb-elements-toolbar li.pb-element {
+    padding : 5px 5px 5px 20px;
+    margin : 2px 0;
+    border : 1px solid #a5a5a5;
+    cursor : move;
+    background : #e6ecf3;
+}
+#pb-elements-toolbar li.pb-element:hover {
+    background : #c3cdd9;
+    cursor : move;
+}
+#pb-elements-toolbar li.pb-element a {
+    text-decoration : none !important;
+}
+
+.pb-accept-drop {
+   background-color : #fffbe7;
+}
+#pb-elements-toolbar .pb-element-group h4 {
+    color : #616e80;
+    padding : 10px 5px 3px 16px;
+}
+#pb-elements-toolbar .pb-element-group h4:hover {
+    text-decoration : underline;
+}
+
+.pb-element-tbar {
+    height : 22px;
+    background : url(../img/pagebakery/element-tbar.gif);
+    border : 1px solid #cacaca;
+    cursor : move
+}
+.pb-element-tbar a {
+    float : left;
+    cursor : pointer;
+    display : block;
+    height : 22px;
+    border-right : 1px solid #cacaca;
+    color : #040404;
+    padding-left : 20px;
+    padding-right : 6px;
+    text-decoration : none;
+}
+.pb-element-tbar .pb-element-edit {
+    background : url(../img/icons/small/edit.png) no-repeat 4px center;
+}
+.pb-element-tbar .pb-element-delete {
+    float : right;
+    width : 22px;
+    padding : 0;
+    border-left : 1px solid #cacaca;
+    border-right : none;
+    background : url(../img/icons/small/delete.png) no-repeat center;
+    text-indent : -9999px;
+}
+
+#pb-pages iframe {
+    width : 100%;
+    height : 100%;
+    border : none;
+    margin : 0;
+    padding : 0;
+    display : block;
 }

@@ -1,7 +1,7 @@
 <?php echo $paginator->options(array('url' => array('admin' => true))); ?>
 
-<div class="block">
-    <h3><span><?php __( 'View users'); ?></span></h3>
+<div class="pb-inline-panel">
+    <h3 class="pb-panel-header"><span><?php __( 'View users'); ?></span></h3>
     <table cellspacing="0">
         <thead>
             <tr>

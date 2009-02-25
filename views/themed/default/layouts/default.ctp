@@ -12,7 +12,6 @@
 	?>
 </head>
 <body>
-    <?php echo $this->element('pagebakery'); ?>
     <div id="container">
         <div id="heading">
             <h1>Pagebakery CMS, piece of cake!</h1>
@@ -24,13 +23,14 @@
             <li><?php echo $html->link( 'Support', '/pages/support' );?></li>
             <li><?php echo $html->link( 'Customize', '/pages/customize' );?></li>
         </ul>
-        <div id="content">
-            <?php echo $content_for_layout; ?>
-        </div>
+        
+        <?php echo $content_for_layout; ?>
+        
         <div id="footer">
             <span>Copyright &copy; Pagebakery 2006-2008. For more information and support please visit <a href="http://www.pagebakery.org">www.pagebakery.org</a></span>
         </div>
     </div>
+    <?php echo $this->element('pagebakery'); ?>
 	<?php echo $scripts_for_layout; ?>
 	<?php echo $cakeDebug; ?>
 </body>
