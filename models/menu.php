@@ -7,7 +7,10 @@
 class Menu extends AppModel {
 	var $name = 'Menu'; 
 	
-	// validation
+	/**
+     * Validation Rules
+     * @var array
+     */
 	public $validate = array(
 			'title' => array(
 				'rule' => array('minLength', 3), 
@@ -18,7 +21,10 @@ class Menu extends AppModel {
 			)
 		);
 	
-	// one model has many pages
+	/**
+     * hasMany Relationship
+     * @var array
+     */
 	public $hasMany = array(
         'Page' => array(
             'className'     => 'Page',
