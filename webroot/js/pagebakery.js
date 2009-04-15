@@ -20,7 +20,7 @@ if(jQuery) (function($){
             var body = $('body');
             
             // init north panel
-            var north = $(this.baseClass + this.options.north.selector);
+            var north = $(this.baseClass + 'north');
             if(north) {
                 north.css({
                     position : 'fixed',
@@ -32,7 +32,7 @@ if(jQuery) (function($){
             }
             
             // init south panel
-            var south = $(this.baseClass + this.options.south.selector);
+            var south = $(this.baseClass + 'south');
             if(south) {
                 south.css({
                     position : 'fixed', 
@@ -47,7 +47,7 @@ if(jQuery) (function($){
             var offset = (north.height() || 0) + (south.height() || 0);
             
             // init east panel
-            var east = $(this.baseClass + this.options.east.selector);
+            var east = $(this.baseClass + 'east');
             if(east) {
                 east.css({
                     position : 'fixed', 
@@ -64,7 +64,7 @@ if(jQuery) (function($){
             }
             
             // init west panel
-            var west = $(this.baseClass + this.options.west.selector);
+            var west = $(this.baseClass + 'west');
             if(west) {
                 west.css({
                     position : 'fixed', 
@@ -80,11 +80,13 @@ if(jQuery) (function($){
                 });
             }
             
-            var center = $('.pb-layout-center');
-            center.height($(window).height() - offset);
-            $(window).resize(function(e) {
-                center.height($(this).height() - offset);
-            });
+            var center = $(this.baseClass + 'center');
+            if(center) {
+                center.height($(window).height() - offset);
+                $(window).resize(function(e) {
+                    center.height($(this).height() - offset);
+                });
+            }
         }
     });
     
@@ -92,19 +94,15 @@ if(jQuery) (function($){
     	version: "0.1",
     	defaults: {
             north : {
-                selector : 'north',
                 height : 50
             },
             east : {
-                selector : 'east',
                 width : 200
             },
             west : {
-                selector : 'west',
                 width : 200
             },
             south : {
-                selector : 'south',
                 height : 20
             }
         }
@@ -117,47 +115,41 @@ if(jQuery) (function($){
     
     Pagebakery.Element = Class.extend({
         baseClass : 'pb-element',
+
         init : function(el) {
             if(!el) return false;
             
             this.el = $(el);
             this.el.wrap('<div class="' + this.baseClass + '-wrap"></div>');
             this.wrap = this.el.parent();
-            this.tbar = $('<div class="' + this.baseClass + '-tbar"></div>').prependTo(this.wrap);
-            
-            this.editBtn = $('<a class="' + this.baseClass + '-edit">edit</a>').appendTo(this.tbar);
-            this.closeBtn = $('<a class="' + this.baseClass + '-delete">delete</a>').appendTo(this.tbar);
+            if(!this.tbar) {
+                this.tbar = this.initToolbar();
+            }
             
             this.initEvents();
         },
-        initEvents : function() {
+
+        initToolbar : function() {
             var self = this;
-/*
-            
-            this.wrap.draggable({
-                revert : 'invalid',
-                handle : this.tbar,
-                zIndex : 1001,
-                helper : 'clone',
-                scope : 'elements',
-                snap : true,
-                cursor : 'move',
-                cursorAt : {left : 5, top : 5}
+            var tbar = $('<div class="' + this.baseClass + '-tbar"></div>').prependTo(this.wrap);
+            var editBtn = $('<a class="' + this.baseClass + '-edit">edit</a>').appendTo(tbar).click(function() {
+                self.onEdit();
             });
-*/
-            
-            this.editBtn.click(function() {
-            
-            });
-            
-            this.closeBtn.click(function() {
+            var closeBtn = $('<a class="' + this.baseClass + '-delete">delete</a>').appendTo(tbar).click(function() {
                 self.onDelete();
             });
-        },
-        onEdit : function() {
             
+            return tbar;
         },
+
+        onEdit : function() {
+        },
+
         onDelete : function() {
+            this.destroy();
+        },
+
+        destroy : function() {
             this.wrap.remove();
         }
     });

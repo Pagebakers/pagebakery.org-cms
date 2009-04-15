@@ -6,12 +6,6 @@ class PagesController extends AppController {
     var $view = 'Theme';
     var $theme = 'default';
 
-    function beforeFilter() {
-        $this->Auth->allow();
-        
-        parent::beforeFilter();
-    }
-
     function index() {}
 
     function view( $slug ){
