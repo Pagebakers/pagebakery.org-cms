@@ -1,4 +1,9 @@
 <?php
+
+/**
+ * Users controller 
+ */
+
 class UsersController extends AppController {
 
     var $helpers = array('Time');
