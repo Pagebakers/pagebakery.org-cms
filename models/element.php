@@ -22,12 +22,6 @@ class Element extends AppModel {
     var $belongsTo = 'Page';
 
     /**
-     * HasOne Relationship
-     * @var string
-     */
-    var $hasOne = 'ContentType';
-
-    /**
      * Validation Rules
      * @var array
      */
