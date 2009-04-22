@@ -10,4 +10,5 @@ Router::connect('/admin/logout', array('controller' => 'users', 'action' => 'log
 // Pages routes
 Router::connect('/:slug', array('controller' => 'pages', 'action' => 'view'), array('pass' => array('slug')));
 Router::connect('/', array('controller' => 'pages', 'action' => 'view'));
+
 ?>
