@@ -24,12 +24,12 @@ class PagesController extends AppController {
         $this->layout = 'default';
         
         if( empty($slug) ) { // render the homepage
-            $page = $this->Page->find( 'first', array( 'order' => 'Page.lft ASC' ) );
+            $page = $this->Page->find( 'first', array( 'order' => 'Page.lft ASC', 'contain' => array() ));
         } else {
-            $page = $this->Page->find( 'first', array( 'conditions' => array( 'Page.slug' => $slug ) ) );
+            $page = $this->Page->find( 'first', array( 'conditions' => array( 'Page.slug' => $slug ), 'contain' => array() ) );
         }
         
-        $this->Page->read(null, $page['Page']['id']);
+        $this->Page->id = $page['Page']['id']; // Need to set the current ID in order to automatically load all elements
 
         $this->set(compact('page'));
     }

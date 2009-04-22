@@ -11,12 +11,8 @@ class Page extends AppModel {
 		'Tree'
 	);
 
-    /**
-     * hasMany Relationship
-     * @var string
-     */
-    public $hasAndBelongsToMany = array(
-        'Element'
+    public $hasMany = array(
+        'ElementsPage'
     );
 	
 }

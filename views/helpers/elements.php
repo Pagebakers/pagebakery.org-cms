@@ -31,10 +31,10 @@ class ElementsHelper extends AppHelper {
             'ElementsPage.container' => $name
         );
         $elements = $Page->ElementsPage->find('all', compact('conditions'));
-        pr($elements);
+
         $return = array();
         foreach($elements as $element) {
-            $return[] = $this->element(Inflector::underscore($element['Element']['type']), $element[$element['Element']['type']]);
+            $return[] = $this->element(Inflector::underscore($element['Element']['class']), $element[$element['Element']['class']]);
         }
         
         return sprintf('<div class="ct" id="%s">%s</div>', $name, implode("\n", $return));

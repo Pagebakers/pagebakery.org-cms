@@ -14,12 +14,8 @@
  */
 class Element extends AppModel {
 
-    /**
-     * BelongsTo Relationship
-     * @var string
-     */
-    public $hasAndBelongsToMany = array(
-        'Page'
+    public $hasMany = array(
+        'ElementsPage'
     );
 
     /**
