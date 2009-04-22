@@ -2,16 +2,14 @@
 DOWN: 
   drop_table: 
     - categories
-    - contents
-    - contents_pages
-    - contenttypes
-    - cthtml
-    - cttext
+    - elements
+    - elements_pages
     - groups
-    - menus
+    - html_elements
     - news
     - pages
     - schema_info
+    - text_elements
     - users
 UP: 
   create_table: 
@@ -31,64 +29,43 @@ UP:
         default: false
         length: 11
         - not_null
-    contents: 
+    elements: 
       name: 
         type: string
         default: false
         length: 64
         - not_null
-      contenttype_id: 
+      description: 
+        type: string
+        default: false
+        length: 
+        - not_null
+      class: 
+        type: string
+        default: false
+        length: 128
+        - not_null
+      - no_dates
+    elements_pages: 
+      element_id: 
         type: integer
         default: false
         length: 11
         - not_null
-      - no_dates
-    contents_pages: 
       page_id: 
         type: integer
         default: false
         length: 11
         - not_null
-      content_id: 
-        type: integer
-        default: false
-        length: 11
-        - not_null
-      - no_dates
-    contenttypes: 
-      name: 
+      container: 
         type: string
         default: false
         length: 64
         - not_null
-      model: 
-        type: string
-        default: false
-        length: 64
-        - not_null
-      - no_dates
-    cthtml: 
-      content_id: 
+      foreign_id: 
         type: integer
         default: false
         length: 11
-        - not_null
-      value: 
-        type: text
-        default: false
-        length: 
-        - not_null
-      - no_dates
-    cttext: 
-      content_id: 
-        type: integer
-        default: false
-        length: 11
-        - not_null
-      value: 
-        type: text
-        default: false
-        length: 
         - not_null
       - no_dates
     groups: 
@@ -103,16 +80,16 @@ UP:
         length: 20
         - not_null
       - no_dates
-    menus: 
-      title: 
-        type: string
+    html_elements: 
+      element_id: 
+        type: integer
         default: false
-        length: 64
+        length: 11
         - not_null
-      mainmenu: 
-        type: boolean
+      value: 
+        type: text
         default: false
-        length: 1
+        length: 
         - not_null
       - no_dates
     news: 
@@ -172,11 +149,6 @@ UP:
         default: false
         length: 10
         - is_null
-      menu_id: 
-        type: integer
-        default: false
-        length: 11
-        - not_null
       lft: 
         type: integer
         default: false
@@ -199,6 +171,18 @@ UP:
         length: 3
         - is_null
       - no_id
+      - no_dates
+    text_elements: 
+      element_id: 
+        type: integer
+        default: false
+        length: 11
+        - not_null
+      value: 
+        type: text
+        default: false
+        length: 
+        - not_null
       - no_dates
     users: 
       group_id: 
