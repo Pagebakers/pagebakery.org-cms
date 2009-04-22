@@ -5,13 +5,14 @@
 
 class HtmlElement extends AppModel {
 
-    var $name       = 'HtmlElement';
-
     /**
      * BelongsTo Relationship
      * @var string
      */
-    public $belongsTo  = 'Element';
+    public $belongsTo  = array(
+        'Element'
+    );
+    
 }
 
 

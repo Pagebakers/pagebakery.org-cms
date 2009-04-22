@@ -9,17 +9,18 @@
 
 class Element extends AppModel {
 
-    /**
-     * Name of the model
-     * @var string
-     */
-    var $name = 'Element';
+    public $hasOne = array(
+        'TextElement',
+        'HtmlElement'
+    );
 
     /**
      * BelongsTo Relationship
      * @var string
      */
-    var $belongsTo = 'Page';
+    public $belongsTo = array(
+        'Page'
+    );
 
     /**
      * Validation Rules

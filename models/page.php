@@ -5,8 +5,8 @@
  */
 
 class Page extends AppModel {
-	var $name = 'Page';
-	var $actsAs = array(
+
+	public $actsAs = array(
 		'Sluggable',
 		'Tree'
 	);
@@ -15,15 +15,9 @@ class Page extends AppModel {
      * hasMany Relationship
      * @var string
      */
-    public $hasMany = 'Element';
-
-    /**
-     * Validation Rules
-     * @var array
-     */
-    public $validate = array(
-		'title' => array('rule' => array('minLength', 4), 'allowEmpty' => false, 'required' => true, 'message' => 'The title is too short.'),
-	);
+    public $hasMany = array(
+        'Element'
+    );
 	
 }
 ?>

@@ -201,7 +201,6 @@ if(jQuery) (function($){
         initDropzones : function() {
             var self = this;
 
-
             this.containers = $('.ct').droppable({
                 scope : 'elements',
                 hoverClass : 'pb-accept-drop',
@@ -212,7 +211,6 @@ if(jQuery) (function($){
                     self.initElement(el);                   
                 }
             });
-
 
         },
         
@@ -239,6 +237,8 @@ if(jQuery) (function($){
                 case 'pb-element-text' :
                     new Pagebakery.Element.Text(el);
                     break;
+                default :
+                    el.remove();
             }
         }
     });

@@ -16,16 +16,21 @@ class PagesController extends AppController {
     public $view = 'Theme';
     public $theme = 'default';
 
-    function index() {}
-
 	/**
 	 * display Page using slug
 	 *
 	 * @param $slug string, contains slug of page
 	 */
-    function view( $slug ){
+    function view( $slug = '' ){
         $this->layout = 'default';
-        $this->set('page', $this->Page->find( 'first', array( 'conditions' => array( 'slug' => $slug ) ) ) );
+        
+        if( empty($slug) ) { // render the homepage
+            $page = $this->Page->find( 'first', array( 'order' => 'Page.lft ASC' ) );
+        } else {
+            $page = $this->Page->find( 'first', array( 'conditions' => array( 'Page.slug' => $slug ) ) );
+        }
+        
+        $this->set(compact('page'));
     }
 
 	/**
