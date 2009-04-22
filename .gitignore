@@ -1,5 +1,5 @@
 .DS_Store
-tmp/cache/*
+tmp/cache/cake_*
 tmp/logs/*
 config/database.php
 config/core.php
