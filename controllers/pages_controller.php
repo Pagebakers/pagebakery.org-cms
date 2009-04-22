@@ -9,10 +9,12 @@
 
 class PagesController extends AppController {
 	
-	var $uses = array('Page');
+	public $uses = array('Page');
 
-    var $view = 'Theme';
-    var $theme = 'default';
+    public $helpers = array('Elements');
+
+    public $view = 'Theme';
+    public $theme = 'default';
 
     function index() {}
 

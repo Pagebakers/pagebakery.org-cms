@@ -126,7 +126,7 @@ if(jQuery) (function($){
                 this.tbar = this.initToolbar();
             }
             
-            this.initEvents();
+            //this.initEvents();
         },
 
         initToolbar : function() {
