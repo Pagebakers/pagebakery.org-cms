@@ -1,8 +1,5 @@
 <?php if($session->check('Auth.User')) : ?>
 <div class="pb-layout-east">
-    <div class="pb-toolbar">
-        <button class="pb-save">Save</button> or <a href="#" class="pb-cancel">cancel</a> changes
-    </div>
     <h3 class="pb-panel-header">Elements</h3>
     <div class="pb-panel-body">       
         <ul id="pb-elements-toolbar">

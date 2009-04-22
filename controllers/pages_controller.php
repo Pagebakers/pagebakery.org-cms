@@ -8,12 +8,11 @@
  */
 
 class PagesController extends AppController {
-	
-	public $uses = array('Page');
 
     public $helpers = array('Elements');
 
-    public $view = 'Theme';
+    public $view = 'Page';
+    
     public $theme = 'default';
 
 	/**
@@ -30,6 +29,8 @@ class PagesController extends AppController {
             $page = $this->Page->find( 'first', array( 'conditions' => array( 'Page.slug' => $slug ) ) );
         }
         
+        $this->Page->read(null, $page['Page']['id']);
+
         $this->set(compact('page'));
     }
 

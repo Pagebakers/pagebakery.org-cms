@@ -10,7 +10,9 @@ class HtmlElement extends AppModel {
      * @var string
      */
     public $belongsTo  = array(
-        'Element'
+        'ElementsPage' => array(
+            'foreignKey' => 'foreign_id'
+        )
     );
     
 }

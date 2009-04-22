@@ -15,7 +15,7 @@ class Page extends AppModel {
      * hasMany Relationship
      * @var string
      */
-    public $hasMany = array(
+    public $hasAndBelongsToMany = array(
         'Element'
     );
 	

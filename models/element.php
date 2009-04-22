@@ -1,24 +1,24 @@
 <?php
-
 /**
- * Element Model
+ * Element
  *
- * Elements are placed into containers on the site and
- * are ordered by id ascending
+ * PHP version 5
+ *
+ * Licensed under The LGPL License
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @filesource
+ * @copyright		Copyright 2006-2009, Pagebakery
+ * @link			http://www.pagebakery.org
+ * @license			http://www.gnu.org/licenses/lgpl.html GNU LESSER GENERAL PUBLIC LICENSE
  */
-
 class Element extends AppModel {
-
-    public $hasOne = array(
-        'TextElement',
-        'HtmlElement'
-    );
 
     /**
      * BelongsTo Relationship
      * @var string
      */
-    public $belongsTo = array(
+    public $hasAndBelongsToMany = array(
         'Page'
     );
 
@@ -39,6 +39,6 @@ class Element extends AppModel {
             'message'   => 'Container name is too short!'
         )
     );
-}
 
+}
 ?>
