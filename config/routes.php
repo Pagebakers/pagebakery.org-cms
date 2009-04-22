@@ -8,6 +8,6 @@ Router::connect('/admin/login', array('controller' => 'users', 'action' => 'logi
 Router::connect('/admin/logout', array('controller' => 'users', 'action' => 'logout', 'admin' => true));
 
 // Pages routes
-Router::connect('/pages/:slug', array('controller' => 'pages', 'action' => 'view', ':slug'));
+Router::connect('/pages/:slug', array('controller' => 'pages', 'action' => 'view'), array('pass' => array('slug')));
 Router::connect('/', array('controller' => 'pages', 'action' => 'index'));
 ?>

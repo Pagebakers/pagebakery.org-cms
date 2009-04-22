@@ -7,9 +7,11 @@ class InstallerController extends Controller {
         var $layout = 'admin_clean';
 
         function beforeFilter() {
-            if($this->Auth) {
-                $this->Auth->allow();
-            }
+			if(isset($this->Auth)){
+	            if($this->Auth) {
+    	            $this->Auth->allow();
+        	    }
+			}
         }
 
         function index(){
