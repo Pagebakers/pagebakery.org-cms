@@ -30,7 +30,6 @@ class InstallerController extends Controller {
                     $connection[$k] = $data[$k];
                 }
                 $this->_writeDBConfig( $connection );
-
                 uses('model' . DS . 'connection_manager');
                 $db = ConnectionManager::getInstance();
                 $connection = $db->getDataSource('default');
@@ -52,6 +51,8 @@ class InstallerController extends Controller {
                         $User = new User();
                         $User->save( array(
                                      'username' => $data['admin_username'],
+                                     'name' => '',
+                                     'email' => '',
                                      'password' => sha1(Configure::read('Security.salt').$data['admin_password']),
                                      'group_id' => 1 ) );
                         /*$Site = new Site();
