@@ -1,3 +1,4 @@
+<div id="installer">
 <?php echo $form->create(null, array('action' => 'setup', 'class' => 'block', 'id' => 'installer-form-panel', 'class' => 'pb-inline-panel'));?>
 
     <h3 class="pb-panel-header"><span><?php __('Database Configuration');?></span></h3>
@@ -19,3 +20,4 @@
     </div>
 
 <?php echo $form->submit();?>
+</div>
