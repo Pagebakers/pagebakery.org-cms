@@ -1,5 +1,6 @@
 if(jQuery) (function($){
-
+    
+    // layout manager
     $.widget("pb.layout", {
         _init : function() {       
             // resetting the options because we need to recursively merge them...
@@ -111,22 +112,45 @@ if(jQuery) (function($){
 })(jQuery);
 
 if(jQuery) (function($){
-    var Pagebakery = {}
+
+    // set defaults
+    $.ui.dialog.defaults = $.extend($.ui.dialog.defaults, {
+        resizable : false,
+        modal : true,
+        close: function(e) { $(this).remove(); },
+        height : 'auto'
+    });
+
+    var Pagebakery = {
+        url : function(url) {
+            return Pagebakery.config.base + url.substr(1);
+        },
+
+        __ : function(text) {
+            return text; // @todo translations..
+        }
+    }
+    
+    
     
     Pagebakery.Element = Class.extend({
+        
+        type : '',
+        
+        id : null,
+        
         baseClass : 'pb-element',
 
-        init : function(el) {
+        init : function(el) {            
             if(!el) return false;
             
-            this.el = $(el);
+            this.el = el;
+            
             this.el.wrap('<div class="' + this.baseClass + '-wrap"></div>');
             this.wrap = this.el.parent();
             if(!this.tbar) {
                 this.tbar = this.initToolbar();
             }
-            
-            //this.initEvents();
         },
 
         initToolbar : function() {
@@ -143,18 +167,33 @@ if(jQuery) (function($){
         },
 
         onEdit : function() {
+            var self = this;
+            
+            var dialog = $('<div id="pb-element-edit-dialog"></div>').appendTo('body')
+                .load(Pagebakery.url('/admin/elements/text/load'))
+                .dialog();
         },
 
         onDelete : function() {
-            this.destroy();
+            var self = this;
+            $.ajax({
+                url : Pagebakery.url('/admin/pages/unbindElement.json'),
+                type : 'POST',
+                data : {element_id: source.attr('href').replace('#', ''), page_id: Pagebakery.data.Page.id},
+                success : function(msg) {
+                    this.destroy();
+                }
+            });
         },
 
         destroy : function() {
             this.wrap.remove();
+            delete this;
         }
     });
     
     Pagebakery.Element.Text = Pagebakery.Element.extend({
+        type : 'text'
     });
 
     
@@ -206,9 +245,20 @@ if(jQuery) (function($){
                 hoverClass : 'pb-accept-drop',
                 drop : function(e, ui) {
                     var source = ui.draggable.find('a:first');
-                    // @todo load default element data using source.attr('href')
-                    var el = $('<div class="' + source.attr('class') + '"></div>').appendTo($(this));
-                    self.initElement(el);                   
+                    var el = self.initElement(source.attr('class'));
+                    if(el) {
+                        el.wrap.appendTo($(this));
+                        $.ajax({
+                            url : Pagebakery.url('/admin/pages/bindElement.json'),
+                            type : 'POST',
+                            data : {element_id: source.attr('href').replace('#', ''), page_id: Pagebakery.data.Page.id},
+                            success : function(msg) {
+                            },
+                            error : function() {
+                                el.destroy();
+                            }
+                        });
+                    }          
                 }
             });
 
@@ -233,12 +283,14 @@ if(jQuery) (function($){
         },
         
         initElement : function(el) {
+            if(typeof el !== 'object') {
+                el = $('<div class="' + el + '"></div>');
+            }
             switch(el.attr('class')) {
                 case 'pb-element-text' :
-                    new Pagebakery.Element.Text(el);
-                    break;
+                    return new Pagebakery.Element.Text(el);
                 default :
-                    el.remove();
+                    return false;
             }
         }
     });

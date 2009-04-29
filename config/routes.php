@@ -1,5 +1,6 @@
 <?php
-
+Router::parseExtensions('json', 'js');
+    
 // Dashboard route
 Router::connect('/admin' , array('controller' => 'dashboard', 'action' => 'index', 'admin' => true));
 
