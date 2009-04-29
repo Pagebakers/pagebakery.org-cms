@@ -17,8 +17,6 @@
 App::import('View', 'Theme');
 class PageView extends ThemeView {
     
-    public $theme = 'default';
-    
     public $helpers = array(
         'Html',
         'Elements'

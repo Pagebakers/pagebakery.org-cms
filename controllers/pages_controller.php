@@ -13,6 +13,8 @@ class PagesController extends AppController {
 
     public $helpers = array('Elements');
     
+    public $theme = 'default';
+    
 	/**
 	 * display Page using slug
 	 *
