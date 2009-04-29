@@ -9,13 +9,10 @@
 
 class PagesController extends AppController {
 
-    public $helpers = array('Elements');
-
-    public $view = 'Page';
-    
-    public $theme = 'default';
-
     public $uses = array('Page', 'Element');
+
+    public $helpers = array('Elements');
+    
 	/**
 	 * display Page using slug
 	 *
@@ -35,28 +32,6 @@ class PagesController extends AppController {
 
         $this->set(compact('page'));
     }
-
-	/**
-	 * get titles of all pages
-	 */
-	function getPageTitles() {
-		$pages = $this->Page->generatetreelist(null, null, null, '--');
-		$this->set('pages', $pages);
-	}
-
-	/**
-	 * savePage action
-	 */
-	function savePage() {
-		if($this->data) {
-			if($this->Page->save($this->data)){
-				$this->Session->setFlash(__('Page saved', true));
-				$this->redirect(array('action' => 'edit', 'admin' => true, $this -> Page -> id));
-			}else{
-				$this->Session->setFlash(__('Page not saved', true));
-			}
-		}
-	}
 
 	function admin_index() {
 
