@@ -61,7 +61,7 @@ ini_set('display_errors', 1);
  *
  */
 	if (!defined('CAKE_CORE_INCLUDE_PATH')) {
-		define('CAKE_CORE_INCLUDE_PATH', '/Users/contact/Projects/Cake_1.2');
+		define('CAKE_CORE_INCLUDE_PATH', ROOT);
 	}
 
 /**

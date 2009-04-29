@@ -10,10 +10,12 @@ class User extends AppModel {
 				'rule' => 'isUnique'
 			)
         ),
+        'name' => 'notEmpty',
 		'email' => array(
 			'validEmail' => array(
 				'rule' => 'email'
 			),
+            'notEmpty',
 			'uniqueEmail' => array(
 				'rule' => 'isUnique'
 			)
@@ -22,12 +24,12 @@ class User extends AppModel {
             'rule' => array('minLength', 4)
         ),
         'passwd2' => array(
-			'minLength' => array(            
+			'minLength' => array(
 				'rule' => array('minLength', 4)
 			),
-			'comparePass' => array(            
+			'comparePass' => array(
 				'rule' => array('comparePassword')
-			)			
+			)
         )
     );
 
@@ -39,7 +41,7 @@ class User extends AppModel {
 				unset($this->data['User']['passwd2']);
 			}
 		}
-        return true; 
+        return true;
     }
 
     public function beforeSave() {
@@ -49,7 +51,7 @@ class User extends AppModel {
         }
         return true;
     }
-	
+
     public function comparePassword(&$data) {
         return $data['passwd2'] == $this->data['User']['passwd'];
     }

@@ -9,7 +9,8 @@
         if( $tmpFolderPermissions )
             echo '<strong class="ok">' . sprintf( __('OK, "%s" is writable', true ), TMP ) . '</strong>';
         else
-            echo '<strong class="error">' . sprintf( __('Your tmp folder is not writable - please give write permissions ( 0777 ) to "%s".', true), TMP ) . '</strong>';
+            // recursive permissions are needed in some cases
+            echo '<strong class="error">' . sprintf( __('Your tmp folder is not writable - please give (recursive) write permissions ( 0777 ) to "%s".', true), TMP ) . '</strong>';
         ?>
         </p>
         <p>
