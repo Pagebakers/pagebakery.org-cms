@@ -22,6 +22,7 @@ class PagesController extends AppController {
 	 * @param $slug string, contains slug of page
 	 */
     function view( $slug = '' ){
+        $this->view = 'Page';
         $this->layout = 'default';
         
         if( empty($slug) ) { // render the homepage
@@ -86,7 +87,7 @@ class PagesController extends AppController {
         $elements = $this->Element->find('all');
 
         $this->set(compact('elements'));
-        $this->layout = 'default';
+
         $this->render('view');
 	}
 
