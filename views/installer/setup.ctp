@@ -1,5 +1,6 @@
 <div id="installer">
-<?php echo $form->create(null, array('action' => 'setup', 'class' => 'block', 'id' => 'installer-form-panel', 'class' => 'pb-inline-panel'));?>
+<h3><span><?php __('Pagebakery.org installation - Step 2' );?></span></h3>
+<?php echo $form->create(null, array('action' => 'setup', 'id' => 'installer-form-panel', 'class' => 'pb-inline-panel'));?>
 
     <h3 class="pb-panel-header"><span><?php __('Database Configuration');?></span></h3>
     <div class="pb-panel-body">

@@ -1,6 +1,7 @@
-<div class="block step1" id="installer">
-    <h3><span><?php __('Hello and Welcome to Pagebakery!' );?></span></h3>
-    <div class="inner-block">
+<div class="pb-inline-panel" id="installer">
+    <h3><span><?php __('Pagebakery.org installation - Step 1' );?></span></h3>
+    <h3 class="pb-panel-header"><span><?php __('Requirements');?></span></h3>
+    <div class="pb-panel-body">
         <p><?php __('This is the installation module which will ask you a few questions in order to help you set up your brand new CMS.' );?></p>
         <p><?php __('First, we need to check whether everything with your folder structure is OK');?></p>
         <hr>
