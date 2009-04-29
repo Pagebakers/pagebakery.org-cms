@@ -27,9 +27,11 @@ class ElementsPage extends AppModel {
      */
     public function afterFind($results) {
         foreach($results as &$result) {
-            $model =& ClassRegistry::init($result['Element']['class']);
-            if(is_object($model)) {
-                $result = am($result, $model->find('first', array('conditions' => array($result['Element']['class'] . '.id' => $result['ElementsPage']['foreign_id']))));
+            if(isset($result['Element'])) {
+                $model =& ClassRegistry::init($result['Element']['class']);
+                if(is_object($model)) {
+                    $result = am($result, $model->find('first', array('conditions' => array($result['Element']['class'] . '.id' => $result['ElementsPage']['foreign_id']))));
+                }
             }
         }
         

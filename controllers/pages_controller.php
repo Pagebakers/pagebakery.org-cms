@@ -15,6 +15,7 @@ class PagesController extends AppController {
     
     public $theme = 'default';
 
+    public $uses = array('Page', 'Element');
 	/**
 	 * display Page using slug
 	 *
@@ -79,18 +80,14 @@ class PagesController extends AppController {
 	 *
 	 * @param $id int, contains id of page to edit 
 	 */
-	function admin_edit($id = null) {
-		$this->savePage();
+	function admin_edit($slug = '') {
+        $this->view($slug);
 
-		if($id) {
-			$page = $this->Page->findById($id);
-			$this->data = $page;
+        $elements = $this->Element->find('all');
 
-			// Get pagetitles for parent_id
-			$this->getPageTitles();
-		}else{
-			$this->redirect(array('action' => 'index', 'admin' => true));
-		}
+        $this->set(compact('elements'));
+        $this->layout = 'default';
+        $this->render('view');
 	}
 
 	/**

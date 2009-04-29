@@ -1,5 +1,11 @@
 <?php if($session->check('Auth.User')) : ?>
 <div class="pb-layout-east">
+    <?php
+
+    pr($this->viewVars);
+
+    ?>
+
     <h3 class="pb-panel-header">Elements</h3>
     <div class="pb-panel-body">       
         <ul id="pb-elements-toolbar">
