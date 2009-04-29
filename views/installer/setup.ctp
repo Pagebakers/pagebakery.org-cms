@@ -5,10 +5,10 @@
     <?php echo $form->input('driver', array('options' => $DBDrivers, 'label' => __('DB Driver', true))); ?>
     <?php echo $form->input('host', array( 'value' => 'localhost' ) ); ?>
     <?php echo $form->input('database'); ?>
-    <span id="additional_params">
+    <!-- <span id="additional_params"> -->
     <?php echo $form->input('login'); ?>
     <?php echo $form->input('password'); ?>
-    </span>
+    <!-- </span> -->
     <?php echo $form->input('prefix', array( 'value' => 'pb_' )); ?>
 
     <h4><?php __('Administrator');?></h4>
@@ -18,7 +18,7 @@
     <?php echo $form->submit();?>
     </div>
 </div>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
     function $(el){
         return document.getElementById( el );
     }
@@ -33,4 +33,4 @@
     }
 
     $('driver').onchange();
-</script>
+</script> -->

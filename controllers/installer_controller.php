@@ -51,8 +51,8 @@ class InstallerController extends Controller {
                         $User = new User();
                         $User->save( array(
                                      'username' => $data['admin_username'],
-                                     'name' => '',
-                                     'email' => '',
+                                     'name' => $data['admin_name'],
+                                     'email' => $data['admin_email'],
                                      'password' => sha1(Configure::read('Security.salt').$data['admin_password']),
                                      'group_id' => 1 ) );
                         /*$Site = new Site();
@@ -98,8 +98,8 @@ class InstallerController extends Controller {
                 $DBDrivers['mysqli'] = 'MySQLi';
             if( function_exists( 'pg_connect' ) )
                 $DBDrivers['postgres'] = 'PostgreSQL';
-            if( function_exists( 'sqlite_open' ) )
-                $DBDrivers['sqlite'] = 'SQLite';
+            /*if( class_exists( 'SQLite3' ) )
+                $DBDrivers['sqlite3'] = 'SQLite3';*/
             if( function_exists( 'ibase_connect' ) )
                 $DBDrivers['firebird'] = 'InterBase/Firebird';
 

@@ -181,7 +181,7 @@ class Migrations{
         $aPrimary = array();
         $aPrimary['column'] = array();
 
-        $sSql = 'CREATE TABLE  '.$this->getPrefix().$sTable.'('."\n\t";
+        $sSql = 'CREATE TABLE IF NOT EXISTS '.$this->getPrefix().$sTable.'('."\n\t";
 
         //Flag no_id - autogenerate an id field unless it is explicitly stated this is not needed
         if( !in_array( 'no_id', $aFields ) ){
@@ -227,7 +227,7 @@ class Migrations{
         $sSql .= ');';
         return $sSql;
     }
-    
+
     /**
     * Generate a SQL array for merging a table. If no_id and/or no_dates is specified, it will autogenerate an id field and dates fields ( created, modified )
     *
@@ -239,12 +239,12 @@ class Migrations{
         if( !in_array( $this->getPrefix().$sTable, $this->oDb->listSources() ) ){
             return array( $this->create_table( $sTable, $aFields ) );
         }
-        
+
         //table does not exist - merge it
         $aQueries = array();
         $aIndexes = array();
         $aCurrentFields = $this->oDb->describe( new Model( false, $sTable ) );
-        
+
         //no_id and no_dates first
 
         //there should be an id according to the new schema
@@ -285,25 +285,25 @@ class Migrations{
                 else{
                     $aFields[ $sCurrentFieldName ]['null'] = true;
                 }
-                
+
                 //properties are different
                 if( $aCurrentFieldProperties != $aFields[ $sCurrentFieldName ] ){
                     $aQueries[] = $this->alter_field( $sTable, array( $sCurrentFieldName => $aFields[ $sCurrentFieldName ] ) );
                 }
-                
+
                 //keys ( except for primary! ) - add keys only if they don't already exist
                 $aKeys = array();
-                if( !empty( $aFields[ $sCurrentFieldName ]['unique'] ) && 
+                if( !empty( $aFields[ $sCurrentFieldName ]['unique'] ) &&
 						( !isset( $aCurrentFieldProperties['key'] ) || $aCurrentFieldProperties['key'] != "unique" )
 						){
                     $aQueries[] = $this->add_key( $sTable, array( 'unique' => $sCurrentFieldName ) );
                 }
-                if( !empty( $aFields[ $sCurrentFieldName ]['index'] ) && 
+                if( !empty( $aFields[ $sCurrentFieldName ]['index'] ) &&
 						( !isset( $aCurrentFieldProperties['key'] ) || $aCurrentFieldProperties['key'] != "index" )
 						){
                     $aQueries[] = $this->add_key( $sTable, array( 'index' => $sCurrentFieldName ) );
                 }
-                        
+
                 unset( $aFields[ $sCurrentFieldName ] );
             }
         }
@@ -319,7 +319,7 @@ class Migrations{
                 $aQueries[] = $this->add_key( $sTable, array( 'index' => $sFieldName ) );
             }
         }
-        
+
         //there should be dates fields according to the new schema
         if( !in_array( 'no_dates', $aFields ) ){
             //but there is no such one in the current schema
@@ -334,10 +334,10 @@ class Migrations{
             $aQueries[] = $this->drop_field( $sTable, 'created' );
             $aQueries[] = $this->drop_field( $sTable, 'modified' );
         }
-                
+
         return $aQueries;
     }
-        
+
     /**
     * Generate SQL for rename table
     */
@@ -389,7 +389,7 @@ class Migrations{
         $sSql = trim( $sSql, ", \n\t" );
         return $sSql;
     }
-    
+
     /**
     * Generate SQL for keys ( index and unique )
     */
@@ -399,7 +399,7 @@ class Migrations{
         $sSql = 'ALTER TABLE '.$this->getPrefix().$sTable.' ADD '.$this->oDb->buildIndex( array( $sColumn => array( $sType => true, 'column' => $sColumn ) ) );
         return $sSql;
     }
-        
+
     /**
     * If there is a query - just return it
     */
