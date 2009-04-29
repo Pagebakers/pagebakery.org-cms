@@ -1,17 +1,17 @@
 <?php if($session->check('Auth.User')) : ?>
 <div class="pb-layout-east">
-    <?php
-
-    pr($this->viewVars);
-
-    ?>
-
     <h3 class="pb-panel-header">Elements</h3>
     <div class="pb-panel-body">       
         <ul id="pb-elements-toolbar">
-            <li class="pb-element"><a href="#" class="pb-element-html">HTML</a></li>
-            <li class="pb-element"><a href="#" class="pb-element-text">Text</a></li>
-            <li class="pb-element"><a href="#" class="pb-element-image">Image</a></li>
+            <?php
+
+            foreach($this->viewVars['elements'] as $element) {
+                print
+                '<li class="pb-element">'.
+                '   <a href="#" class="pb-element-'.strtolower($element['Element']['class']).'">'.$element['Element']['name'].'</a>'.
+                '</li>';
+            }
+            ?>
             <li class="pb-element-group">
                 <h4 class="pb-element-group-video">Video</h4>
                 <ul>
