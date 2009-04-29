@@ -14,6 +14,9 @@
     <h4><?php __('Administrator');?></h4>
     <?php echo $form->input('admin_username', array( 'value' => 'admin' ) ); ?>
     <?php echo $form->input('admin_password', array('type' => 'password')); ?>
+    <?php echo $form->input('admin_name', array( 'value' => 'Your Name' ) ); ?>
+    <?php echo $form->input('admin_email', array( 'value' => 'Your e-mail' ) ); ?>
+
 
     <?php echo $form->submit();?>
     </div>
