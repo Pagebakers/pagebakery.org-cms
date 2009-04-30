@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Users controller 
+ * Users controller
  */
 
 class UsersController extends AppController {
@@ -10,7 +10,7 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        
+
         $this->addBreadcrumb(array(__('Users', true), array('controller' => 'users', 'action' => 'index')));
     }
 
@@ -28,6 +28,9 @@ class UsersController extends AppController {
         if( !empty($this->data) ) {
             if( $this->Auth->login($this->data) ) {
                 $this->redirect(array('controller' => 'dashboard', 'action' => 'index'));
+            }
+            else{
+                $this->Session->setFlash( __('Username and/or password don\'t match', true) );
             }
         }
         $this->layout = 'admin_clean';
@@ -54,7 +57,7 @@ class UsersController extends AppController {
             $this->Session->setFlash(__('Invalid user id', true));
             $this->redirect(array('action' => 'index'));
         }
-        
+
         if( empty($this->data) ) {
             $this->data = $this->User->read(null, $id);
         } else {
@@ -63,7 +66,7 @@ class UsersController extends AppController {
                 $this->Session->setFlash(__('User successfully saved', true));
             }
         }
-        
+
         $this->addBreadcrumb(array($this->data['User']['username'], array('controller' => 'users', 'action' => 'index', $this->data['User']['id'])));
     }
 
