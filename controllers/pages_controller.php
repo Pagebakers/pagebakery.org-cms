@@ -116,8 +116,18 @@ class PagesController extends AppController {
      * delete the relationship between page and element
 	 */
 	function admin_unbindElement($id = null) {
-        // delete relationship
-        $this->Page->ElementsPage->delete($id);
+
+        // load elements_page
+        $relation = $this->ElementsPage->read(null,$id);
+
+        // get class of foreign id
+        $class = $relation['Element']['class'];
+
+        if ($this->$class->del($relation['ElementsPage']['foreign_id']) &&
+            $this->Page->ElementsPage->delete($id)){
+            return true;
+        }
+        return false;
 	}
 
 }
