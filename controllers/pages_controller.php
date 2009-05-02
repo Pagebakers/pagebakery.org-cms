@@ -79,12 +79,6 @@ class PagesController extends AppController {
         $result = array('success' => false);
 
         /**
-         * Simulate input shit of @TODO
-         */
-        $this->params['form']['element_id'] = 1;
-        $this->params['form']['container']  = 'content';
-
-        /**
          * Load element to see what class/model is used
          */
         $this->Element->recursive = 0;
@@ -108,7 +102,7 @@ class PagesController extends AppController {
         /**
          * Save relationship
          */
-        if($this->Page->ElementsPage->save($this->params['form'])) {
+        if($this->Page->ElementsPage->save($this->data['ElementsPage'])) {
             $result['success'] = true;
             $result['id'] = $this->Page->ElementsPage->id;
         }
