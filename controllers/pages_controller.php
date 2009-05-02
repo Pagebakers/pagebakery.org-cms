@@ -9,7 +9,7 @@
 
 class PagesController extends AppController {
 
-    public $uses = array('Page', 'Element');
+    public $uses = array('Page', 'Element', 'TextElement');
 
     public $helpers = array('Elements');
     
@@ -69,10 +69,25 @@ class PagesController extends AppController {
 	}
 
 	/**
-	 * bind Element to Page
+	 * bind Element to a Page
+     *
+     * saves relation between page and element
+     *
+     * @TODO:   missing container, element_id data in POST request
 	 */
 	function admin_bindElement() {
+        // save relationship
+        $this->Page->ElementsPage->save($this->params['form']);
+	}
 
+	/**
+	 * unbind Element from a Page
+     *
+     * delete the relationship between page and element
+	 */
+	function admin_unbindElement($id = null) {
+        // delete relationship
+        $this->Page->ElementsPage->delete($id);
 	}
 
 }

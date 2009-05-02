@@ -8,7 +8,7 @@
             foreach($this->viewVars['elements'] as $element) {
                 print
                 '<li class="pb-element">'.
-                '   <a href="#" class="pb-element-'.strtolower($element['Element']['class']).'">'.$element['Element']['name'].'</a>'.
+                '   <a href="#" class="pb-element-'.strtolower($element['Element']['name']).'">'.$element['Element']['name'].'</a>'.
                 '</li>';
             }
             ?>
