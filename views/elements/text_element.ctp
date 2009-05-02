@@ -1,1 +1,1 @@
-<?php echo $data['value']; ?>
+<?php echo $data['TextElement']['value']; ?>

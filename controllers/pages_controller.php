@@ -76,8 +76,14 @@ class PagesController extends AppController {
      * @TODO:   missing container, element_id data in POST request
 	 */
 	function admin_bindElement() {
-        // save relationship
-        $this->Page->ElementsPage->save($this->params['form']);
+        $result = array('success' => false);
+        
+        if($this->Page->ElementsPage->save($this->params['form'])) {
+            $result['success'] = true;
+            $result['id'] = $this->Page->ElementsPage->id;
+        }
+        
+        $this->set(compact('result'));
 	}
 
 	/**
@@ -86,8 +92,13 @@ class PagesController extends AppController {
      * delete the relationship between page and element
 	 */
 	function admin_unbindElement($id = null) {
-        // delete relationship
-        $this->Page->ElementsPage->delete($id);
+        $result = array('success' => false);
+        
+        if($this->Page->ElementsPage->delete($id)) {
+            $result['success'] = true;
+        }
+        
+        $this->set(compact('result'));
 	}
 
 }

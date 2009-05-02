@@ -179,7 +179,7 @@ if(jQuery) (function($){
             $.ajax({
                 url : Pagebakery.url('/admin/pages/unbindElement.json'),
                 type : 'POST',
-                data : {element_id: source.attr('href').replace('#', ''), page_id: Pagebakery.data.Page.id},
+                data : {element_id: this.id, page_id: Pagebakery.data.Page.id},
                 success : function(msg) {
                     this.destroy();
                 }
@@ -232,8 +232,8 @@ if(jQuery) (function($){
                     zIndex : 1000,
                     helper : 'clone',
                     scope : 'elements'
-                    // @todo fix connectToSortable : '.ct' and remove droppable from .ct
                 });
+                $(this).disableSelection();
             });
         },
         
@@ -245,23 +245,31 @@ if(jQuery) (function($){
                 hoverClass : 'pb-accept-drop',
                 drop : function(e, ui) {
                     var source = ui.draggable.find('a:first');
-                    var el = self.initElement(source.attr('class'));
-                    if(el) {
-                        el.wrap.appendTo($(this));
+                    var element = self.initElement(source.attr('class'));
+                    var id =  source.attr('href').replace('#', '');
+                    
+                    if(element) {
+                        element.wrap.appendTo($(this));
                         $.ajax({
                             url : Pagebakery.url('/admin/pages/bindElement.json'),
                             type : 'POST',
-                            data : {element_id: source.attr('href').replace('#', ''), page_id: Pagebakery.data.Page.id},
+                            data : {element_id: id, page_id: Pagebakery.data.Page.id, container : $(this).attr('id')},
                             success : function(msg) {
+                                var json = $.evalJSON(msg);
+                                if(json.success) {
+                                    element.el.attr('id', 'pb-element-' + json.id);
+                                } else {
+                                    element.destroy();
+                                }
                             },
                             error : function() {
-                                el.destroy();
+                                element.destroy();
                             }
                         });
                     }          
                 }
-            });
 
+            });
         },
         
         initElements : function() {
@@ -273,7 +281,11 @@ if(jQuery) (function($){
             
             this.containers.sortable({
                 handle : '.pb-element-tbar',
-                connectWith : $('.ct')
+                connectWith : $('.ct'),
+                update : function(e, ui) {
+                    var source = ui.draggable;
+                    console.log(ui);
+                }
             });
 
             var elements = this.containers.find('[class^="pb-element"]');
@@ -295,7 +307,6 @@ if(jQuery) (function($){
         }
     });
 
-    
     window.Pagebakery = Pagebakery;
     
 })(jQuery);

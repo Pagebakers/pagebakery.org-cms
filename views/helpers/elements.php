@@ -34,7 +34,7 @@ class ElementsHelper extends AppHelper {
 
         $return = array();
         foreach($elements as $element) {
-            $return[] = $this->element(Inflector::underscore($element['Element']['class']), $element[$element['Element']['class']]);
+            $return[] = $this->element(Inflector::underscore($element['Element']['class']), $element);
         }
         
         return sprintf('<div class="ct" id="%s">%s</div>', $name, implode("\n", $return));
@@ -50,7 +50,7 @@ class ElementsHelper extends AppHelper {
         $View =& ClassRegistry::getObject('view');
         $element = $View->element($type, array('data' => $data));
         
-        return sprintf('<div class="pb-element-%s">%s</div>', str_replace('_element', '', $type), $element); 
+        return sprintf('<div id="pb-element-%s" class="pb-element-%s">%s</div>', $data['ElementsPage']['id'], str_replace('_element', '', $type), $element); 
     }
 
 }
