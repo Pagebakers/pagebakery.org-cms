@@ -76,6 +76,7 @@ class PagesController extends AppController {
      * @TODO:   missing container, element_id data in POST request
 	 */
 	function admin_bindElement() {
+        $result = array('success' => false);
 
         /**
          * Simulate input shit of @TODO
@@ -107,7 +108,12 @@ class PagesController extends AppController {
         /**
          * Save relationship
          */
-        $this->Page->ElementsPage->save($this->data);
+        if($this->Page->ElementsPage->save($this->params['form'])) {
+            $result['success'] = true;
+            $result['id'] = $this->Page->ElementsPage->id;
+        }
+        
+        $this->set(compact('result'));
 	}
 
 	/**
@@ -116,6 +122,7 @@ class PagesController extends AppController {
      * delete the relationship between page and element
 	 */
 	function admin_unbindElement($id = null) {
+        $result = array('success' => false);
 
         // load elements_page
         $relation = $this->ElementsPage->read(null,$id);
@@ -123,11 +130,11 @@ class PagesController extends AppController {
         // get class to delete foreign id
         $class = $relation['Element']['class'];
 
-        if ($this->$class->del($relation['ElementsPage']['foreign_id']) &&
-            $this->Page->ElementsPage->del($id)){
-            return true;
+        if ($this->$class->del($relation['ElementsPage']['foreign_id']) && $this->Page->ElementsPage->del($id)){
+            $result['success'] = true;
         }
-        return false;
+        
+        $this->set(compact('result'));
 	}
 
 }

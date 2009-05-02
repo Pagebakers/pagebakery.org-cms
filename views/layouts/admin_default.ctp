@@ -51,8 +51,8 @@
     
         echo $javascript->link(array(
             'jquery.class',
-    		'jquery-1.3.1',
-    		'jquery.ui/jquery.ui.all',
+    		'jquery-1.3.2.min',
+    		'jquery-ui-1.7.1.min',
     		'pagebakery'
     	));
     ?>
