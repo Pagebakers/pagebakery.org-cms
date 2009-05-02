@@ -98,10 +98,10 @@ class PagesController extends AppController {
          * Collect data
          */
         $this->data['ElementsPage'] = array(
-            'container'     => 'content',
+            'container'     => $this->params['form']['container'],
             'element_id'    => $element['Element']['id'],
             'page_id'       => $this->params['form']['page_id'],
-            'foreign_id'    => $this->params['form']['container']
+            'foreign_id'    => $foreign_id
         );
 
         /**

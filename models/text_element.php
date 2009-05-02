@@ -14,9 +14,8 @@ class TextElement extends AppModel {
         $this->id = null;
         if ($this->save($data)){
             return $this->getLastInsertId();
-        } else {
-            $this->log('failed creating dummy');
         }
+        return false;
     }
 
 }
