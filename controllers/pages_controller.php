@@ -76,8 +76,38 @@ class PagesController extends AppController {
      * @TODO:   missing container, element_id data in POST request
 	 */
 	function admin_bindElement() {
-        // save relationship
-        $this->Page->ElementsPage->save($this->params['form']);
+
+        /**
+         * Simulate input shit of @TODO
+         */
+        $this->params['form']['element_id'] = 1;
+        $this->params['form']['container']  = 'content';
+
+        /**
+         * Load element to see what class/model is used
+         */
+        $this->Element->recursive = 0;
+        $element = $this->Element->read(array('id','class'),$this->params['form']['element_id']);
+
+        /**
+         * Create dummy record in table
+         */
+        $foreign_id = $this->$element['Element']['class']->create_dummy();
+
+        /**
+         * Collect data
+         */
+        $this->data['ElementsPage'] = array(
+            'container'     => 'content',
+            'element_id'    => $element['Element']['id'],
+            'page_id'       => $this->params['form']['page_id'],
+            'foreign_id'    => $this->params['form']['container']
+        );
+
+        /**
+         * Save relationship
+         */
+        $this->Page->ElementsPage->save($this->data);
 	}
 
 	/**
