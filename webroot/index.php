@@ -51,8 +51,6 @@
  * outside of the distributed directory structure.
  */
 	if (!defined('CAKE_CORE_INCLUDE_PATH')) {
-		//define ('CAKE_CORE_INCLUDE_PATH', 'FULL PATH TO DIRECTORY WHERE CAKE CORE IS INSTALLED. DO NOT ADD A TRAILING DIRECTORY SEPARATOR');
-		//You should also use the DS define to separate your directories
 		define('CAKE_CORE_INCLUDE_PATH', ROOT);
 	}
 ///////////////////////////////
