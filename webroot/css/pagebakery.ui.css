@@ -150,6 +150,19 @@ form h4 {
 
 }
 
+/* lost password */
+#lostpassword-form-panel {
+    width : 350px;
+    height : 200px;
+    position : absolute;
+    left : 50%;
+    top : 50%;
+    margin : -100px 0 0 -175px;
+}
+#lostpassword-form-panel fieldset {
+
+}
+
 /* installer */ 
 #installer {
     margin : 100px auto 0 auto;
