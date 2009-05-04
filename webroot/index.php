@@ -79,7 +79,7 @@
 		return;
 	} else {
         //PB is not installed - run installer
-		if( !( file_exists( CONFIGS . 'database.php' ) && filesize( CONFIGS . 'database.php' ) > 0 ) ){
+		if( !( file_exists( CONFIGS . 'database.php' ) && count( file( CONFIGS . 'database.php', FILE_SKIP_EMPTY_LINES ) ) > 3 ) ){
             if( !isset( $_GET['url'] ) || strpos( $_GET['url'], 'installer' ) === false )
                 $url = array( 'controller' => 'installer', 'action' => 'index' );
 		}
