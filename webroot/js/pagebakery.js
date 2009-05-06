@@ -169,7 +169,12 @@ if(jQuery) (function($){
             
             return tbar;
         },
-
+        
+        setId : function(id) {
+            this.id = id;
+            this.el.attr('id', id);
+        },
+        
         onEdit : function() {
             var self = this;
             
@@ -264,7 +269,7 @@ if(jQuery) (function($){
                             success : function(msg) {
                                 var json = $.evalJSON(msg);
                                 if(json.success) {
-                                    element.el.attr('id', 'pb-element-' + json.id);
+                                    element.setId(json.id);
                                 } else {
                                     element.destroy();
                                 }
@@ -292,6 +297,7 @@ if(jQuery) (function($){
                 update : function(e, ui) {
                     var source = ui.draggable;
                     console.log(ui);
+                    console.log(e);
                 }
             });
 
