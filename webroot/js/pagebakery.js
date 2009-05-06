@@ -146,6 +146,10 @@ if(jQuery) (function($){
             
             this.el = el;
             
+            if(!this.id) {
+                this.id = el.attr('id').replace('pb-element-', '');
+            }
+            
             this.el.wrap('<div class="' + this.baseClass + '-wrap"></div>');
             this.wrap = this.el.parent();
             if(!this.tbar) {
@@ -159,13 +163,18 @@ if(jQuery) (function($){
             var editBtn = $('<a class="' + this.baseClass + '-edit">edit</a>').appendTo(tbar).click(function() {
                 self.onEdit();
             });
-            var closeBtn = $('<a class="' + this.baseClass + '-delete">delete</a>').appendTo(tbar).click(function() {
+            var deleteBtn = $('<a class="' + this.baseClass + '-delete">delete</a>').appendTo(tbar).click(function() {
                 self.onDelete();
             });
             
             return tbar;
         },
-
+        
+        setId : function(id) {
+            this.id = id;
+            this.el.attr('id', id);
+        },
+        
         onEdit : function() {
             var self = this;
             
@@ -179,9 +188,12 @@ if(jQuery) (function($){
             $.ajax({
                 url : Pagebakery.url('/admin/pages/unbindElement.json'),
                 type : 'POST',
-                data : {element_id: this.id, page_id: Pagebakery.data.Page.id},
+                data : {id: this.id},
                 success : function(msg) {
-                    this.destroy();
+                    var json = $.evalJSON(msg);
+                    if(json.success) {
+                        self.destroy();
+                    }
                 }
             });
         },
@@ -194,6 +206,10 @@ if(jQuery) (function($){
     
     Pagebakery.Element.Text = Pagebakery.Element.extend({
         type : 'text'
+    });
+
+    Pagebakery.Element.Html = Pagebakery.Element.extend({
+        type : 'html'
     });
 
     
@@ -257,7 +273,7 @@ if(jQuery) (function($){
                             success : function(msg) {
                                 var json = $.evalJSON(msg);
                                 if(json.success) {
-                                    element.el.attr('id', 'pb-element-' + json.id);
+                                    element.setId(json.id);
                                 } else {
                                     element.destroy();
                                 }
@@ -285,6 +301,7 @@ if(jQuery) (function($){
                 update : function(e, ui) {
                     var source = ui.draggable;
                     console.log(ui);
+                    console.log(e);
                 }
             });
 
@@ -301,6 +318,8 @@ if(jQuery) (function($){
             switch(el.attr('class')) {
                 case 'pb-element-text' :
                     return new Pagebakery.Element.Text(el);
+                case 'pb-element-html' :
+                    return new Pagebakery.Element.Html(el);
                 default :
                     return false;
             }
