@@ -6,12 +6,68 @@
 
 class UsersController extends AppController {
 
-    var $helpers = array('Time');
+    public $helpers = array('Time');
 
     public function beforeFilter() {
         parent::beforeFilter();
 
         $this->addBreadcrumb(array(__('Users', true), array('controller' => 'users', 'action' => 'index')));
+    }
+
+    public function lost() {
+        $this->pageTitle = __('Lost your password?', true);
+        if( !empty($this->data['User']['email']) ) {
+            if( $user = $this->User->findByEmail($this->data['User']['email'], array('id', 'email', 'name')) ) {
+                if( !empty($user['User']['lost_string']) ) {
+                    $this->Session->setFlash(__('There already has been sent a request to reset your password, please check your mailbox.', true));
+                    $this->redirect('/');
+                }
+            
+                App::import('String');
+                $user['User']['lost_string'] = String::uuid();
+                
+                if($this->User->save($user)) {                
+                    $this->Email->to = $user['User']['email'];
+                    $this->Email->subject = __('Reset your password', true);
+                    $this->Email->from = Configure::read('Pagebakery.noreply');
+                    $this->Email->template = 'lost_password';
+                    $this->Email->sendAs = 'text';
+                    $this->set(compact('user'));
+                    $this->Email->send();
+                    
+                    $this->Session->setFlash(__('An email with instructions to reset your password has been sent.', true));
+                } else {
+                    $this->Session->setFlash(__('Oops, something went wrong, please try again later.', true));
+                }
+                
+                $this->redirect('/');
+            } else {
+                $this->User->invalidate('email');
+            }
+        } else {
+            $this->User->invalidate('email');
+        }
+    }
+    
+    public function resetpassword($lost_string = null) {
+        $this->pageTitle = __('Reset your password', true);
+        if($lost_string) {
+            $this->set('lost_string', $lost_string);
+            $user = $this->User->findByLostString($lost_string);
+            if( !$user ) {
+                $this->redirect('/');
+            }
+            if( !empty($this->data) ) {
+                $this->data['User']['id'] = $user['User']['id'];
+                $this->data['User']['lost_string'] = null;
+                if($this->User->save($this->data)) {
+                    $this->Session->setFlash(__('Your password has been reset, your can now login with your new password.', true));
+                    $this->redirect('/');
+                }
+            }
+        } else {
+            $this->redirect('/');
+        }
     }
 
     public function admin_index() {
