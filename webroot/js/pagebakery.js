@@ -146,6 +146,10 @@ if(jQuery) (function($){
             
             this.el = el;
             
+            if(!this.id) {
+                this.id = el.attr('id').replace('pb-element-', '');
+            }
+            
             this.el.wrap('<div class="' + this.baseClass + '-wrap"></div>');
             this.wrap = this.el.parent();
             if(!this.tbar) {
@@ -159,7 +163,7 @@ if(jQuery) (function($){
             var editBtn = $('<a class="' + this.baseClass + '-edit">edit</a>').appendTo(tbar).click(function() {
                 self.onEdit();
             });
-            var closeBtn = $('<a class="' + this.baseClass + '-delete">delete</a>').appendTo(tbar).click(function() {
+            var deleteBtn = $('<a class="' + this.baseClass + '-delete">delete</a>').appendTo(tbar).click(function() {
                 self.onDelete();
             });
             
@@ -179,9 +183,12 @@ if(jQuery) (function($){
             $.ajax({
                 url : Pagebakery.url('/admin/pages/unbindElement.json'),
                 type : 'POST',
-                data : {element_id: this.id, page_id: Pagebakery.data.Page.id},
+                data : {id: this.id},
                 success : function(msg) {
-                    this.destroy();
+                    var json = $.evalJSON(msg);
+                    if(json.success) {
+                        self.destroy();
+                    }
                 }
             });
         },
