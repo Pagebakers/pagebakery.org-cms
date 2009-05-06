@@ -1,1 +1,1 @@
-<?php echo $data['TextElement']['value']; ?>
+<?php echo nl2br(htmlspecialchars($data['TextElement']['value'])); ?>
