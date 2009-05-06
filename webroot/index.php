@@ -51,9 +51,7 @@
  * outside of the distributed directory structure.
  */
 	if (!defined('CAKE_CORE_INCLUDE_PATH')) {
-		//define ('CAKE_CORE_INCLUDE_PATH', 'FULL PATH TO DIRECTORY WHERE CAKE CORE IS INSTALLED. DO NOT ADD A TRAILING DIRECTORY SEPARATOR');
-		//You should also use the DS define to separate your directories
-		define('CAKE_CORE_INCLUDE_PATH', '/Users/contact/Projects/Cake_1.2');
+		define('CAKE_CORE_INCLUDE_PATH', ROOT);
 	}
 ///////////////////////////////
 //DO NOT EDIT BELOW THIS LINE//
@@ -81,7 +79,7 @@
 		return;
 	} else {
         //PB is not installed - run installer
-		if( !file_exists( CONFIGS . 'database.php' ) ){
+		if( !( file_exists( CONFIGS . 'database.php' ) && count( file( CONFIGS . 'database.php', FILE_SKIP_EMPTY_LINES ) ) > 3 ) ){
             if( !isset( $_GET['url'] ) || strpos( $_GET['url'], 'installer' ) === false )
                 $url = array( 'controller' => 'installer', 'action' => 'index' );
 		}

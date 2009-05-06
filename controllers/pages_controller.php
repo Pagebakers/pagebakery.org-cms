@@ -79,12 +79,6 @@ class PagesController extends AppController {
         $result = array('success' => false);
 
         /**
-         * Simulate input shit of @TODO
-         */
-        $this->params['form']['element_id'] = 1;
-        $this->params['form']['container']  = 'content';
-
-        /**
          * Load element to see what class/model is used
          */
         $this->Element->recursive = 0;
@@ -108,7 +102,7 @@ class PagesController extends AppController {
         /**
          * Save relationship
          */
-        if($this->Page->ElementsPage->save($this->params['form'])) {
+        if($this->Page->ElementsPage->save($this->data['ElementsPage'])) {
             $result['success'] = true;
             $result['id'] = $this->Page->ElementsPage->id;
         }
@@ -127,7 +121,7 @@ class PagesController extends AppController {
         // load elements_page
         $relation = $this->ElementsPage->read(null,$id);
 
-        // get class of foreign id
+        // get class to delete foreign id
         $class = $relation['Element']['class'];
 
         if ($this->$class->del($relation['ElementsPage']['foreign_id']) && $this->Page->ElementsPage->del($id)){
