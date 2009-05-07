@@ -213,9 +213,11 @@ if(jQuery) (function($){
      *
      */
     Pagebakery.Elements = Class.extend({
+        elements : [],
+    
         init: function(){
             this.initToolbar();
-            this.initGroups();    
+            this.initGroups();   
             this.initElements();
             this.initDropzones();
         },
@@ -270,6 +272,8 @@ if(jQuery) (function($){
                                 var json = $.evalJSON(msg);
                                 if(json.success) {
                                     element.setId(json.id);
+                                    
+                                    self.elements[json.id] = element; // Add initialized element to the elements array
                                 } else {
                                     element.destroy();
                                 }
@@ -294,16 +298,39 @@ if(jQuery) (function($){
             this.containers.sortable({
                 handle : '.pb-element-tbar',
                 connectWith : $('.ct'),
+                start : function(e, ui) {
+                    this.oldIndex = $(this).children().index(ui.item[0]);
+                },
                 update : function(e, ui) {
-                    var source = ui.draggable;
-                    console.log(ui);
-                    console.log(e);
+                    this.newIndex = $(this).children().index(ui.item[0]);
+                    
+                    if(this.oldIndex > this.newIndex) {
+                        var delta = (this.oldIndex - this.newIndex) * -1;
+                    } else {
+                        var delta = this.newIndex - this.oldIndex;
+                    }
+                    
+                    var element = self.getElement(ui.item[0]);
+                    
+                    $.ajax({
+                        url : Pagebakery.url('/admin/elements/sort.json'),
+                        type : 'POST',
+                        data : {id: element.id, page_id: Pagebakery.data.Page.id, container : $(this).attr('id'), delta : delta},
+                        success : function(msg) {
+                            var json = $.evalJSON(msg);
+                            if(!json.success) {
+                            }
+                        },
+                        error : function() {
+                        }
+                    });
                 }
             });
 
             var elements = this.containers.find('[class^="pb-element"]');
             elements.each(function(i) {
-                self.initElement($(this));
+                var el = self.initElement($(this));
+                self.elements[el.id] = el;
             });
         },
         
@@ -317,6 +344,20 @@ if(jQuery) (function($){
                 default :
                     return false;
             }
+        },
+        
+        getElement : function(el) {
+            el = $(el);
+            if(!el.hasClass('pb-element-wrap')) return false;
+            
+            var id = el.find('div[id^="pb-element-"]').attr('id').replace('pb-element-', '');
+            console.log(id);
+            console.log(this.elements);
+            if(id) {
+                return this.elements[id];
+            }
+            
+            return null;
         }
     });
 
@@ -325,11 +366,11 @@ if(jQuery) (function($){
 })(jQuery);
 
 $(document).ready(function () {
+	new Pagebakery.Elements();
+	console.log('blaat');
 	$('body').layout({
 	   north : {
 	       height : 80
 	   }
 	});
-	
-	new Pagebakery.Elements();
 });
