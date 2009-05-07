@@ -208,6 +208,10 @@ if(jQuery) (function($){
         type : 'text'
     });
 
+    Pagebakery.Element.Html = Pagebakery.Element.extend({
+        type : 'html'
+    });
+
     
     /**
      *
@@ -341,6 +345,8 @@ if(jQuery) (function($){
             switch(el.attr('class')) {
                 case 'pb-element-text' :
                     return new Pagebakery.Element.Text(el);
+                case 'pb-element-html' :
+                    return new Pagebakery.Element.Html(el);
                 default :
                     return false;
             }

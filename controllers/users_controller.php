@@ -106,11 +106,10 @@ class UsersController extends AppController {
                 $this->Email->to        = $user['User']['name'].' <'.$user['User']['email'].'>';
                 $this->Email->subject   = 'Password recovery';
                 $this->Email->template  = 'lostpassword';
-                $this->Email->sendAs    = 'text';                
+                $this->Email->sendAs    = 'text';
                 $this->Email->send();
             } else {
-                // give back to the view that
-                // the provided email is wrong
+                $this->Session->setFlash( __('Sorry, we could not find that e-mail in our database.', true) );
             }
         }
         $this->layout = 'admin_clean';
