@@ -36,7 +36,7 @@ class ElementsController extends AppController {
      * Move element up or down
      * @param int $id 
      */
-    public function move(){
+    public function admin_move(){
         $result = array('success' => false);
 
         $scope = array(
