@@ -32,5 +32,40 @@ class ElementsController extends AppController {
         $this->set(compact('result'));
     }
 
+    /**
+     * Move element up or down
+     * @param int $id 
+     */
+    public function move(){
+        $result = array('success' => false);
+
+        $scope = array(
+            'ElementsPage.container' => $this->params['form']['container']
+        );
+
+        $this->ElementsPage->Behaviors->attach(
+            'Tree',
+            array('scope' => $scope)
+        );
+
+        // get id of element
+        $id     = (int)$this->params['form']['id'];
+
+        // get delta
+        $delta  = (int)$this->params['form']['delta'];
+
+        if ($id < 0):
+            if ($this->ElementsPage->moveup($id, abs($delta))) :
+                $result = array('success' => true);
+            endif;
+        else:
+            if ($this->ElementsPage->movedown($id, abs($delta))) :
+                $result = array('success' => true);
+            endif;
+        endif;
+
+        $this->set(compact('result'));
+    }
+
 }
 ?>

@@ -19,6 +19,8 @@ class ElementsPage extends AppModel {
         'Element',
         'Page'
     );
+
+    public $actsAs = array('Tree');
     
     /**
      * Dynamically adds the corrosponding element type record to the find results
