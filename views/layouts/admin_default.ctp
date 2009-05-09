@@ -57,6 +57,16 @@
     	));
     ?>
 	<?php echo $scripts_for_layout; ?>
+	
+	<script type="text/javascript">
+        $(function() {
+        	$('body').layout({
+        	   north : {
+        	       height : 80
+        	   }
+        	});
+        });
+	</script>
 	<?php echo $cakeDebug; ?>
 </body>
 </html>

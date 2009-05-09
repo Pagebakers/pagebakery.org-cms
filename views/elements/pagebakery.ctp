@@ -30,5 +30,10 @@
         
         Pagebakery.config.base = '<?php echo Router::url('/'); ?>';
         Pagebakery.data.Page = <?php echo json_encode($page['Page']); ?>
+        
+        $(function() {
+            new Pagebakery.Elements();
+        	$('body').layout();
+        });
     </script>
 <?php endif; ?>

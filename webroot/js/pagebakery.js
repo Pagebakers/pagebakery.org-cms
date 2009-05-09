@@ -155,6 +155,8 @@ if(jQuery) (function($){
             if(!this.tbar) {
                 this.tbar = this.initToolbar();
             }
+            
+            this.el.element = this;
         },
 
         initToolbar : function() {
@@ -224,6 +226,8 @@ if(jQuery) (function($){
             this.initGroups();   
             this.initElements();
             this.initDropzones();
+            
+            console.log(this.elements);
         },
         
         initGroups : function() {
@@ -276,7 +280,6 @@ if(jQuery) (function($){
                                 var json = $.evalJSON(msg);
                                 if(json.success) {
                                     element.setId(json.id);
-                                    
                                     self.elements[json.id] = element; // Add initialized element to the elements array
                                 } else {
                                     element.destroy();
@@ -314,10 +317,10 @@ if(jQuery) (function($){
                         var delta = this.newIndex - this.oldIndex;
                     }
                     
-                    var element = self.getElement(ui.item[0]);
-                    
+                    var element = self.element;
+                    console.log(self);
                     $.ajax({
-                        url : Pagebakery.url('/admin/elements/sort.json'),
+                        url : Pagebakery.url('/admin/elements/move.json'),
                         type : 'POST',
                         data : {id: element.id, page_id: Pagebakery.data.Page.id, container : $(this).attr('id'), delta : delta},
                         success : function(msg) {
@@ -334,7 +337,6 @@ if(jQuery) (function($){
             var elements = this.containers.find('[class^="pb-element"]');
             elements.each(function(i) {
                 var el = self.initElement($(this));
-                self.elements[el.id] = el;
             });
         },
         
@@ -357,7 +359,6 @@ if(jQuery) (function($){
             if(!el.hasClass('pb-element-wrap')) return false;
             
             var id = el.find('div[id^="pb-element-"]').attr('id').replace('pb-element-', '');
-            console.log(id);
             console.log(this.elements);
             if(id) {
                 return this.elements[id];
@@ -370,13 +371,3 @@ if(jQuery) (function($){
     window.Pagebakery = Pagebakery;
     
 })(jQuery);
-
-$(document).ready(function () {
-	new Pagebakery.Elements();
-	console.log('blaat');
-	$('body').layout({
-	   north : {
-	       height : 80
-	   }
-	});
-});
