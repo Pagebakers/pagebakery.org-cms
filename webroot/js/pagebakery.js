@@ -155,8 +155,6 @@ if(jQuery) (function($){
             if(!this.tbar) {
                 this.tbar = this.initToolbar();
             }
-            
-            this.el.element = this;
         },
 
         initToolbar : function() {
@@ -219,15 +217,13 @@ if(jQuery) (function($){
      *
      */
     Pagebakery.Elements = Class.extend({
-        elements : [],
+        elements : {},
     
         init: function(){
             this.initToolbar();
             this.initGroups();   
             this.initElements();
             this.initDropzones();
-            
-            console.log(this.elements);
         },
         
         initGroups : function() {
@@ -317,8 +313,8 @@ if(jQuery) (function($){
                         var delta = this.newIndex - this.oldIndex;
                     }
                     
-                    var element = self.element;
-                    console.log(self);
+                    var element = self.getElement(ui.item[0]);
+
                     $.ajax({
                         url : Pagebakery.url('/admin/elements/move.json'),
                         type : 'POST',
@@ -337,6 +333,7 @@ if(jQuery) (function($){
             var elements = this.containers.find('[class^="pb-element"]');
             elements.each(function(i) {
                 var el = self.initElement($(this));
+                self.elements[el.id] = el;
             });
         },
         
