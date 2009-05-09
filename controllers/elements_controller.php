@@ -43,7 +43,7 @@ class ElementsController extends AppController {
             'ElementsPage.container' => $this->params['form']['container']
         );
 
-        $this->ElementsPage->Behaviors->attach(
+        $this->Element->ElementsPage->Behaviors->attach(
             'Tree',
             array('scope' => $scope)
         );
@@ -55,11 +55,11 @@ class ElementsController extends AppController {
         $delta  = (int)$this->params['form']['delta'];
 
         if ($id < 0):
-            if ($this->ElementsPage->moveup($id, abs($delta))) :
+            if ($this->Element->ElementsPage->moveup($id, abs($delta))) :
                 $result = array('success' => true);
             endif;
         else:
-            if ($this->ElementsPage->movedown($id, abs($delta))) :
+            if ($this->Element->ElementsPage->movedown($id, abs($delta))) :
                 $result = array('success' => true);
             endif;
         endif;
