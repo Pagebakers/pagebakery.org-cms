@@ -30,7 +30,10 @@ class ElementsHelper extends AppHelper {
             'ElementsPage.page_id' => $Page->id,
             'ElementsPage.container' => $name
         );
-        $elements = $Page->ElementsPage->find('all', compact('conditions'));
+        $order = array(
+            'ElementsPage.lft ASC'
+        );
+        $elements = $Page->ElementsPage->find('all', compact('conditions', 'order'));
 
         $return = array();
         foreach($elements as $element) {

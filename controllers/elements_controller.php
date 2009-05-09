@@ -54,15 +54,15 @@ class ElementsController extends AppController {
         // get delta
         $delta  = (int)$this->params['form']['delta'];
 
-        if ($id < 0):
-            if ($this->Element->ElementsPage->moveup($id, abs($delta))) :
+        if ($delta < 0) {
+            if ($this->Element->ElementsPage->moveup($id, abs($delta))) {
                 $result = array('success' => true);
-            endif;
-        else:
-            if ($this->Element->ElementsPage->movedown($id, abs($delta))) :
+            }
+        } elseif ($delta > 0) {
+            if ($this->Element->ElementsPage->movedown($id, abs($delta))) {
                 $result = array('success' => true);
-            endif;
-        endif;
+            }
+        }
 
         $this->set(compact('result'));
     }
