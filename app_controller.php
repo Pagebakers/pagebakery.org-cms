@@ -29,7 +29,7 @@ class AppController extends Controller {
             $this->view = 'View';
             $this->layout = 'admin_default';
         }
-        
+
         $this->addBreadcrumb(array('Home', array('controller' => 'dashboard', 'action' => 'index')));
     }
 
@@ -43,11 +43,11 @@ class AppController extends Controller {
             $this->view = 'json';
         }
     }
-    
+
     protected function isAdminAction() {
         return ( isset($this->params['admin']) && $this->params['admin'] == 1 );
     }
-    
+
     protected function addBreadcrumb($breadcrumb = array()) {
         if( !empty($breadcrumb) ) {
             $this->params['breadcrumbs'][] = $breadcrumb;

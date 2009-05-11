@@ -15,7 +15,7 @@ class UsersController extends AppController {
         $this->addBreadcrumb(array(__('Users', true), array('controller' => 'users', 'action' => 'index')));
     }
 
-    public function lost() {
+    public function admin_lostpassword() {
         $this->pageTitle = __('Lost your password?', true);
         if( !empty($this->data['User']['email']) ) {
             if( $user = $this->User->findByEmail($this->data['User']['email'], array('id', 'email', 'name')) ) {
@@ -23,11 +23,11 @@ class UsersController extends AppController {
                     $this->Session->setFlash(__('There already has been sent a request to reset your password, please check your mailbox.', true));
                     $this->redirect('/');
                 }
-            
+
                 App::import('String');
                 $user['User']['lost_string'] = String::uuid();
-                
-                if($this->User->save($user)) {                
+
+                if($this->User->save($user)) {
                     $this->Email->to = $user['User']['email'];
                     $this->Email->subject = __('Reset your password', true);
                     $this->Email->from = Configure::read('Pagebakery.noreply');
@@ -35,22 +35,20 @@ class UsersController extends AppController {
                     $this->Email->sendAs = 'text';
                     $this->set(compact('user'));
                     $this->Email->send();
-                    
+
                     $this->Session->setFlash(__('An email with instructions to reset your password has been sent.', true));
                 } else {
                     $this->Session->setFlash(__('Oops, something went wrong, please try again later.', true));
                 }
-                
+
                 $this->redirect('/');
             } else {
                 $this->User->invalidate('email');
             }
-        } else {
-            $this->User->invalidate('email');
         }
     }
-    
-    public function resetpassword($lost_string = null) {
+
+    public function admin_resetpassword($lost_string = null) {
         $this->pageTitle = __('Reset your password', true);
         if($lost_string) {
             $this->set('lost_string', $lost_string);
