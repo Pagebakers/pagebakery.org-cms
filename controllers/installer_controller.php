@@ -12,6 +12,10 @@ class InstallerController extends Controller {
     	            $this->Auth->allow();
         	    }
 			}
+            //if PB is already installed - redirect to homepage
+            if( ( file_exists( CONFIGS . 'database.php' ) && count( file( CONFIGS . 'database.php', FILE_SKIP_EMPTY_LINES ) ) > 3 ) ){
+                $this->redirect( '/' );
+            }
         }
 
         function index(){
