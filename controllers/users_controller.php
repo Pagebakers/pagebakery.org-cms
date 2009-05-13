@@ -11,36 +11,36 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-        
-        if($this->action == 'admin_lostpassword') {
-            $this->Auth->allow();
-        }
-        
+
+        $this->Auth->allow('admin_lostpassword', 'admin_resetpassword');
+
         $this->addBreadcrumb(array(__('Users', true), array('controller' => 'users', 'action' => 'index')));
     }
 
     public function admin_lostpassword() {
         $this->pageTitle = __('Lost your password?', true);
         if( !empty($this->data['User']['email']) ) {
-            if( $user = $this->User->findByEmail($this->data['User']['email'], array('id', 'email', 'name')) ) {
-                if( !empty($user['User']['lost_string']) ) {
+            if( $user = $this->User->findByEmail($this->data['User']['email'], array('id', 'email', 'name', 'loststring')) ) {
+                if( !empty($user['User']['loststring']) ) {
                     $this->Session->setFlash(__('There already has been sent a request to reset your password, please check your mailbox.', true));
                     $this->redirect('/');
                 }
 
-                App::import('String');
-                $user['User']['lost_string'] = String::uuid();
+                $user['User']['loststring'] = uniqid();
 
                 if($this->User->save($user)) {
                     $this->Email->to = $user['User']['email'];
                     $this->Email->subject = __('Reset your password', true);
                     $this->Email->from = Configure::read('Pagebakery.noreply');
-                    $this->Email->template = 'lost_password';
+                    $this->Email->template = 'lostpassword';
                     $this->Email->sendAs = 'text';
                     $this->set(compact('user'));
-                    $this->Email->send();
-
-                    $this->Session->setFlash(__('An email with instructions to reset your password has been sent.', true));
+                    if( $this->Email->send() ){
+                        $this->Session->setFlash(__('An email with instructions to reset your password has been sent.', true));
+                    }
+                    else{
+                        $this->Session->setFlash(__('There was a problem sending you an e-mail with further instructions. We are currently having a look at the issue.', true));
+                    }
                 } else {
                     $this->Session->setFlash(__('Oops, something went wrong, please try again later.', true));
                 }
@@ -50,27 +50,41 @@ class UsersController extends AppController {
                 $this->User->invalidate('email');
             }
         }
+        $this->layout = 'admin_clean';
     }
 
-    public function admin_resetpassword($lost_string = null) {
+    public function admin_resetpassword($loststring = null) {
         $this->pageTitle = __('Reset your password', true);
-        if($lost_string) {
-            $this->set('lost_string', $lost_string);
-            $user = $this->User->findByLostString($lost_string);
+        if($loststring) {
+            $this->set('loststring', $loststring);
+            $user = $this->User->findByLoststring($loststring);
             if( !$user ) {
                 $this->redirect('/');
             }
-            if( !empty($this->data) ) {
-                $this->data['User']['id'] = $user['User']['id'];
-                $this->data['User']['lost_string'] = null;
-                if($this->User->save($this->data)) {
-                    $this->Session->setFlash(__('Your password has been reset, your can now login with your new password.', true));
-                    $this->redirect('/');
+            $this->data['User']['id'] = $user['User']['id'];
+            $this->data['User']['loststring'] = null;
+            $new_pass = uniqid();
+            $this->data['User']['passwd'] = $new_pass;
+            if($this->User->save($this->data)){
+                $this->set('new_pass', $new_pass);
+                $this->set(compact('user'));
+                $this->Email->to = $user['User']['email'];
+                $this->Email->subject = __('Password reset', true);
+                $this->Email->from = Configure::read('Pagebakery.noreply');
+                $this->Email->template = 'resetpassword';
+                $this->Email->sendAs = 'text';
+                if( $this->Email->send() ){
+                    $this->Session->setFlash(__('Your password has been reset and sent you your mailbox, your can now login with your new password.', true));
                 }
+                else{
+                    $this->Session->setFlash(__('Oops, something went wrong, please try again later.', true));
+                }
+                $this->redirect('/');
             }
         } else {
             $this->redirect('/');
         }
+        $this->layout = 'admin_clean';
     }
 
     public function admin_index() {
