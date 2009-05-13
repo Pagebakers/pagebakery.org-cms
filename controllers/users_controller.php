@@ -11,7 +11,11 @@ class UsersController extends AppController {
 
     public function beforeFilter() {
         parent::beforeFilter();
-
+        
+        if($this->action == 'admin_lostpassword') {
+            $this->Auth->allow();
+        }
+        
         $this->addBreadcrumb(array(__('Users', true), array('controller' => 'users', 'action' => 'index')));
     }
 

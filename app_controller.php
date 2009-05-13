@@ -23,6 +23,7 @@ class AppController extends Controller {
             $this->Auth->loginAction = '/admin/login';
             $this->Auth->logoutAction = array('controller' => 'users', 'action' => 'admin_logout');
             $this->Auth->autoRedirect = false;
+           // $this->Auth->authorize = 'controller';
         }
 
         if( $this->isAdminAction() ) {

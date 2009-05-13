@@ -322,6 +322,7 @@ if(jQuery) (function($){
                         success : function(msg) {
                             var json = $.evalJSON(msg);
                             if(!json.success) {
+                                // @ todo revert order if move failed..
                             }
                         },
                         error : function() {
@@ -337,10 +338,16 @@ if(jQuery) (function($){
             });
         },
         
+        /**
+         * Initializes an single element
+         * @param el mixed The dom object which need to be initialized or the type class for the element to auto create the dom element
+         */
         initElement : function(el) {
             if(typeof el !== 'object') {
                 el = $('<div class="' + el + '"></div>');
             }
+            
+            // @todo make this dynamic
             switch(el.attr('class')) {
                 case 'pb-element-text' :
                     return new Pagebakery.Element.Text(el);
@@ -351,6 +358,10 @@ if(jQuery) (function($){
             }
         },
         
+        /**
+         * Returns the element object for a specific element
+         * @param el Dom element
+         */
         getElement : function(el) {
             el = $(el);
             if(!el.hasClass('pb-element-wrap')) return false;
